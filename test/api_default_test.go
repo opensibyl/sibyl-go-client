@@ -13,7 +13,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/opensibyl/sibyl-go-client/openapi"
+	"github.com/opensibyl/sibyl-go-client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

@@ -1,4 +1,4 @@
-module github.com/opensibyl/sibyl-go-client/openapi
+module github.com/opensibyl/sibyl-go-client
 
 go 1.13
 
