@@ -1,6 +1,5 @@
 .gitignore
 .travis.yml
-README.md
 api/openapi.yaml
 api_default.go
 client.go
@@ -13,8 +12,6 @@ docs/ObjectFunctionWithSignature.md
 docs/Sibyl2FunctionContext.md
 docs/Sibyl2FunctionWithPath.md
 git_push.sh
-go.mod
-go.sum
 model_core_point.go
 model_core_span.go
 model_extractor_value_unit.go
