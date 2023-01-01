@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **Extras** | Pointer to **map[string]interface{}** | which contains language-specific contents | [optional] 
 **Language** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Parameters** | Pointer to [**[]ExtractorValueUnit**](ExtractorValueUnit.md) |  | [optional] 
+**Parameters** | Pointer to [**[]ObjectValueUnit**](ObjectValueUnit.md) |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **Receiver** | Pointer to **string** |  | [optional] 
-**Returns** | Pointer to [**[]ExtractorValueUnit**](ExtractorValueUnit.md) |  | [optional] 
+**Returns** | Pointer to [**[]ObjectValueUnit**](ObjectValueUnit.md) |  | [optional] 
 **Signature** | Pointer to **string** |  | [optional] 
 **Span** | Pointer to [**CoreSpan**](CoreSpan.md) |  | [optional] 
 
@@ -136,20 +136,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetParameters
 
-`func (o *ObjectFunctionWithSignature) GetParameters() []ExtractorValueUnit`
+`func (o *ObjectFunctionWithSignature) GetParameters() []ObjectValueUnit`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *ObjectFunctionWithSignature) GetParametersOk() (*[]ExtractorValueUnit, bool)`
+`func (o *ObjectFunctionWithSignature) GetParametersOk() (*[]ObjectValueUnit, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *ObjectFunctionWithSignature) SetParameters(v []ExtractorValueUnit)`
+`func (o *ObjectFunctionWithSignature) SetParameters(v []ObjectValueUnit)`
 
 SetParameters sets Parameters field to given value.
 
@@ -211,20 +211,20 @@ HasReceiver returns a boolean if a field has been set.
 
 ### GetReturns
 
-`func (o *ObjectFunctionWithSignature) GetReturns() []ExtractorValueUnit`
+`func (o *ObjectFunctionWithSignature) GetReturns() []ObjectValueUnit`
 
 GetReturns returns the Returns field if non-nil, zero value otherwise.
 
 ### GetReturnsOk
 
-`func (o *ObjectFunctionWithSignature) GetReturnsOk() (*[]ExtractorValueUnit, bool)`
+`func (o *ObjectFunctionWithSignature) GetReturnsOk() (*[]ObjectValueUnit, bool)`
 
 GetReturnsOk returns a tuple with the Returns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReturns
 
-`func (o *ObjectFunctionWithSignature) SetReturns(v []ExtractorValueUnit)`
+`func (o *ObjectFunctionWithSignature) SetReturns(v []ObjectValueUnit)`
 
 SetReturns sets Returns field to given value.
 

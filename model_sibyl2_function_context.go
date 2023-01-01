@@ -16,18 +16,18 @@ import (
 
 // Sibyl2FunctionContext struct for Sibyl2FunctionContext
 type Sibyl2FunctionContext struct {
-	BodySpan *CoreSpan `json:"bodySpan,omitempty"`
-	Calls []Sibyl2FunctionWithPath `json:"calls,omitempty"`
+	BodySpan *CoreSpan                `json:"bodySpan,omitempty"`
+	Calls    []Sibyl2FunctionWithPath `json:"calls,omitempty"`
 	// which contains language-specific contents
-	Extras map[string]interface{} `json:"extras,omitempty"`
-	Language *string `json:"language,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Parameters []ExtractorValueUnit `json:"parameters,omitempty"`
-	Path *string `json:"path,omitempty"`
-	Receiver *string `json:"receiver,omitempty"`
-	Returns []ExtractorValueUnit `json:"returns,omitempty"`
+	Extras       map[string]interface{}   `json:"extras,omitempty"`
+	Language     *string                  `json:"language,omitempty"`
+	Name         *string                  `json:"name,omitempty"`
+	Parameters   []ObjectValueUnit        `json:"parameters,omitempty"`
+	Path         *string                  `json:"path,omitempty"`
+	Receiver     *string                  `json:"receiver,omitempty"`
+	Returns      []ObjectValueUnit        `json:"returns,omitempty"`
 	ReverseCalls []Sibyl2FunctionWithPath `json:"reverseCalls,omitempty"`
-	Span *CoreSpan `json:"span,omitempty"`
+	Span         *CoreSpan                `json:"span,omitempty"`
 }
 
 // NewSibyl2FunctionContext instantiates a new Sibyl2FunctionContext object
@@ -60,7 +60,7 @@ func (o *Sibyl2FunctionContext) GetBodySpan() CoreSpan {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetBodySpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.BodySpan) {
-    return nil, false
+		return nil, false
 	}
 	return o.BodySpan, true
 }
@@ -92,7 +92,7 @@ func (o *Sibyl2FunctionContext) GetCalls() []Sibyl2FunctionWithPath {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetCallsOk() ([]Sibyl2FunctionWithPath, bool) {
 	if o == nil || isNil(o.Calls) {
-    return nil, false
+		return nil, false
 	}
 	return o.Calls, true
 }
@@ -124,7 +124,7 @@ func (o *Sibyl2FunctionContext) GetExtras() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
-    return map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Extras, true
 }
@@ -156,7 +156,7 @@ func (o *Sibyl2FunctionContext) GetLanguage() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetLanguageOk() (*string, bool) {
 	if o == nil || isNil(o.Language) {
-    return nil, false
+		return nil, false
 	}
 	return o.Language, true
 }
@@ -188,7 +188,7 @@ func (o *Sibyl2FunctionContext) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
-    return nil, false
+		return nil, false
 	}
 	return o.Name, true
 }
@@ -208,9 +208,9 @@ func (o *Sibyl2FunctionContext) SetName(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *Sibyl2FunctionContext) GetParameters() []ExtractorValueUnit {
+func (o *Sibyl2FunctionContext) GetParameters() []ObjectValueUnit {
 	if o == nil || isNil(o.Parameters) {
-		var ret []ExtractorValueUnit
+		var ret []ObjectValueUnit
 		return ret
 	}
 	return o.Parameters
@@ -218,9 +218,9 @@ func (o *Sibyl2FunctionContext) GetParameters() []ExtractorValueUnit {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sibyl2FunctionContext) GetParametersOk() ([]ExtractorValueUnit, bool) {
+func (o *Sibyl2FunctionContext) GetParametersOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Parameters) {
-    return nil, false
+		return nil, false
 	}
 	return o.Parameters, true
 }
@@ -234,8 +234,8 @@ func (o *Sibyl2FunctionContext) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given []ExtractorValueUnit and assigns it to the Parameters field.
-func (o *Sibyl2FunctionContext) SetParameters(v []ExtractorValueUnit) {
+// SetParameters gets a reference to the given []ObjectValueUnit and assigns it to the Parameters field.
+func (o *Sibyl2FunctionContext) SetParameters(v []ObjectValueUnit) {
 	o.Parameters = v
 }
 
@@ -252,7 +252,7 @@ func (o *Sibyl2FunctionContext) GetPath() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetPathOk() (*string, bool) {
 	if o == nil || isNil(o.Path) {
-    return nil, false
+		return nil, false
 	}
 	return o.Path, true
 }
@@ -284,7 +284,7 @@ func (o *Sibyl2FunctionContext) GetReceiver() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetReceiverOk() (*string, bool) {
 	if o == nil || isNil(o.Receiver) {
-    return nil, false
+		return nil, false
 	}
 	return o.Receiver, true
 }
@@ -304,9 +304,9 @@ func (o *Sibyl2FunctionContext) SetReceiver(v string) {
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *Sibyl2FunctionContext) GetReturns() []ExtractorValueUnit {
+func (o *Sibyl2FunctionContext) GetReturns() []ObjectValueUnit {
 	if o == nil || isNil(o.Returns) {
-		var ret []ExtractorValueUnit
+		var ret []ObjectValueUnit
 		return ret
 	}
 	return o.Returns
@@ -314,9 +314,9 @@ func (o *Sibyl2FunctionContext) GetReturns() []ExtractorValueUnit {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sibyl2FunctionContext) GetReturnsOk() ([]ExtractorValueUnit, bool) {
+func (o *Sibyl2FunctionContext) GetReturnsOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Returns) {
-    return nil, false
+		return nil, false
 	}
 	return o.Returns, true
 }
@@ -330,8 +330,8 @@ func (o *Sibyl2FunctionContext) HasReturns() bool {
 	return false
 }
 
-// SetReturns gets a reference to the given []ExtractorValueUnit and assigns it to the Returns field.
-func (o *Sibyl2FunctionContext) SetReturns(v []ExtractorValueUnit) {
+// SetReturns gets a reference to the given []ObjectValueUnit and assigns it to the Returns field.
+func (o *Sibyl2FunctionContext) SetReturns(v []ObjectValueUnit) {
 	o.Returns = v
 }
 
@@ -348,7 +348,7 @@ func (o *Sibyl2FunctionContext) GetReverseCalls() []Sibyl2FunctionWithPath {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetReverseCallsOk() ([]Sibyl2FunctionWithPath, bool) {
 	if o == nil || isNil(o.ReverseCalls) {
-    return nil, false
+		return nil, false
 	}
 	return o.ReverseCalls, true
 }
@@ -380,7 +380,7 @@ func (o *Sibyl2FunctionContext) GetSpan() CoreSpan {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2FunctionContext) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
-    return nil, false
+		return nil, false
 	}
 	return o.Span, true
 }
@@ -472,5 +472,3 @@ func (v *NullableSibyl2FunctionContext) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

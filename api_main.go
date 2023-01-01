@@ -18,15 +18,145 @@ import (
 	"net/url"
 )
 
+// MAINApiService MAINApi service
+type MAINApiService service
 
-// DefaultApiService DefaultApi service
-type DefaultApiService service
+type ApiApiV1ClazzGetRequest struct {
+	ctx        context.Context
+	ApiService *MAINApiService
+	repo       *string
+	rev        *string
+	file       *string
+}
+
+// repo
+func (r ApiApiV1ClazzGetRequest) Repo(repo string) ApiApiV1ClazzGetRequest {
+	r.repo = &repo
+	return r
+}
+
+// rev
+func (r ApiApiV1ClazzGetRequest) Rev(rev string) ApiApiV1ClazzGetRequest {
+	r.rev = &rev
+	return r
+}
+
+// file
+func (r ApiApiV1ClazzGetRequest) File(file string) ApiApiV1ClazzGetRequest {
+	r.file = &file
+	return r
+}
+
+func (r ApiApiV1ClazzGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1ClazzGetExecute(r)
+}
+
+/*
+ApiV1ClazzGet class query
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1ClazzGetRequest
+*/
+func (a *MAINApiService) ApiV1ClazzGet(ctx context.Context) ApiApiV1ClazzGetRequest {
+	return ApiApiV1ClazzGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []Sibyl2ClazzWithPath
+func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2ClazzWithPath
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1ClazzGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/clazz"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.repo == nil {
+		return localVarReturnValue, nil, reportError("repo is required and must be specified")
+	}
+	if r.rev == nil {
+		return localVarReturnValue, nil, reportError("rev is required and must be specified")
+	}
+	if r.file == nil {
+		return localVarReturnValue, nil, reportError("file is required and must be specified")
+	}
+
+	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
+	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
+	localVarQueryParams.Add("file", parameterToString(*r.file, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiApiV1FileGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultApiService
-	repo *string
-	rev *string
+	ctx        context.Context
+	ApiService *MAINApiService
+	repo       *string
+	rev        *string
 }
 
 // repo
@@ -48,27 +178,28 @@ func (r ApiApiV1FileGetRequest) Execute() ([]string, *http.Response, error) {
 /*
 ApiV1FileGet file query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FileGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FileGetRequest
 */
-func (a *DefaultApiService) ApiV1FileGet(ctx context.Context) ApiApiV1FileGetRequest {
+func (a *MAINApiService) ApiV1FileGet(ctx context.Context) ApiApiV1FileGetRequest {
 	return ApiApiV1FileGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
-func (a *DefaultApiService) ApiV1FileGetExecute(r ApiApiV1FileGetRequest) ([]string, *http.Response, error) {
+//
+//	@return []string
+func (a *MAINApiService) ApiV1FileGetExecute(r ApiApiV1FileGetRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ApiV1FileGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FileGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -142,12 +273,12 @@ func (a *DefaultApiService) ApiV1FileGetExecute(r ApiApiV1FileGetRequest) ([]str
 }
 
 type ApiApiV1FuncGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultApiService
-	repo *string
-	rev *string
-	file *string
-	lines *string
+	ctx        context.Context
+	ApiService *MAINApiService
+	repo       *string
+	rev        *string
+	file       *string
+	lines      *string
 }
 
 // repo
@@ -181,27 +312,28 @@ func (r ApiApiV1FuncGetRequest) Execute() ([]ObjectFunctionWithSignature, *http.
 /*
 ApiV1FuncGet func query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncGetRequest
 */
-func (a *DefaultApiService) ApiV1FuncGet(ctx context.Context) ApiApiV1FuncGetRequest {
+func (a *MAINApiService) ApiV1FuncGet(ctx context.Context) ApiApiV1FuncGetRequest {
 	return ApiApiV1FuncGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ObjectFunctionWithSignature
-func (a *DefaultApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]ObjectFunctionWithSignature, *http.Response, error) {
+//
+//	@return []ObjectFunctionWithSignature
+func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]ObjectFunctionWithSignature, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ObjectFunctionWithSignature
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ObjectFunctionWithSignature
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ApiV1FuncGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -282,12 +414,12 @@ func (a *DefaultApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]Obj
 }
 
 type ApiApiV1FuncctxGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultApiService
-	repo *string
-	rev *string
-	file *string
-	lines *string
+	ctx        context.Context
+	ApiService *MAINApiService
+	repo       *string
+	rev        *string
+	file       *string
+	lines      *string
 }
 
 // repo
@@ -321,27 +453,28 @@ func (r ApiApiV1FuncctxGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Res
 /*
 ApiV1FuncctxGet func ctx query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncctxGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncctxGetRequest
 */
-func (a *DefaultApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1FuncctxGetRequest {
+func (a *MAINApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1FuncctxGetRequest {
 	return ApiApiV1FuncctxGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2FunctionContext
-func (a *DefaultApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
+//
+//	@return []Sibyl2FunctionContext
+func (a *MAINApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Sibyl2FunctionContext
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2FunctionContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ApiV1FuncctxGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncctxGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -421,95 +554,9 @@ func (a *DefaultApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1MonitorUploadGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultApiService
-}
-
-func (r ApiApiV1MonitorUploadGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.ApiV1MonitorUploadGetExecute(r)
-}
-
-/*
-ApiV1MonitorUploadGet upload status query
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1MonitorUploadGetRequest
-*/
-func (a *DefaultApiService) ApiV1MonitorUploadGet(ctx context.Context) ApiApiV1MonitorUploadGetRequest {
-	return ApiApiV1MonitorUploadGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-func (a *DefaultApiService) ApiV1MonitorUploadGetExecute(r ApiApiV1MonitorUploadGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ApiV1MonitorUploadGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/monitor/upload"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
-}
-
 type ApiApiV1RepoGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultApiService
+	ctx        context.Context
+	ApiService *MAINApiService
 }
 
 func (r ApiApiV1RepoGetRequest) Execute() ([]string, *http.Response, error) {
@@ -519,27 +566,28 @@ func (r ApiApiV1RepoGetRequest) Execute() ([]string, *http.Response, error) {
 /*
 ApiV1RepoGet repo query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1RepoGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1RepoGetRequest
 */
-func (a *DefaultApiService) ApiV1RepoGet(ctx context.Context) ApiApiV1RepoGetRequest {
+func (a *MAINApiService) ApiV1RepoGet(ctx context.Context) ApiApiV1RepoGetRequest {
 	return ApiApiV1RepoGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
-func (a *DefaultApiService) ApiV1RepoGetExecute(r ApiApiV1RepoGetRequest) ([]string, *http.Response, error) {
+//
+//	@return []string
+func (a *MAINApiService) ApiV1RepoGetExecute(r ApiApiV1RepoGetRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ApiV1RepoGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1RepoGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -605,9 +653,9 @@ func (a *DefaultApiService) ApiV1RepoGetExecute(r ApiApiV1RepoGetRequest) ([]str
 }
 
 type ApiApiV1RevGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultApiService
-	repo *string
+	ctx        context.Context
+	ApiService *MAINApiService
+	repo       *string
 }
 
 // rev search by repo
@@ -623,27 +671,28 @@ func (r ApiApiV1RevGetRequest) Execute() ([]string, *http.Response, error) {
 /*
 ApiV1RevGet rev query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1RevGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1RevGetRequest
 */
-func (a *DefaultApiService) ApiV1RevGet(ctx context.Context) ApiApiV1RevGetRequest {
+func (a *MAINApiService) ApiV1RevGet(ctx context.Context) ApiApiV1RevGetRequest {
 	return ApiApiV1RevGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
-func (a *DefaultApiService) ApiV1RevGetExecute(r ApiApiV1RevGetRequest) ([]string, *http.Response, error) {
+//
+//	@return []string
+func (a *MAINApiService) ApiV1RevGetExecute(r ApiApiV1RevGetRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.ApiV1RevGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1RevGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -710,90 +759,4 @@ func (a *DefaultApiService) ApiV1RevGetExecute(r ApiApiV1RevGetRequest) ([]strin
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiPingGetRequest struct {
-	ctx context.Context
-	ApiService *DefaultApiService
-}
-
-func (r ApiPingGetRequest) Execute() (*http.Response, error) {
-	return r.ApiService.PingGetExecute(r)
-}
-
-/*
-PingGet ping example
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPingGetRequest
-*/
-func (a *DefaultApiService) PingGet(ctx context.Context) ApiPingGetRequest {
-	return ApiPingGetRequest{
-		ApiService: a,
-		ctx: ctx,
-	}
-}
-
-// Execute executes the request
-func (a *DefaultApiService) PingGetExecute(r ApiPingGetRequest) (*http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultApiService.PingGet")
-	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/ping"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarHTTPResponse, newErr
-	}
-
-	return localVarHTTPResponse, nil
 }

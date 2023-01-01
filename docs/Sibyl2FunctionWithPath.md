@@ -8,10 +8,10 @@ Name | Type | Description | Notes
 **Extras** | Pointer to **map[string]interface{}** | which contains language-specific contents | [optional] 
 **Language** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
-**Parameters** | Pointer to [**[]ExtractorValueUnit**](ExtractorValueUnit.md) |  | [optional] 
+**Parameters** | Pointer to [**[]ObjectValueUnit**](ObjectValueUnit.md) |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **Receiver** | Pointer to **string** |  | [optional] 
-**Returns** | Pointer to [**[]ExtractorValueUnit**](ExtractorValueUnit.md) |  | [optional] 
+**Returns** | Pointer to [**[]ObjectValueUnit**](ObjectValueUnit.md) |  | [optional] 
 **Span** | Pointer to [**CoreSpan**](CoreSpan.md) |  | [optional] 
 
 ## Methods
@@ -135,20 +135,20 @@ HasName returns a boolean if a field has been set.
 
 ### GetParameters
 
-`func (o *Sibyl2FunctionWithPath) GetParameters() []ExtractorValueUnit`
+`func (o *Sibyl2FunctionWithPath) GetParameters() []ObjectValueUnit`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *Sibyl2FunctionWithPath) GetParametersOk() (*[]ExtractorValueUnit, bool)`
+`func (o *Sibyl2FunctionWithPath) GetParametersOk() (*[]ObjectValueUnit, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *Sibyl2FunctionWithPath) SetParameters(v []ExtractorValueUnit)`
+`func (o *Sibyl2FunctionWithPath) SetParameters(v []ObjectValueUnit)`
 
 SetParameters sets Parameters field to given value.
 
@@ -210,20 +210,20 @@ HasReceiver returns a boolean if a field has been set.
 
 ### GetReturns
 
-`func (o *Sibyl2FunctionWithPath) GetReturns() []ExtractorValueUnit`
+`func (o *Sibyl2FunctionWithPath) GetReturns() []ObjectValueUnit`
 
 GetReturns returns the Returns field if non-nil, zero value otherwise.
 
 ### GetReturnsOk
 
-`func (o *Sibyl2FunctionWithPath) GetReturnsOk() (*[]ExtractorValueUnit, bool)`
+`func (o *Sibyl2FunctionWithPath) GetReturnsOk() (*[]ObjectValueUnit, bool)`
 
 GetReturnsOk returns a tuple with the Returns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReturns
 
-`func (o *Sibyl2FunctionWithPath) SetReturns(v []ExtractorValueUnit)`
+`func (o *Sibyl2FunctionWithPath) SetReturns(v []ObjectValueUnit)`
 
 SetReturns sets Returns field to given value.
 

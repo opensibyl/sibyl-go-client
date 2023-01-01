@@ -18,15 +18,15 @@ import (
 type ObjectFunctionWithSignature struct {
 	BodySpan *CoreSpan `json:"bodySpan,omitempty"`
 	// which contains language-specific contents
-	Extras map[string]interface{} `json:"extras,omitempty"`
-	Language *string `json:"language,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Parameters []ExtractorValueUnit `json:"parameters,omitempty"`
-	Path *string `json:"path,omitempty"`
-	Receiver *string `json:"receiver,omitempty"`
-	Returns []ExtractorValueUnit `json:"returns,omitempty"`
-	Signature *string `json:"signature,omitempty"`
-	Span *CoreSpan `json:"span,omitempty"`
+	Extras     map[string]interface{} `json:"extras,omitempty"`
+	Language   *string                `json:"language,omitempty"`
+	Name       *string                `json:"name,omitempty"`
+	Parameters []ObjectValueUnit      `json:"parameters,omitempty"`
+	Path       *string                `json:"path,omitempty"`
+	Receiver   *string                `json:"receiver,omitempty"`
+	Returns    []ObjectValueUnit      `json:"returns,omitempty"`
+	Signature  *string                `json:"signature,omitempty"`
+	Span       *CoreSpan              `json:"span,omitempty"`
 }
 
 // NewObjectFunctionWithSignature instantiates a new ObjectFunctionWithSignature object
@@ -59,7 +59,7 @@ func (o *ObjectFunctionWithSignature) GetBodySpan() CoreSpan {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetBodySpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.BodySpan) {
-    return nil, false
+		return nil, false
 	}
 	return o.BodySpan, true
 }
@@ -91,7 +91,7 @@ func (o *ObjectFunctionWithSignature) GetExtras() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
-    return map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Extras, true
 }
@@ -123,7 +123,7 @@ func (o *ObjectFunctionWithSignature) GetLanguage() string {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetLanguageOk() (*string, bool) {
 	if o == nil || isNil(o.Language) {
-    return nil, false
+		return nil, false
 	}
 	return o.Language, true
 }
@@ -155,7 +155,7 @@ func (o *ObjectFunctionWithSignature) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
-    return nil, false
+		return nil, false
 	}
 	return o.Name, true
 }
@@ -175,9 +175,9 @@ func (o *ObjectFunctionWithSignature) SetName(v string) {
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetParameters() []ExtractorValueUnit {
+func (o *ObjectFunctionWithSignature) GetParameters() []ObjectValueUnit {
 	if o == nil || isNil(o.Parameters) {
-		var ret []ExtractorValueUnit
+		var ret []ObjectValueUnit
 		return ret
 	}
 	return o.Parameters
@@ -185,9 +185,9 @@ func (o *ObjectFunctionWithSignature) GetParameters() []ExtractorValueUnit {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetParametersOk() ([]ExtractorValueUnit, bool) {
+func (o *ObjectFunctionWithSignature) GetParametersOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Parameters) {
-    return nil, false
+		return nil, false
 	}
 	return o.Parameters, true
 }
@@ -201,8 +201,8 @@ func (o *ObjectFunctionWithSignature) HasParameters() bool {
 	return false
 }
 
-// SetParameters gets a reference to the given []ExtractorValueUnit and assigns it to the Parameters field.
-func (o *ObjectFunctionWithSignature) SetParameters(v []ExtractorValueUnit) {
+// SetParameters gets a reference to the given []ObjectValueUnit and assigns it to the Parameters field.
+func (o *ObjectFunctionWithSignature) SetParameters(v []ObjectValueUnit) {
 	o.Parameters = v
 }
 
@@ -219,7 +219,7 @@ func (o *ObjectFunctionWithSignature) GetPath() string {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetPathOk() (*string, bool) {
 	if o == nil || isNil(o.Path) {
-    return nil, false
+		return nil, false
 	}
 	return o.Path, true
 }
@@ -251,7 +251,7 @@ func (o *ObjectFunctionWithSignature) GetReceiver() string {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetReceiverOk() (*string, bool) {
 	if o == nil || isNil(o.Receiver) {
-    return nil, false
+		return nil, false
 	}
 	return o.Receiver, true
 }
@@ -271,9 +271,9 @@ func (o *ObjectFunctionWithSignature) SetReceiver(v string) {
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetReturns() []ExtractorValueUnit {
+func (o *ObjectFunctionWithSignature) GetReturns() []ObjectValueUnit {
 	if o == nil || isNil(o.Returns) {
-		var ret []ExtractorValueUnit
+		var ret []ObjectValueUnit
 		return ret
 	}
 	return o.Returns
@@ -281,9 +281,9 @@ func (o *ObjectFunctionWithSignature) GetReturns() []ExtractorValueUnit {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetReturnsOk() ([]ExtractorValueUnit, bool) {
+func (o *ObjectFunctionWithSignature) GetReturnsOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Returns) {
-    return nil, false
+		return nil, false
 	}
 	return o.Returns, true
 }
@@ -297,8 +297,8 @@ func (o *ObjectFunctionWithSignature) HasReturns() bool {
 	return false
 }
 
-// SetReturns gets a reference to the given []ExtractorValueUnit and assigns it to the Returns field.
-func (o *ObjectFunctionWithSignature) SetReturns(v []ExtractorValueUnit) {
+// SetReturns gets a reference to the given []ObjectValueUnit and assigns it to the Returns field.
+func (o *ObjectFunctionWithSignature) SetReturns(v []ObjectValueUnit) {
 	o.Returns = v
 }
 
@@ -315,7 +315,7 @@ func (o *ObjectFunctionWithSignature) GetSignature() string {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetSignatureOk() (*string, bool) {
 	if o == nil || isNil(o.Signature) {
-    return nil, false
+		return nil, false
 	}
 	return o.Signature, true
 }
@@ -347,7 +347,7 @@ func (o *ObjectFunctionWithSignature) GetSpan() CoreSpan {
 // and a boolean to check if the value has been set.
 func (o *ObjectFunctionWithSignature) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
-    return nil, false
+		return nil, false
 	}
 	return o.Span, true
 }
@@ -436,5 +436,3 @@ func (v *NullableObjectFunctionWithSignature) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-
