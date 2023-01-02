@@ -21,6 +21,137 @@ import (
 // EXTRASApiService EXTRASApi service
 type EXTRASApiService service
 
+type ApiApiV1ClazzDiffGetRequest struct {
+	ctx        context.Context
+	ApiService *EXTRASApiService
+	repo       *string
+	rev        *string
+	diff       *string
+}
+
+// repo
+func (r ApiApiV1ClazzDiffGetRequest) Repo(repo string) ApiApiV1ClazzDiffGetRequest {
+	r.repo = &repo
+	return r
+}
+
+// rev
+func (r ApiApiV1ClazzDiffGetRequest) Rev(rev string) ApiApiV1ClazzDiffGetRequest {
+	r.rev = &rev
+	return r
+}
+
+// unified diff
+func (r ApiApiV1ClazzDiffGetRequest) Diff(diff string) ApiApiV1ClazzDiffGetRequest {
+	r.diff = &diff
+	return r
+}
+
+func (r ApiApiV1ClazzDiffGetRequest) Execute() (*map[string][]Sibyl2ClazzWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1ClazzDiffGetExecute(r)
+}
+
+/*
+ApiV1ClazzDiffGet clazz diff query
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1ClazzDiffGetRequest
+*/
+func (a *EXTRASApiService) ApiV1ClazzDiffGet(ctx context.Context) ApiApiV1ClazzDiffGetRequest {
+	return ApiApiV1ClazzDiffGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string][]Sibyl2ClazzWithPath
+func (a *EXTRASApiService) ApiV1ClazzDiffGetExecute(r ApiApiV1ClazzDiffGetRequest) (*map[string][]Sibyl2ClazzWithPath, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *map[string][]Sibyl2ClazzWithPath
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXTRASApiService.ApiV1ClazzDiffGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/clazz/diff"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.repo == nil {
+		return localVarReturnValue, nil, reportError("repo is required and must be specified")
+	}
+	if r.rev == nil {
+		return localVarReturnValue, nil, reportError("rev is required and must be specified")
+	}
+	if r.diff == nil {
+		return localVarReturnValue, nil, reportError("diff is required and must be specified")
+	}
+
+	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
+	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
+	localVarQueryParams.Add("diff", parameterToString(*r.diff, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiApiV1FuncDiffGetRequest struct {
 	ctx        context.Context
 	ApiService *EXTRASApiService
@@ -47,7 +178,7 @@ func (r ApiApiV1FuncDiffGetRequest) Diff(diff string) ApiApiV1FuncDiffGetRequest
 	return r
 }
 
-func (r ApiApiV1FuncDiffGetRequest) Execute() (*map[string][]ObjectFunctionWithSignature, *http.Response, error) {
+func (r ApiApiV1FuncDiffGetRequest) Execute() (*map[string][]Sibyl2FunctionWithPath, *http.Response, error) {
 	return r.ApiService.ApiV1FuncDiffGetExecute(r)
 }
 
@@ -66,13 +197,13 @@ func (a *EXTRASApiService) ApiV1FuncDiffGet(ctx context.Context) ApiApiV1FuncDif
 
 // Execute executes the request
 //
-//	@return map[string][]ObjectFunctionWithSignature
-func (a *EXTRASApiService) ApiV1FuncDiffGetExecute(r ApiApiV1FuncDiffGetRequest) (*map[string][]ObjectFunctionWithSignature, *http.Response, error) {
+//	@return map[string][]Sibyl2FunctionWithPath
+func (a *EXTRASApiService) ApiV1FuncDiffGetExecute(r ApiApiV1FuncDiffGetRequest) (*map[string][]Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *map[string][]ObjectFunctionWithSignature
+		localVarReturnValue *map[string][]Sibyl2FunctionWithPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXTRASApiService.ApiV1FuncDiffGet")
@@ -81,6 +212,137 @@ func (a *EXTRASApiService) ApiV1FuncDiffGetExecute(r ApiApiV1FuncDiffGetRequest)
 	}
 
 	localVarPath := localBasePath + "/api/v1/func/diff"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.repo == nil {
+		return localVarReturnValue, nil, reportError("repo is required and must be specified")
+	}
+	if r.rev == nil {
+		return localVarReturnValue, nil, reportError("rev is required and must be specified")
+	}
+	if r.diff == nil {
+		return localVarReturnValue, nil, reportError("diff is required and must be specified")
+	}
+
+	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
+	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
+	localVarQueryParams.Add("diff", parameterToString(*r.diff, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1FuncctxDiffGetRequest struct {
+	ctx        context.Context
+	ApiService *EXTRASApiService
+	repo       *string
+	rev        *string
+	diff       *string
+}
+
+// repo
+func (r ApiApiV1FuncctxDiffGetRequest) Repo(repo string) ApiApiV1FuncctxDiffGetRequest {
+	r.repo = &repo
+	return r
+}
+
+// rev
+func (r ApiApiV1FuncctxDiffGetRequest) Rev(rev string) ApiApiV1FuncctxDiffGetRequest {
+	r.rev = &rev
+	return r
+}
+
+// unified diff
+func (r ApiApiV1FuncctxDiffGetRequest) Diff(diff string) ApiApiV1FuncctxDiffGetRequest {
+	r.diff = &diff
+	return r
+}
+
+func (r ApiApiV1FuncctxDiffGetRequest) Execute() (*map[string][]Sibyl2FunctionContext, *http.Response, error) {
+	return r.ApiService.ApiV1FuncctxDiffGetExecute(r)
+}
+
+/*
+ApiV1FuncctxDiffGet func ctx diff query
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncctxDiffGetRequest
+*/
+func (a *EXTRASApiService) ApiV1FuncctxDiffGet(ctx context.Context) ApiApiV1FuncctxDiffGetRequest {
+	return ApiApiV1FuncctxDiffGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return map[string][]Sibyl2FunctionContext
+func (a *EXTRASApiService) ApiV1FuncctxDiffGetExecute(r ApiApiV1FuncctxDiffGetRequest) (*map[string][]Sibyl2FunctionContext, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *map[string][]Sibyl2FunctionContext
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXTRASApiService.ApiV1FuncctxDiffGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/funcctx/diff"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

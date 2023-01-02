@@ -45,6 +45,37 @@ paths:
       summary: class query
       tags:
       - MAIN
+  /api/v1/clazz/diff:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: unified diff
+        in: query
+        name: diff
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service.ClazzDiffRet'
+          description: OK
+      summary: clazz diff query
+      tags:
+      - EXTRAS
   /api/v1/file:
     get:
       parameters:
@@ -179,6 +210,37 @@ paths:
       summary: func ctx query
       tags:
       - MAIN
+  /api/v1/funcctx/diff:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: unified diff
+        in: query
+        name: diff
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service.FuncCtxDiffRet'
+          description: OK
+      summary: func ctx diff query
+      tags:
+      - EXTRAS
   /api/v1/repo:
     get:
       responses:
@@ -328,10 +390,22 @@ components:
         type:
           type: string
       type: object
+    service.ClazzDiffRet:
+      additionalProperties:
+        items:
+          $ref: '#/components/schemas/sibyl2.ClazzWithPath'
+        type: array
+      type: object
+    service.FuncCtxDiffRet:
+      additionalProperties:
+        items:
+          $ref: '#/components/schemas/sibyl2.FunctionContext'
+        type: array
+      type: object
     service.FuncDiffRet:
       additionalProperties:
         items:
-          $ref: '#/components/schemas/object.FunctionWithSignature'
+          $ref: '#/components/schemas/sibyl2.FunctionWithPath'
         type: array
       type: object
     sibyl2.ClazzWithPath:
