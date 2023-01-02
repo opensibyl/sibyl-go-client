@@ -110,6 +110,37 @@ paths:
       summary: func query
       tags:
       - MAIN
+  /api/v1/func/diff:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: unified diff
+        in: query
+        name: diff
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service.FuncDiffRet'
+          description: OK
+      summary: func diff query
+      tags:
+      - EXTRAS
   /api/v1/funcctx:
     get:
       parameters:
@@ -296,6 +327,12 @@ components:
           type: string
         type:
           type: string
+      type: object
+    service.FuncDiffRet:
+      additionalProperties:
+        items:
+          $ref: '#/components/schemas/object.FunctionWithSignature'
+        type: array
       type: object
     sibyl2.ClazzWithPath:
       example:

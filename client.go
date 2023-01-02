@@ -49,6 +49,8 @@ type APIClient struct {
 
 	// API Services
 
+	EXTRASApi *EXTRASApiService
+
 	MAINApi *MAINApiService
 
 	OPSApi *OPSApiService
@@ -70,6 +72,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.EXTRASApi = (*EXTRASApiService)(&c.common)
 	c.MAINApi = (*MAINApiService)(&c.common)
 	c.OPSApi = (*OPSApiService)(&c.common)
 

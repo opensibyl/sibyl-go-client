@@ -1,12 +1,14 @@
 .gitignore
 .travis.yml
 api/openapi.yaml
+api_extras.go
 api_main.go
 api_ops.go
 client.go
 configuration.go
 docs/CorePoint.md
 docs/CoreSpan.md
+docs/EXTRASApi.md
 docs/MAINApi.md
 docs/OPSApi.md
 docs/ObjectFunctionWithSignature.md
@@ -23,6 +25,5 @@ model_sibyl2_clazz_with_path.go
 model_sibyl2_function_context.go
 model_sibyl2_function_with_path.go
 response.go
-test/api_main_test.go
-test/api_ops_test.go
+test/api_extras_test.go
 utils.go
