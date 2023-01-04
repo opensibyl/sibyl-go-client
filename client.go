@@ -54,6 +54,8 @@ type APIClient struct {
 	MAINApi *MAINApiService
 
 	OPSApi *OPSApiService
+
+	SCOPEApi *SCOPEApiService
 }
 
 type service struct {
@@ -75,6 +77,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EXTRASApi = (*EXTRASApiService)(&c.common)
 	c.MAINApi = (*MAINApiService)(&c.common)
 	c.OPSApi = (*OPSApiService)(&c.common)
+	c.SCOPEApi = (*SCOPEApiService)(&c.common)
 
 	return c
 }

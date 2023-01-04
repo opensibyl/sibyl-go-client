@@ -18,47 +18,47 @@ import (
 	"net/url"
 )
 
-// MAINApiService MAINApi service
-type MAINApiService service
+// SCOPEApiService SCOPEApi service
+type SCOPEApiService service
 
-type ApiApiV1ClazzGetRequest struct {
-	ctx        context.Context
-	ApiService *MAINApiService
-	repo       *string
-	rev        *string
-	file       *string
+type ApiApiV1FileGetRequest struct {
+	ctx          context.Context
+	ApiService   *SCOPEApiService
+	repo         *string
+	rev          *string
+	includeRegex *string
 }
 
 // repo
-func (r ApiApiV1ClazzGetRequest) Repo(repo string) ApiApiV1ClazzGetRequest {
+func (r ApiApiV1FileGetRequest) Repo(repo string) ApiApiV1FileGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1ClazzGetRequest) Rev(rev string) ApiApiV1ClazzGetRequest {
+func (r ApiApiV1FileGetRequest) Rev(rev string) ApiApiV1FileGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// file
-func (r ApiApiV1ClazzGetRequest) File(file string) ApiApiV1ClazzGetRequest {
-	r.file = &file
+// includeRegex
+func (r ApiApiV1FileGetRequest) IncludeRegex(includeRegex string) ApiApiV1FileGetRequest {
+	r.includeRegex = &includeRegex
 	return r
 }
 
-func (r ApiApiV1ClazzGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1ClazzGetExecute(r)
+func (r ApiApiV1FileGetRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.ApiV1FileGetExecute(r)
 }
 
 /*
-ApiV1ClazzGet class query
+ApiV1FileGet file query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1ClazzGetRequest
+	@return ApiApiV1FileGetRequest
 */
-func (a *MAINApiService) ApiV1ClazzGet(ctx context.Context) ApiApiV1ClazzGetRequest {
-	return ApiApiV1ClazzGetRequest{
+func (a *SCOPEApiService) ApiV1FileGet(ctx context.Context) ApiApiV1FileGetRequest {
+	return ApiApiV1FileGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -66,21 +66,21 @@ func (a *MAINApiService) ApiV1ClazzGet(ctx context.Context) ApiApiV1ClazzGetRequ
 
 // Execute executes the request
 //
-//	@return []Sibyl2ClazzWithPath
-func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
+//	@return []string
+func (a *SCOPEApiService) ApiV1FileGetExecute(r ApiApiV1FileGetRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Sibyl2ClazzWithPath
+		localVarReturnValue []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1ClazzGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCOPEApiService.ApiV1FileGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/clazz"
+	localVarPath := localBasePath + "/api/v1/file"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -91,153 +91,11 @@ func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Siby
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
-	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("file", parameterToString(*r.file, ""))
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiApiV1FuncGetRequest struct {
-	ctx        context.Context
-	ApiService *MAINApiService
-	repo       *string
-	rev        *string
-	file       *string
-	lines      *string
-}
-
-// repo
-func (r ApiApiV1FuncGetRequest) Repo(repo string) ApiApiV1FuncGetRequest {
-	r.repo = &repo
-	return r
-}
-
-// rev
-func (r ApiApiV1FuncGetRequest) Rev(rev string) ApiApiV1FuncGetRequest {
-	r.rev = &rev
-	return r
-}
-
-// file
-func (r ApiApiV1FuncGetRequest) File(file string) ApiApiV1FuncGetRequest {
-	r.file = &file
-	return r
-}
-
-// specific lines
-func (r ApiApiV1FuncGetRequest) Lines(lines string) ApiApiV1FuncGetRequest {
-	r.lines = &lines
-	return r
-}
-
-func (r ApiApiV1FuncGetRequest) Execute() ([]ObjectFunctionWithSignature, *http.Response, error) {
-	return r.ApiService.ApiV1FuncGetExecute(r)
-}
-
-/*
-ApiV1FuncGet func query
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncGetRequest
-*/
-func (a *MAINApiService) ApiV1FuncGet(ctx context.Context) ApiApiV1FuncGetRequest {
-	return ApiApiV1FuncGetRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return []ObjectFunctionWithSignature
-func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]ObjectFunctionWithSignature, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []ObjectFunctionWithSignature
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncGet")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/api/v1/func"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.repo == nil {
-		return localVarReturnValue, nil, reportError("repo is required and must be specified")
-	}
-	if r.rev == nil {
-		return localVarReturnValue, nil, reportError("rev is required and must be specified")
-	}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
-	}
-
-	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
-	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("file", parameterToString(*r.file, ""))
-	if r.lines != nil {
-		localVarQueryParams.Add("lines", parameterToString(*r.lines, ""))
+	if r.includeRegex != nil {
+		localVarQueryParams.Add("includeRegex", parameterToString(*r.includeRegex, ""))
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -293,51 +151,23 @@ func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]Object
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncctxGetRequest struct {
+type ApiApiV1RepoGetRequest struct {
 	ctx        context.Context
-	ApiService *MAINApiService
-	repo       *string
-	rev        *string
-	file       *string
-	lines      *string
+	ApiService *SCOPEApiService
 }
 
-// repo
-func (r ApiApiV1FuncctxGetRequest) Repo(repo string) ApiApiV1FuncctxGetRequest {
-	r.repo = &repo
-	return r
-}
-
-// rev
-func (r ApiApiV1FuncctxGetRequest) Rev(rev string) ApiApiV1FuncctxGetRequest {
-	r.rev = &rev
-	return r
-}
-
-// file
-func (r ApiApiV1FuncctxGetRequest) File(file string) ApiApiV1FuncctxGetRequest {
-	r.file = &file
-	return r
-}
-
-// specific lines
-func (r ApiApiV1FuncctxGetRequest) Lines(lines string) ApiApiV1FuncctxGetRequest {
-	r.lines = &lines
-	return r
-}
-
-func (r ApiApiV1FuncctxGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
-	return r.ApiService.ApiV1FuncctxGetExecute(r)
+func (r ApiApiV1RepoGetRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.ApiV1RepoGetExecute(r)
 }
 
 /*
-ApiV1FuncctxGet func ctx query
+ApiV1RepoGet repo query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncctxGetRequest
+	@return ApiApiV1RepoGetRequest
 */
-func (a *MAINApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1FuncctxGetRequest {
-	return ApiApiV1FuncctxGetRequest{
+func (a *SCOPEApiService) ApiV1RepoGet(ctx context.Context) ApiApiV1RepoGetRequest {
+	return ApiApiV1RepoGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -345,21 +175,126 @@ func (a *MAINApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1FuncctxGet
 
 // Execute executes the request
 //
-//	@return []Sibyl2FunctionContext
-func (a *MAINApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
+//	@return []string
+func (a *SCOPEApiService) ApiV1RepoGetExecute(r ApiApiV1RepoGetRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Sibyl2FunctionContext
+		localVarReturnValue []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncctxGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCOPEApiService.ApiV1RepoGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/funcctx"
+	localVarPath := localBasePath + "/api/v1/repo"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1RevGetRequest struct {
+	ctx        context.Context
+	ApiService *SCOPEApiService
+	repo       *string
+}
+
+// rev search by repo
+func (r ApiApiV1RevGetRequest) Repo(repo string) ApiApiV1RevGetRequest {
+	r.repo = &repo
+	return r
+}
+
+func (r ApiApiV1RevGetRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.ApiV1RevGetExecute(r)
+}
+
+/*
+ApiV1RevGet rev query
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1RevGetRequest
+*/
+func (a *SCOPEApiService) ApiV1RevGet(ctx context.Context) ApiApiV1RevGetRequest {
+	return ApiApiV1RevGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []string
+func (a *SCOPEApiService) ApiV1RevGetExecute(r ApiApiV1RevGetRequest) ([]string, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCOPEApiService.ApiV1RevGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/rev"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -367,19 +302,8 @@ func (a *MAINApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]
 	if r.repo == nil {
 		return localVarReturnValue, nil, reportError("repo is required and must be specified")
 	}
-	if r.rev == nil {
-		return localVarReturnValue, nil, reportError("rev is required and must be specified")
-	}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
-	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
-	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("file", parameterToString(*r.file, ""))
-	if r.lines != nil {
-		localVarQueryParams.Add("lines", parameterToString(*r.lines, ""))
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

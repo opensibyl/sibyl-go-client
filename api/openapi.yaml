@@ -91,6 +91,11 @@ paths:
         required: true
         schema:
           type: string
+      - description: includeRegex
+        in: query
+        name: includeRegex
+        schema:
+          type: string
       responses:
         "200":
           content:
@@ -102,7 +107,7 @@ paths:
           description: OK
       summary: file query
       tags:
-      - MAIN
+      - SCOPE
   /api/v1/func:
     get:
       parameters:
@@ -254,7 +259,7 @@ paths:
           description: OK
       summary: repo query
       tags:
-      - MAIN
+      - SCOPE
   /api/v1/rev:
     get:
       parameters:
@@ -275,7 +280,7 @@ paths:
           description: OK
       summary: rev query
       tags:
-      - MAIN
+      - SCOPE
   /ops/monitor/upload:
     get:
       responses:
