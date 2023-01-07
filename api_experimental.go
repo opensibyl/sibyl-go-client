@@ -19,68 +19,68 @@ import (
 )
 
 
-// MAINApiService MAINApi service
-type MAINApiService service
+// EXPERIMENTALApiService EXPERIMENTALApi service
+type EXPERIMENTALApiService service
 
-type ApiApiV1ClazzGetRequest struct {
+type ApiApiV1FuncSignatureGetRequest struct {
 	ctx context.Context
-	ApiService *MAINApiService
+	ApiService *EXPERIMENTALApiService
 	repo *string
 	rev *string
-	file *string
+	regex *string
 }
 
 // repo
-func (r ApiApiV1ClazzGetRequest) Repo(repo string) ApiApiV1ClazzGetRequest {
+func (r ApiApiV1FuncSignatureGetRequest) Repo(repo string) ApiApiV1FuncSignatureGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1ClazzGetRequest) Rev(rev string) ApiApiV1ClazzGetRequest {
+func (r ApiApiV1FuncSignatureGetRequest) Rev(rev string) ApiApiV1FuncSignatureGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// file
-func (r ApiApiV1ClazzGetRequest) File(file string) ApiApiV1ClazzGetRequest {
-	r.file = &file
+// regex
+func (r ApiApiV1FuncSignatureGetRequest) Regex(regex string) ApiApiV1FuncSignatureGetRequest {
+	r.regex = &regex
 	return r
 }
 
-func (r ApiApiV1ClazzGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1ClazzGetExecute(r)
+func (r ApiApiV1FuncSignatureGetRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.ApiV1FuncSignatureGetExecute(r)
 }
 
 /*
-ApiV1ClazzGet class query
+ApiV1FuncSignatureGet func query
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1ClazzGetRequest
+ @return ApiApiV1FuncSignatureGetRequest
 */
-func (a *MAINApiService) ApiV1ClazzGet(ctx context.Context) ApiApiV1ClazzGetRequest {
-	return ApiApiV1ClazzGetRequest{
+func (a *EXPERIMENTALApiService) ApiV1FuncSignatureGet(ctx context.Context) ApiApiV1FuncSignatureGetRequest {
+	return ApiApiV1FuncSignatureGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2ClazzWithPath
-func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
+//  @return []string
+func (a *EXPERIMENTALApiService) ApiV1FuncSignatureGetExecute(r ApiApiV1FuncSignatureGetRequest) ([]string, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sibyl2ClazzWithPath
+		localVarReturnValue  []string
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1ClazzGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncSignatureGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/clazz"
+	localVarPath := localBasePath + "/api/v1/func/signature"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -91,13 +91,13 @@ func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Siby
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("file", parameterToString(*r.file, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -152,72 +152,65 @@ func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Siby
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncGetRequest struct {
+type ApiApiV1FuncWithRuleGetRequest struct {
 	ctx context.Context
-	ApiService *MAINApiService
+	ApiService *EXPERIMENTALApiService
 	repo *string
 	rev *string
-	file *string
-	lines *string
+	rule *string
 }
 
 // repo
-func (r ApiApiV1FuncGetRequest) Repo(repo string) ApiApiV1FuncGetRequest {
+func (r ApiApiV1FuncWithRuleGetRequest) Repo(repo string) ApiApiV1FuncWithRuleGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncGetRequest) Rev(rev string) ApiApiV1FuncGetRequest {
+func (r ApiApiV1FuncWithRuleGetRequest) Rev(rev string) ApiApiV1FuncWithRuleGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// file
-func (r ApiApiV1FuncGetRequest) File(file string) ApiApiV1FuncGetRequest {
-	r.file = &file
+// rule
+func (r ApiApiV1FuncWithRuleGetRequest) Rule(rule string) ApiApiV1FuncWithRuleGetRequest {
+	r.rule = &rule
 	return r
 }
 
-// specific lines
-func (r ApiApiV1FuncGetRequest) Lines(lines string) ApiApiV1FuncGetRequest {
-	r.lines = &lines
-	return r
-}
-
-func (r ApiApiV1FuncGetRequest) Execute() ([]ObjectFunctionWithSignature, *http.Response, error) {
-	return r.ApiService.ApiV1FuncGetExecute(r)
+func (r ApiApiV1FuncWithRuleGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1FuncWithRuleGetExecute(r)
 }
 
 /*
-ApiV1FuncGet func query
+ApiV1FuncWithRuleGet func query
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncGetRequest
+ @return ApiApiV1FuncWithRuleGetRequest
 */
-func (a *MAINApiService) ApiV1FuncGet(ctx context.Context) ApiApiV1FuncGetRequest {
-	return ApiApiV1FuncGetRequest{
+func (a *EXPERIMENTALApiService) ApiV1FuncWithRuleGet(ctx context.Context) ApiApiV1FuncWithRuleGetRequest {
+	return ApiApiV1FuncWithRuleGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ObjectFunctionWithSignature
-func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]ObjectFunctionWithSignature, *http.Response, error) {
+//  @return []Sibyl2FunctionWithPath
+func (a *EXPERIMENTALApiService) ApiV1FuncWithRuleGetExecute(r ApiApiV1FuncWithRuleGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []ObjectFunctionWithSignature
+		localVarReturnValue  []Sibyl2FunctionWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncWithRuleGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/func"
+	localVarPath := localBasePath + "/api/v1/func/with/rule"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -228,16 +221,13 @@ func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]Object
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
+	if r.rule == nil {
+		return localVarReturnValue, nil, reportError("rule is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("file", parameterToString(*r.file, ""))
-	if r.lines != nil {
-		localVarQueryParams.Add("lines", parameterToString(*r.lines, ""))
-	}
+	localVarQueryParams.Add("rule", parameterToString(*r.rule, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -292,72 +282,65 @@ func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]Object
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncctxGetRequest struct {
+type ApiApiV1FuncWithSignatureGetRequest struct {
 	ctx context.Context
-	ApiService *MAINApiService
+	ApiService *EXPERIMENTALApiService
 	repo *string
 	rev *string
-	file *string
-	lines *string
+	signature *string
 }
 
 // repo
-func (r ApiApiV1FuncctxGetRequest) Repo(repo string) ApiApiV1FuncctxGetRequest {
+func (r ApiApiV1FuncWithSignatureGetRequest) Repo(repo string) ApiApiV1FuncWithSignatureGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncctxGetRequest) Rev(rev string) ApiApiV1FuncctxGetRequest {
+func (r ApiApiV1FuncWithSignatureGetRequest) Rev(rev string) ApiApiV1FuncWithSignatureGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// file
-func (r ApiApiV1FuncctxGetRequest) File(file string) ApiApiV1FuncctxGetRequest {
-	r.file = &file
+// signature
+func (r ApiApiV1FuncWithSignatureGetRequest) Signature(signature string) ApiApiV1FuncWithSignatureGetRequest {
+	r.signature = &signature
 	return r
 }
 
-// specific lines
-func (r ApiApiV1FuncctxGetRequest) Lines(lines string) ApiApiV1FuncctxGetRequest {
-	r.lines = &lines
-	return r
-}
-
-func (r ApiApiV1FuncctxGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
-	return r.ApiService.ApiV1FuncctxGetExecute(r)
+func (r ApiApiV1FuncWithSignatureGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1FuncWithSignatureGetExecute(r)
 }
 
 /*
-ApiV1FuncctxGet func ctx query
+ApiV1FuncWithSignatureGet func query
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncctxGetRequest
+ @return ApiApiV1FuncWithSignatureGetRequest
 */
-func (a *MAINApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1FuncctxGetRequest {
-	return ApiApiV1FuncctxGetRequest{
+func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGet(ctx context.Context) ApiApiV1FuncWithSignatureGetRequest {
+	return ApiApiV1FuncWithSignatureGetRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2FunctionContext
-func (a *MAINApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
+//  @return []Sibyl2FunctionWithPath
+func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1FuncWithSignatureGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sibyl2FunctionContext
+		localVarReturnValue  []Sibyl2FunctionWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncctxGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncWithSignatureGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/funcctx"
+	localVarPath := localBasePath + "/api/v1/func/with/signature"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -368,16 +351,13 @@ func (a *MAINApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.file == nil {
-		return localVarReturnValue, nil, reportError("file is required and must be specified")
+	if r.signature == nil {
+		return localVarReturnValue, nil, reportError("signature is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("file", parameterToString(*r.file, ""))
-	if r.lines != nil {
-		localVarQueryParams.Add("lines", parameterToString(*r.lines, ""))
-	}
+	localVarQueryParams.Add("signature", parameterToString(*r.signature, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **BodySpan** | Pointer to [**CoreSpan**](CoreSpan.md) |  | [optional] 
 **Calls** | Pointer to [**[]Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md) |  | [optional] 
 **Extras** | Pointer to **map[string]interface{}** | which contains language-specific contents | [optional] 
-**Language** | Pointer to **string** |  | [optional] 
+**Lang** | Pointer to **string** | language | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Parameters** | Pointer to [**[]ObjectValueUnit**](ObjectValueUnit.md) |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
@@ -110,30 +110,30 @@ SetExtras sets Extras field to given value.
 
 HasExtras returns a boolean if a field has been set.
 
-### GetLanguage
+### GetLang
 
-`func (o *Sibyl2FunctionContext) GetLanguage() string`
+`func (o *Sibyl2FunctionContext) GetLang() string`
 
-GetLanguage returns the Language field if non-nil, zero value otherwise.
+GetLang returns the Lang field if non-nil, zero value otherwise.
 
-### GetLanguageOk
+### GetLangOk
 
-`func (o *Sibyl2FunctionContext) GetLanguageOk() (*string, bool)`
+`func (o *Sibyl2FunctionContext) GetLangOk() (*string, bool)`
 
-GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
+GetLangOk returns a tuple with the Lang field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetLanguage
+### SetLang
 
-`func (o *Sibyl2FunctionContext) SetLanguage(v string)`
+`func (o *Sibyl2FunctionContext) SetLang(v string)`
 
-SetLanguage sets Language field to given value.
+SetLang sets Lang field to given value.
 
-### HasLanguage
+### HasLang
 
-`func (o *Sibyl2FunctionContext) HasLanguage() bool`
+`func (o *Sibyl2FunctionContext) HasLang() bool`
 
-HasLanguage returns a boolean if a field has been set.
+HasLang returns a boolean if a field has been set.
 
 ### GetName
 

@@ -17,12 +17,15 @@ import (
 // Sibyl2ClazzWithPath struct for Sibyl2ClazzWithPath
 type Sibyl2ClazzWithPath struct {
 	// which contains language-specific contents
-	Extras   map[string]interface{} `json:"extras,omitempty"`
-	Language *string                `json:"language,omitempty"`
-	Module   *string                `json:"module,omitempty"`
-	Name     *string                `json:"name,omitempty"`
-	Path     *string                `json:"path,omitempty"`
-	Span     *CoreSpan              `json:"span,omitempty"`
+	Extras map[string]interface{} `json:"extras,omitempty"`
+	// language
+	Lang *string `json:"lang,omitempty"`
+	// language
+	Language *string `json:"language,omitempty"`
+	Module *string `json:"module,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Path *string `json:"path,omitempty"`
+	Span *CoreSpan `json:"span,omitempty"`
 }
 
 // NewSibyl2ClazzWithPath instantiates a new Sibyl2ClazzWithPath object
@@ -55,7 +58,7 @@ func (o *Sibyl2ClazzWithPath) GetExtras() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
-		return map[string]interface{}{}, false
+    return map[string]interface{}{}, false
 	}
 	return o.Extras, true
 }
@@ -74,6 +77,38 @@ func (o *Sibyl2ClazzWithPath) SetExtras(v map[string]interface{}) {
 	o.Extras = v
 }
 
+// GetLang returns the Lang field value if set, zero value otherwise.
+func (o *Sibyl2ClazzWithPath) GetLang() string {
+	if o == nil || isNil(o.Lang) {
+		var ret string
+		return ret
+	}
+	return *o.Lang
+}
+
+// GetLangOk returns a tuple with the Lang field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Sibyl2ClazzWithPath) GetLangOk() (*string, bool) {
+	if o == nil || isNil(o.Lang) {
+    return nil, false
+	}
+	return o.Lang, true
+}
+
+// HasLang returns a boolean if a field has been set.
+func (o *Sibyl2ClazzWithPath) HasLang() bool {
+	if o != nil && !isNil(o.Lang) {
+		return true
+	}
+
+	return false
+}
+
+// SetLang gets a reference to the given string and assigns it to the Lang field.
+func (o *Sibyl2ClazzWithPath) SetLang(v string) {
+	o.Lang = &v
+}
+
 // GetLanguage returns the Language field value if set, zero value otherwise.
 func (o *Sibyl2ClazzWithPath) GetLanguage() string {
 	if o == nil || isNil(o.Language) {
@@ -87,7 +122,7 @@ func (o *Sibyl2ClazzWithPath) GetLanguage() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetLanguageOk() (*string, bool) {
 	if o == nil || isNil(o.Language) {
-		return nil, false
+    return nil, false
 	}
 	return o.Language, true
 }
@@ -119,7 +154,7 @@ func (o *Sibyl2ClazzWithPath) GetModule() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetModuleOk() (*string, bool) {
 	if o == nil || isNil(o.Module) {
-		return nil, false
+    return nil, false
 	}
 	return o.Module, true
 }
@@ -151,7 +186,7 @@ func (o *Sibyl2ClazzWithPath) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
-		return nil, false
+    return nil, false
 	}
 	return o.Name, true
 }
@@ -183,7 +218,7 @@ func (o *Sibyl2ClazzWithPath) GetPath() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetPathOk() (*string, bool) {
 	if o == nil || isNil(o.Path) {
-		return nil, false
+    return nil, false
 	}
 	return o.Path, true
 }
@@ -215,7 +250,7 @@ func (o *Sibyl2ClazzWithPath) GetSpan() CoreSpan {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
-		return nil, false
+    return nil, false
 	}
 	return o.Span, true
 }
@@ -238,6 +273,9 @@ func (o Sibyl2ClazzWithPath) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.Extras) {
 		toSerialize["extras"] = o.Extras
+	}
+	if !isNil(o.Lang) {
+		toSerialize["lang"] = o.Lang
 	}
 	if !isNil(o.Language) {
 		toSerialize["language"] = o.Language
@@ -292,3 +330,5 @@ func (v *NullableSibyl2ClazzWithPath) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
+
+

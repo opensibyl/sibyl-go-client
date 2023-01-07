@@ -18,14 +18,15 @@ import (
 	"net/url"
 )
 
+
 // SCOPEApiService SCOPEApi service
 type SCOPEApiService service
 
 type ApiApiV1FileGetRequest struct {
-	ctx          context.Context
-	ApiService   *SCOPEApiService
-	repo         *string
-	rev          *string
+	ctx context.Context
+	ApiService *SCOPEApiService
+	repo *string
+	rev *string
 	includeRegex *string
 }
 
@@ -54,25 +55,24 @@ func (r ApiApiV1FileGetRequest) Execute() ([]string, *http.Response, error) {
 /*
 ApiV1FileGet file query
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FileGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiV1FileGetRequest
 */
 func (a *SCOPEApiService) ApiV1FileGet(ctx context.Context) ApiApiV1FileGetRequest {
 	return ApiApiV1FileGetRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *SCOPEApiService) ApiV1FileGetExecute(r ApiApiV1FileGetRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCOPEApiService.ApiV1FileGet")
@@ -152,7 +152,7 @@ func (a *SCOPEApiService) ApiV1FileGetExecute(r ApiApiV1FileGetRequest) ([]strin
 }
 
 type ApiApiV1RepoGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SCOPEApiService
 }
 
@@ -163,25 +163,24 @@ func (r ApiApiV1RepoGetRequest) Execute() ([]string, *http.Response, error) {
 /*
 ApiV1RepoGet repo query
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1RepoGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiV1RepoGetRequest
 */
 func (a *SCOPEApiService) ApiV1RepoGet(ctx context.Context) ApiApiV1RepoGetRequest {
 	return ApiApiV1RepoGetRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *SCOPEApiService) ApiV1RepoGetExecute(r ApiApiV1RepoGetRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCOPEApiService.ApiV1RepoGet")
@@ -250,9 +249,9 @@ func (a *SCOPEApiService) ApiV1RepoGetExecute(r ApiApiV1RepoGetRequest) ([]strin
 }
 
 type ApiApiV1RevGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *SCOPEApiService
-	repo       *string
+	repo *string
 }
 
 // rev search by repo
@@ -268,25 +267,24 @@ func (r ApiApiV1RevGetRequest) Execute() ([]string, *http.Response, error) {
 /*
 ApiV1RevGet rev query
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1RevGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiApiV1RevGetRequest
 */
 func (a *SCOPEApiService) ApiV1RevGet(ctx context.Context) ApiApiV1RevGetRequest {
 	return ApiApiV1RevGetRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//
-//	@return []string
+//  @return []string
 func (a *SCOPEApiService) ApiV1RevGetExecute(r ApiApiV1RevGetRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []string
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SCOPEApiService.ApiV1RevGet")

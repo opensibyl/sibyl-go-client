@@ -49,7 +49,7 @@ type APIClient struct {
 
 	// API Services
 
-	EXTRASApi *EXTRASApiService
+	EXPERIMENTALApi *EXPERIMENTALApiService
 
 	MAINApi *MAINApiService
 
@@ -74,7 +74,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
-	c.EXTRASApi = (*EXTRASApiService)(&c.common)
+	c.EXPERIMENTALApi = (*EXPERIMENTALApiService)(&c.common)
 	c.MAINApi = (*MAINApiService)(&c.common)
 	c.OPSApi = (*OPSApiService)(&c.common)
 	c.SCOPEApi = (*SCOPEApiService)(&c.common)
@@ -199,9 +199,9 @@ func (c *APIClient) GetConfig() *Configuration {
 }
 
 type formFile struct {
-	fileBytes    []byte
-	fileName     string
-	formFileName string
+		fileBytes []byte
+		fileName string
+		formFileName string
 }
 
 // prepareRequest build the request
@@ -255,11 +255,11 @@ func (c *APIClient) prepareRequest(
 				w.Boundary()
 				part, err := w.CreateFormFile(formFile.formFileName, filepath.Base(formFile.fileName))
 				if err != nil {
-					return nil, err
+						return nil, err
 				}
 				_, err = part.Write(formFile.fileBytes)
 				if err != nil {
-					return nil, err
+						return nil, err
 				}
 			}
 		}
@@ -574,19 +574,19 @@ func (e GenericOpenAPIError) Model() interface{} {
 // format error message using title and detail when model implements rfc7807
 func formatErrorMessage(status string, v interface{}) string {
 
-	str := ""
-	metaValue := reflect.ValueOf(v).Elem()
+    str := ""
+    metaValue := reflect.ValueOf(v).Elem()
 
-	field := metaValue.FieldByName("Title")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s", field.Interface())
-	}
+    field := metaValue.FieldByName("Title")
+    if field != (reflect.Value{}) {
+        str = fmt.Sprintf("%s", field.Interface())
+    }
 
-	field = metaValue.FieldByName("Detail")
-	if field != (reflect.Value{}) {
-		str = fmt.Sprintf("%s (%s)", str, field.Interface())
-	}
+    field = metaValue.FieldByName("Detail")
+    if field != (reflect.Value{}) {
+        str = fmt.Sprintf("%s (%s)", str, field.Interface())
+    }
 
-	// status title (detail)
-	return fmt.Sprintf("%s %s", status, str)
+    // status title (detail)
+    return fmt.Sprintf("%s %s", status, str)
 }

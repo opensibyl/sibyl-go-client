@@ -18,11 +18,12 @@ import (
 	"net/url"
 )
 
+
 // OPSApiService OPSApi service
 type OPSApiService service
 
 type ApiOpsMonitorUploadGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OPSApiService
 }
 
@@ -33,22 +34,22 @@ func (r ApiOpsMonitorUploadGetRequest) Execute() (*http.Response, error) {
 /*
 OpsMonitorUploadGet upload status query
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpsMonitorUploadGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpsMonitorUploadGetRequest
 */
 func (a *OPSApiService) OpsMonitorUploadGet(ctx context.Context) ApiOpsMonitorUploadGetRequest {
 	return ApiOpsMonitorUploadGetRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OPSApiService) OpsMonitorUploadGetExecute(r ApiOpsMonitorUploadGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OPSApiService.OpsMonitorUploadGet")
@@ -108,7 +109,7 @@ func (a *OPSApiService) OpsMonitorUploadGetExecute(r ApiOpsMonitorUploadGetReque
 }
 
 type ApiOpsPingGetRequest struct {
-	ctx        context.Context
+	ctx context.Context
 	ApiService *OPSApiService
 }
 
@@ -119,22 +120,22 @@ func (r ApiOpsPingGetRequest) Execute() (*http.Response, error) {
 /*
 OpsPingGet ping example
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiOpsPingGetRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpsPingGetRequest
 */
 func (a *OPSApiService) OpsPingGet(ctx context.Context) ApiOpsPingGetRequest {
 	return ApiOpsPingGetRequest{
 		ApiService: a,
-		ctx:        ctx,
+		ctx: ctx,
 	}
 }
 
 // Execute executes the request
 func (a *OPSApiService) OpsPingGetExecute(r ApiOpsPingGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OPSApiService.OpsPingGet")
@@ -143,6 +144,92 @@ func (a *OPSApiService) OpsPingGetExecute(r ApiOpsPingGetRequest) (*http.Respons
 	}
 
 	localVarPath := localBasePath + "/ops/ping"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiOpsVersionGetRequest struct {
+	ctx context.Context
+	ApiService *OPSApiService
+}
+
+func (r ApiOpsVersionGetRequest) Execute() (*http.Response, error) {
+	return r.ApiService.OpsVersionGetExecute(r)
+}
+
+/*
+OpsVersionGet sibyl version
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiOpsVersionGetRequest
+*/
+func (a *OPSApiService) OpsVersionGet(ctx context.Context) ApiOpsVersionGetRequest {
+	return ApiOpsVersionGetRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+func (a *OPSApiService) OpsVersionGetExecute(r ApiOpsVersionGetRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OPSApiService.OpsVersionGet")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/ops/version"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

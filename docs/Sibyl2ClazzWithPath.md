@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Extras** | Pointer to **map[string]interface{}** | which contains language-specific contents | [optional] 
-**Language** | Pointer to **string** |  | [optional] 
+**Lang** | Pointer to **string** | language | [optional] 
+**Language** | Pointer to **string** | language | [optional] 
 **Module** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
@@ -54,6 +55,31 @@ SetExtras sets Extras field to given value.
 `func (o *Sibyl2ClazzWithPath) HasExtras() bool`
 
 HasExtras returns a boolean if a field has been set.
+
+### GetLang
+
+`func (o *Sibyl2ClazzWithPath) GetLang() string`
+
+GetLang returns the Lang field if non-nil, zero value otherwise.
+
+### GetLangOk
+
+`func (o *Sibyl2ClazzWithPath) GetLangOk() (*string, bool)`
+
+GetLangOk returns a tuple with the Lang field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLang
+
+`func (o *Sibyl2ClazzWithPath) SetLang(v string)`
+
+SetLang sets Lang field to given value.
+
+### HasLang
+
+`func (o *Sibyl2ClazzWithPath) HasLang() bool`
+
+HasLang returns a boolean if a field has been set.
 
 ### GetLanguage
 
