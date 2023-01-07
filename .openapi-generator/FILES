@@ -27,5 +27,4 @@ model_sibyl2_clazz_with_path.go
 model_sibyl2_function_context.go
 model_sibyl2_function_with_path.go
 response.go
-test/api_experimental_test.go
 utils.go

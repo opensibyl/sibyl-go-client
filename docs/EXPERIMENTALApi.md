@@ -148,7 +148,7 @@ No authorization required
 
 ## ApiV1FuncWithSignatureGet
 
-> []Sibyl2FunctionWithPath ApiV1FuncWithSignatureGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
+> Sibyl2FunctionWithPath ApiV1FuncWithSignatureGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
 
 func query
 
@@ -176,7 +176,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1FuncWithSignatureGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncWithSignatureGet`: []Sibyl2FunctionWithPath
+    // response from `ApiV1FuncWithSignatureGet`: Sibyl2FunctionWithPath
     fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1FuncWithSignatureGet`: %v\n", resp)
 }
 ```
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
+[**Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
 
 ### Authorization
 

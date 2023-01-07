@@ -207,9 +207,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/sibyl2.FunctionWithPath'
-                type: array
+                $ref: '#/components/schemas/sibyl2.FunctionWithPath'
           description: OK
       summary: func query
       tags:

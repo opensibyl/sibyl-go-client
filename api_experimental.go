@@ -308,7 +308,7 @@ func (r ApiApiV1FuncWithSignatureGetRequest) Signature(signature string) ApiApiV
 	return r
 }
 
-func (r ApiApiV1FuncWithSignatureGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+func (r ApiApiV1FuncWithSignatureGetRequest) Execute() (*Sibyl2FunctionWithPath, *http.Response, error) {
 	return r.ApiService.ApiV1FuncWithSignatureGetExecute(r)
 }
 
@@ -326,13 +326,13 @@ func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGet(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return []Sibyl2FunctionWithPath
-func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1FuncWithSignatureGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
+//  @return Sibyl2FunctionWithPath
+func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1FuncWithSignatureGetRequest) (*Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  []Sibyl2FunctionWithPath
+		localVarReturnValue  *Sibyl2FunctionWithPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncWithSignatureGet")
