@@ -20,8 +20,6 @@ type Sibyl2ClazzWithPath struct {
 	Extras map[string]interface{} `json:"extras,omitempty"`
 	// language
 	Lang *string `json:"lang,omitempty"`
-	// language
-	Language *string `json:"language,omitempty"`
 	Module *string `json:"module,omitempty"`
 	Name *string `json:"name,omitempty"`
 	Path *string `json:"path,omitempty"`
@@ -107,38 +105,6 @@ func (o *Sibyl2ClazzWithPath) HasLang() bool {
 // SetLang gets a reference to the given string and assigns it to the Lang field.
 func (o *Sibyl2ClazzWithPath) SetLang(v string) {
 	o.Lang = &v
-}
-
-// GetLanguage returns the Language field value if set, zero value otherwise.
-func (o *Sibyl2ClazzWithPath) GetLanguage() string {
-	if o == nil || isNil(o.Language) {
-		var ret string
-		return ret
-	}
-	return *o.Language
-}
-
-// GetLanguageOk returns a tuple with the Language field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Sibyl2ClazzWithPath) GetLanguageOk() (*string, bool) {
-	if o == nil || isNil(o.Language) {
-    return nil, false
-	}
-	return o.Language, true
-}
-
-// HasLanguage returns a boolean if a field has been set.
-func (o *Sibyl2ClazzWithPath) HasLanguage() bool {
-	if o != nil && !isNil(o.Language) {
-		return true
-	}
-
-	return false
-}
-
-// SetLanguage gets a reference to the given string and assigns it to the Language field.
-func (o *Sibyl2ClazzWithPath) SetLanguage(v string) {
-	o.Language = &v
 }
 
 // GetModule returns the Module field value if set, zero value otherwise.
@@ -276,9 +242,6 @@ func (o Sibyl2ClazzWithPath) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Lang) {
 		toSerialize["lang"] = o.Lang
-	}
-	if !isNil(o.Language) {
-		toSerialize["language"] = o.Language
 	}
 	if !isNil(o.Module) {
 		toSerialize["module"] = o.Module

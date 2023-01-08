@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Extras** | Pointer to **map[string]interface{}** | which contains language-specific contents | [optional] 
 **Lang** | Pointer to **string** | language | [optional] 
-**Language** | Pointer to **string** | language | [optional] 
 **Module** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
@@ -80,31 +79,6 @@ SetLang sets Lang field to given value.
 `func (o *Sibyl2ClazzWithPath) HasLang() bool`
 
 HasLang returns a boolean if a field has been set.
-
-### GetLanguage
-
-`func (o *Sibyl2ClazzWithPath) GetLanguage() string`
-
-GetLanguage returns the Language field if non-nil, zero value otherwise.
-
-### GetLanguageOk
-
-`func (o *Sibyl2ClazzWithPath) GetLanguageOk() (*string, bool)`
-
-GetLanguageOk returns a tuple with the Language field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetLanguage
-
-`func (o *Sibyl2ClazzWithPath) SetLanguage(v string)`
-
-SetLanguage sets Language field to given value.
-
-### HasLanguage
-
-`func (o *Sibyl2ClazzWithPath) HasLanguage() bool`
-
-HasLanguage returns a boolean if a field has been set.
 
 ### GetModule
 
