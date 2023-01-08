@@ -45,6 +45,39 @@ paths:
       summary: class query
       tags:
       - MAIN
+  /api/v1/clazz/with/rule:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: rule
+        in: query
+        name: rule
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sibyl2.ClazzWithPath'
+                type: array
+          description: OK
+      summary: clazz query
+      tags:
+      - EXPERIMENTAL
   /api/v1/file:
     get:
       parameters:
@@ -250,6 +283,39 @@ paths:
       summary: func ctx query
       tags:
       - MAIN
+  /api/v1/funcctx/with/rule:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: rule
+        in: query
+        name: rule
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sibyl2.FunctionContext'
+                type: array
+          description: OK
+      summary: func ctx query
+      tags:
+      - EXPERIMENTAL
   /api/v1/repo:
     get:
       responses:
