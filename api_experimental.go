@@ -567,6 +567,290 @@ func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1Func
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiApiV1FuncctxWithReferenceCountGetRequest struct {
+	ctx        context.Context
+	ApiService *EXPERIMENTALApiService
+	repo       *string
+	rev        *string
+	moreThan   *int32
+	lessThan   *int32
+}
+
+// repo
+func (r ApiApiV1FuncctxWithReferenceCountGetRequest) Repo(repo string) ApiApiV1FuncctxWithReferenceCountGetRequest {
+	r.repo = &repo
+	return r
+}
+
+// rev
+func (r ApiApiV1FuncctxWithReferenceCountGetRequest) Rev(rev string) ApiApiV1FuncctxWithReferenceCountGetRequest {
+	r.rev = &rev
+	return r
+}
+
+// moreThan
+func (r ApiApiV1FuncctxWithReferenceCountGetRequest) MoreThan(moreThan int32) ApiApiV1FuncctxWithReferenceCountGetRequest {
+	r.moreThan = &moreThan
+	return r
+}
+
+// lessThan
+func (r ApiApiV1FuncctxWithReferenceCountGetRequest) LessThan(lessThan int32) ApiApiV1FuncctxWithReferenceCountGetRequest {
+	r.lessThan = &lessThan
+	return r
+}
+
+func (r ApiApiV1FuncctxWithReferenceCountGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1FuncctxWithReferenceCountGetExecute(r)
+}
+
+/*
+ApiV1FuncctxWithReferenceCountGet funcctx query by ref
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncctxWithReferenceCountGetRequest
+*/
+func (a *EXPERIMENTALApiService) ApiV1FuncctxWithReferenceCountGet(ctx context.Context) ApiApiV1FuncctxWithReferenceCountGetRequest {
+	return ApiApiV1FuncctxWithReferenceCountGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []Sibyl2FunctionWithPath
+func (a *EXPERIMENTALApiService) ApiV1FuncctxWithReferenceCountGetExecute(r ApiApiV1FuncctxWithReferenceCountGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2FunctionWithPath
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncctxWithReferenceCountGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/funcctx/with/reference/count"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.repo == nil {
+		return localVarReturnValue, nil, reportError("repo is required and must be specified")
+	}
+	if r.rev == nil {
+		return localVarReturnValue, nil, reportError("rev is required and must be specified")
+	}
+	if r.moreThan == nil {
+		return localVarReturnValue, nil, reportError("moreThan is required and must be specified")
+	}
+	if r.lessThan == nil {
+		return localVarReturnValue, nil, reportError("lessThan is required and must be specified")
+	}
+
+	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
+	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
+	localVarQueryParams.Add("moreThan", parameterToString(*r.moreThan, ""))
+	localVarQueryParams.Add("lessThan", parameterToString(*r.lessThan, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1FuncctxWithReferencedCountGetRequest struct {
+	ctx        context.Context
+	ApiService *EXPERIMENTALApiService
+	repo       *string
+	rev        *string
+	moreThan   *int32
+	lessThan   *int32
+}
+
+// repo
+func (r ApiApiV1FuncctxWithReferencedCountGetRequest) Repo(repo string) ApiApiV1FuncctxWithReferencedCountGetRequest {
+	r.repo = &repo
+	return r
+}
+
+// rev
+func (r ApiApiV1FuncctxWithReferencedCountGetRequest) Rev(rev string) ApiApiV1FuncctxWithReferencedCountGetRequest {
+	r.rev = &rev
+	return r
+}
+
+// moreThan
+func (r ApiApiV1FuncctxWithReferencedCountGetRequest) MoreThan(moreThan int32) ApiApiV1FuncctxWithReferencedCountGetRequest {
+	r.moreThan = &moreThan
+	return r
+}
+
+// lessThan
+func (r ApiApiV1FuncctxWithReferencedCountGetRequest) LessThan(lessThan int32) ApiApiV1FuncctxWithReferencedCountGetRequest {
+	r.lessThan = &lessThan
+	return r
+}
+
+func (r ApiApiV1FuncctxWithReferencedCountGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1FuncctxWithReferencedCountGetExecute(r)
+}
+
+/*
+ApiV1FuncctxWithReferencedCountGet funcctx query by referenced
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncctxWithReferencedCountGetRequest
+*/
+func (a *EXPERIMENTALApiService) ApiV1FuncctxWithReferencedCountGet(ctx context.Context) ApiApiV1FuncctxWithReferencedCountGetRequest {
+	return ApiApiV1FuncctxWithReferencedCountGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []Sibyl2FunctionWithPath
+func (a *EXPERIMENTALApiService) ApiV1FuncctxWithReferencedCountGetExecute(r ApiApiV1FuncctxWithReferencedCountGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2FunctionWithPath
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncctxWithReferencedCountGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/funcctx/with/referenced/count"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.repo == nil {
+		return localVarReturnValue, nil, reportError("repo is required and must be specified")
+	}
+	if r.rev == nil {
+		return localVarReturnValue, nil, reportError("rev is required and must be specified")
+	}
+	if r.moreThan == nil {
+		return localVarReturnValue, nil, reportError("moreThan is required and must be specified")
+	}
+	if r.lessThan == nil {
+		return localVarReturnValue, nil, reportError("lessThan is required and must be specified")
+	}
+
+	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
+	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
+	localVarQueryParams.Add("moreThan", parameterToString(*r.moreThan, ""))
+	localVarQueryParams.Add("lessThan", parameterToString(*r.lessThan, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiApiV1FuncctxWithRegexGetRequest struct {
 	ctx        context.Context
 	ApiService *EXPERIMENTALApiService

@@ -295,6 +295,84 @@ paths:
       summary: func ctx query
       tags:
       - MAIN
+  /api/v1/funcctx/with/reference/count:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: moreThan
+        in: query
+        name: moreThan
+        required: true
+        schema:
+          type: integer
+      - description: lessThan
+        in: query
+        name: lessThan
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+                type: array
+          description: OK
+      summary: funcctx query by ref
+      tags:
+      - EXPERIMENTAL
+  /api/v1/funcctx/with/referenced/count:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: moreThan
+        in: query
+        name: moreThan
+        required: true
+        schema:
+          type: integer
+      - description: lessThan
+        in: query
+        name: lessThan
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+                type: array
+          description: OK
+      summary: funcctx query by referenced
+      tags:
+      - EXPERIMENTAL
   /api/v1/funcctx/with/regex:
     get:
       parameters:

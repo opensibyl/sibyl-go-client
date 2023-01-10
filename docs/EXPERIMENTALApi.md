@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**ApiV1FuncSignatureGet**](EXPERIMENTALApi.md#ApiV1FuncSignatureGet) | **Get** /api/v1/func/signature | func query
 [**ApiV1FuncWithRegexGet**](EXPERIMENTALApi.md#ApiV1FuncWithRegexGet) | **Get** /api/v1/func/with/regex | func query
 [**ApiV1FuncWithSignatureGet**](EXPERIMENTALApi.md#ApiV1FuncWithSignatureGet) | **Get** /api/v1/func/with/signature | func query
+[**ApiV1FuncctxWithReferenceCountGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithReferenceCountGet) | **Get** /api/v1/funcctx/with/reference/count | funcctx query by ref
+[**ApiV1FuncctxWithReferencedCountGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithReferencedCountGet) | **Get** /api/v1/funcctx/with/referenced/count | funcctx query by referenced
 [**ApiV1FuncctxWithRegexGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithRegexGet) | **Get** /api/v1/funcctx/with/regex | func ctx query
 
 
@@ -273,6 +275,146 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV1FuncctxWithReferenceCountGet
+
+> []Sibyl2FunctionWithPath ApiV1FuncctxWithReferenceCountGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+
+funcctx query by ref
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    repo := "repo_example" // string | repo
+    rev := "rev_example" // string | rev
+    moreThan := int32(56) // int32 | moreThan
+    lessThan := int32(56) // int32 | lessThan
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1FuncctxWithReferenceCountGet(context.Background()).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1FuncctxWithReferenceCountGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiV1FuncctxWithReferenceCountGet`: []Sibyl2FunctionWithPath
+    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1FuncctxWithReferenceCountGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiV1FuncctxWithReferenceCountGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repo** | **string** | repo | 
+ **rev** | **string** | rev | 
+ **moreThan** | **int32** | moreThan | 
+ **lessThan** | **int32** | lessThan | 
+
+### Return type
+
+[**[]Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV1FuncctxWithReferencedCountGet
+
+> []Sibyl2FunctionWithPath ApiV1FuncctxWithReferencedCountGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+
+funcctx query by referenced
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    repo := "repo_example" // string | repo
+    rev := "rev_example" // string | rev
+    moreThan := int32(56) // int32 | moreThan
+    lessThan := int32(56) // int32 | lessThan
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1FuncctxWithReferencedCountGet(context.Background()).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1FuncctxWithReferencedCountGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiV1FuncctxWithReferencedCountGet`: []Sibyl2FunctionWithPath
+    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1FuncctxWithReferencedCountGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiV1FuncctxWithReferencedCountGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repo** | **string** | repo | 
+ **rev** | **string** | rev | 
+ **moreThan** | **int32** | moreThan | 
+ **lessThan** | **int32** | lessThan | 
+
+### Return type
+
+[**[]Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
 
 ### Authorization
 
