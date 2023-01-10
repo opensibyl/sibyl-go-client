@@ -4,17 +4,17 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1ClazzWithRuleGet**](EXPERIMENTALApi.md#ApiV1ClazzWithRuleGet) | **Get** /api/v1/clazz/with/rule | clazz query
+[**ApiV1ClazzWithRegexGet**](EXPERIMENTALApi.md#ApiV1ClazzWithRegexGet) | **Get** /api/v1/clazz/with/regex | clazz query
 [**ApiV1FuncSignatureGet**](EXPERIMENTALApi.md#ApiV1FuncSignatureGet) | **Get** /api/v1/func/signature | func query
-[**ApiV1FuncWithRuleGet**](EXPERIMENTALApi.md#ApiV1FuncWithRuleGet) | **Get** /api/v1/func/with/rule | func query
+[**ApiV1FuncWithRegexGet**](EXPERIMENTALApi.md#ApiV1FuncWithRegexGet) | **Get** /api/v1/func/with/regex | func query
 [**ApiV1FuncWithSignatureGet**](EXPERIMENTALApi.md#ApiV1FuncWithSignatureGet) | **Get** /api/v1/func/with/signature | func query
-[**ApiV1FuncctxWithRuleGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithRuleGet) | **Get** /api/v1/funcctx/with/rule | func ctx query
+[**ApiV1FuncctxWithRegexGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithRegexGet) | **Get** /api/v1/funcctx/with/regex | func ctx query
 
 
 
-## ApiV1ClazzWithRuleGet
+## ApiV1ClazzWithRegexGet
 
-> []Sibyl2ClazzWithPath ApiV1ClazzWithRuleGet(ctx).Repo(repo).Rev(rev).Rule(rule).Execute()
+> []Sibyl2ClazzWithPath ApiV1ClazzWithRegexGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 clazz query
 
@@ -33,17 +33,18 @@ import (
 func main() {
     repo := "repo_example" // string | repo
     rev := "rev_example" // string | rev
-    rule := "rule_example" // string | rule
+    field := "field_example" // string | field
+    regex := "regex_example" // string | regex
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1ClazzWithRuleGet(context.Background()).Repo(repo).Rev(rev).Rule(rule).Execute()
+    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1ClazzWithRegexGet(context.Background()).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1ClazzWithRuleGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1ClazzWithRegexGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1ClazzWithRuleGet`: []Sibyl2ClazzWithPath
-    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1ClazzWithRuleGet`: %v\n", resp)
+    // response from `ApiV1ClazzWithRegexGet`: []Sibyl2ClazzWithPath
+    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1ClazzWithRegexGet`: %v\n", resp)
 }
 ```
 
@@ -53,14 +54,15 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiV1ClazzWithRuleGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiV1ClazzWithRegexGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string** | repo | 
  **rev** | **string** | rev | 
- **rule** | **string** | rule | 
+ **field** | **string** | field | 
+ **regex** | **string** | regex | 
 
 ### Return type
 
@@ -148,9 +150,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApiV1FuncWithRuleGet
+## ApiV1FuncWithRegexGet
 
-> []Sibyl2FunctionWithPath ApiV1FuncWithRuleGet(ctx).Repo(repo).Rev(rev).Rule(rule).Execute()
+> []Sibyl2FunctionWithPath ApiV1FuncWithRegexGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 func query
 
@@ -169,17 +171,18 @@ import (
 func main() {
     repo := "repo_example" // string | repo
     rev := "rev_example" // string | rev
-    rule := "rule_example" // string | rule
+    field := "field_example" // string | field
+    regex := "regex_example" // string | regex
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1FuncWithRuleGet(context.Background()).Repo(repo).Rev(rev).Rule(rule).Execute()
+    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1FuncWithRegexGet(context.Background()).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1FuncWithRuleGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1FuncWithRegexGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncWithRuleGet`: []Sibyl2FunctionWithPath
-    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1FuncWithRuleGet`: %v\n", resp)
+    // response from `ApiV1FuncWithRegexGet`: []Sibyl2FunctionWithPath
+    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1FuncWithRegexGet`: %v\n", resp)
 }
 ```
 
@@ -189,14 +192,15 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiV1FuncWithRuleGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiV1FuncWithRegexGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string** | repo | 
  **rev** | **string** | rev | 
- **rule** | **string** | rule | 
+ **field** | **string** | field | 
+ **regex** | **string** | regex | 
 
 ### Return type
 
@@ -284,9 +288,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApiV1FuncctxWithRuleGet
+## ApiV1FuncctxWithRegexGet
 
-> []Sibyl2FunctionContext ApiV1FuncctxWithRuleGet(ctx).Repo(repo).Rev(rev).Rule(rule).Execute()
+> []Sibyl2FunctionContext ApiV1FuncctxWithRegexGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 func ctx query
 
@@ -305,17 +309,18 @@ import (
 func main() {
     repo := "repo_example" // string | repo
     rev := "rev_example" // string | rev
-    rule := "rule_example" // string | rule
+    field := "field_example" // string | field
+    regex := "regex_example" // string | regex
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1FuncctxWithRuleGet(context.Background()).Repo(repo).Rev(rev).Rule(rule).Execute()
+    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1FuncctxWithRegexGet(context.Background()).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1FuncctxWithRuleGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1FuncctxWithRegexGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncctxWithRuleGet`: []Sibyl2FunctionContext
-    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1FuncctxWithRuleGet`: %v\n", resp)
+    // response from `ApiV1FuncctxWithRegexGet`: []Sibyl2FunctionContext
+    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1FuncctxWithRegexGet`: %v\n", resp)
 }
 ```
 
@@ -325,14 +330,15 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiV1FuncctxWithRuleGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiV1FuncctxWithRegexGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string** | repo | 
  **rev** | **string** | rev | 
- **rule** | **string** | rule | 
+ **field** | **string** | field | 
+ **regex** | **string** | regex | 
 
 ### Return type
 

@@ -5,7 +5,9 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiV1FileGet**](SCOPEApi.md#ApiV1FileGet) | **Get** /api/v1/file | file query
+[**ApiV1RepoDelete**](SCOPEApi.md#ApiV1RepoDelete) | **Delete** /api/v1/repo | repo delete
 [**ApiV1RepoGet**](SCOPEApi.md#ApiV1RepoGet) | **Get** /api/v1/repo | repo query
+[**ApiV1RevDelete**](SCOPEApi.md#ApiV1RevDelete) | **Delete** /api/v1/rev | rev delte
 [**ApiV1RevGet**](SCOPEApi.md#ApiV1RevGet) | **Get** /api/v1/rev | rev query
 
 
@@ -78,6 +80,68 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## ApiV1RepoDelete
+
+> ApiV1RepoDelete(ctx).Repo(repo).Execute()
+
+repo delete
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    repo := "repo_example" // string | rev delete by repo
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SCOPEApi.ApiV1RepoDelete(context.Background()).Repo(repo).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SCOPEApi.ApiV1RepoDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiV1RepoDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repo** | **string** | rev delete by repo | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ApiV1RepoGet
 
 > []string ApiV1RepoGet(ctx).Execute()
@@ -131,6 +195,70 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV1RevDelete
+
+> ApiV1RevDelete(ctx).Repo(repo).Rev(rev).Execute()
+
+rev delte
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    repo := "repo_example" // string | repo
+    rev := "rev_example" // string | rev
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SCOPEApi.ApiV1RevDelete(context.Background()).Repo(repo).Rev(rev).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SCOPEApi.ApiV1RevDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiV1RevDeleteRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repo** | **string** | repo | 
+ **rev** | **string** | rev | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

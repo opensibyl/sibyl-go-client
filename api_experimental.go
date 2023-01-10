@@ -18,69 +18,76 @@ import (
 	"net/url"
 )
 
-
 // EXPERIMENTALApiService EXPERIMENTALApi service
 type EXPERIMENTALApiService service
 
-type ApiApiV1ClazzWithRuleGetRequest struct {
-	ctx context.Context
+type ApiApiV1ClazzWithRegexGetRequest struct {
+	ctx        context.Context
 	ApiService *EXPERIMENTALApiService
-	repo *string
-	rev *string
-	rule *string
+	repo       *string
+	rev        *string
+	field      *string
+	regex      *string
 }
 
 // repo
-func (r ApiApiV1ClazzWithRuleGetRequest) Repo(repo string) ApiApiV1ClazzWithRuleGetRequest {
+func (r ApiApiV1ClazzWithRegexGetRequest) Repo(repo string) ApiApiV1ClazzWithRegexGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1ClazzWithRuleGetRequest) Rev(rev string) ApiApiV1ClazzWithRuleGetRequest {
+func (r ApiApiV1ClazzWithRegexGetRequest) Rev(rev string) ApiApiV1ClazzWithRegexGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// rule
-func (r ApiApiV1ClazzWithRuleGetRequest) Rule(rule string) ApiApiV1ClazzWithRuleGetRequest {
-	r.rule = &rule
+// field
+func (r ApiApiV1ClazzWithRegexGetRequest) Field(field string) ApiApiV1ClazzWithRegexGetRequest {
+	r.field = &field
 	return r
 }
 
-func (r ApiApiV1ClazzWithRuleGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1ClazzWithRuleGetExecute(r)
+// regex
+func (r ApiApiV1ClazzWithRegexGetRequest) Regex(regex string) ApiApiV1ClazzWithRegexGetRequest {
+	r.regex = &regex
+	return r
+}
+
+func (r ApiApiV1ClazzWithRegexGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1ClazzWithRegexGetExecute(r)
 }
 
 /*
-ApiV1ClazzWithRuleGet clazz query
+ApiV1ClazzWithRegexGet clazz query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1ClazzWithRuleGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1ClazzWithRegexGetRequest
 */
-func (a *EXPERIMENTALApiService) ApiV1ClazzWithRuleGet(ctx context.Context) ApiApiV1ClazzWithRuleGetRequest {
-	return ApiApiV1ClazzWithRuleGetRequest{
+func (a *EXPERIMENTALApiService) ApiV1ClazzWithRegexGet(ctx context.Context) ApiApiV1ClazzWithRegexGetRequest {
+	return ApiApiV1ClazzWithRegexGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2ClazzWithPath
-func (a *EXPERIMENTALApiService) ApiV1ClazzWithRuleGetExecute(r ApiApiV1ClazzWithRuleGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
+//
+//	@return []Sibyl2ClazzWithPath
+func (a *EXPERIMENTALApiService) ApiV1ClazzWithRegexGetExecute(r ApiApiV1ClazzWithRegexGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Sibyl2ClazzWithPath
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2ClazzWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1ClazzWithRuleGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1ClazzWithRegexGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/clazz/with/rule"
+	localVarPath := localBasePath + "/api/v1/clazz/with/regex"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -91,13 +98,17 @@ func (a *EXPERIMENTALApiService) ApiV1ClazzWithRuleGetExecute(r ApiApiV1ClazzWit
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.rule == nil {
-		return localVarReturnValue, nil, reportError("rule is required and must be specified")
+	if r.field == nil {
+		return localVarReturnValue, nil, reportError("field is required and must be specified")
+	}
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("rule", parameterToString(*r.rule, ""))
+	localVarQueryParams.Add("field", parameterToString(*r.field, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -153,11 +164,11 @@ func (a *EXPERIMENTALApiService) ApiV1ClazzWithRuleGetExecute(r ApiApiV1ClazzWit
 }
 
 type ApiApiV1FuncSignatureGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EXPERIMENTALApiService
-	repo *string
-	rev *string
-	regex *string
+	repo       *string
+	rev        *string
+	regex      *string
 }
 
 // repo
@@ -185,24 +196,25 @@ func (r ApiApiV1FuncSignatureGetRequest) Execute() ([]string, *http.Response, er
 /*
 ApiV1FuncSignatureGet func query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncSignatureGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncSignatureGetRequest
 */
 func (a *EXPERIMENTALApiService) ApiV1FuncSignatureGet(ctx context.Context) ApiApiV1FuncSignatureGetRequest {
 	return ApiApiV1FuncSignatureGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []string
+//
+//	@return []string
 func (a *EXPERIMENTALApiService) ApiV1FuncSignatureGetExecute(r ApiApiV1FuncSignatureGetRequest) ([]string, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []string
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncSignatureGet")
@@ -282,65 +294,73 @@ func (a *EXPERIMENTALApiService) ApiV1FuncSignatureGetExecute(r ApiApiV1FuncSign
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncWithRuleGetRequest struct {
-	ctx context.Context
+type ApiApiV1FuncWithRegexGetRequest struct {
+	ctx        context.Context
 	ApiService *EXPERIMENTALApiService
-	repo *string
-	rev *string
-	rule *string
+	repo       *string
+	rev        *string
+	field      *string
+	regex      *string
 }
 
 // repo
-func (r ApiApiV1FuncWithRuleGetRequest) Repo(repo string) ApiApiV1FuncWithRuleGetRequest {
+func (r ApiApiV1FuncWithRegexGetRequest) Repo(repo string) ApiApiV1FuncWithRegexGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncWithRuleGetRequest) Rev(rev string) ApiApiV1FuncWithRuleGetRequest {
+func (r ApiApiV1FuncWithRegexGetRequest) Rev(rev string) ApiApiV1FuncWithRegexGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// rule
-func (r ApiApiV1FuncWithRuleGetRequest) Rule(rule string) ApiApiV1FuncWithRuleGetRequest {
-	r.rule = &rule
+// field
+func (r ApiApiV1FuncWithRegexGetRequest) Field(field string) ApiApiV1FuncWithRegexGetRequest {
+	r.field = &field
 	return r
 }
 
-func (r ApiApiV1FuncWithRuleGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1FuncWithRuleGetExecute(r)
+// regex
+func (r ApiApiV1FuncWithRegexGetRequest) Regex(regex string) ApiApiV1FuncWithRegexGetRequest {
+	r.regex = &regex
+	return r
+}
+
+func (r ApiApiV1FuncWithRegexGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1FuncWithRegexGetExecute(r)
 }
 
 /*
-ApiV1FuncWithRuleGet func query
+ApiV1FuncWithRegexGet func query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncWithRuleGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncWithRegexGetRequest
 */
-func (a *EXPERIMENTALApiService) ApiV1FuncWithRuleGet(ctx context.Context) ApiApiV1FuncWithRuleGetRequest {
-	return ApiApiV1FuncWithRuleGetRequest{
+func (a *EXPERIMENTALApiService) ApiV1FuncWithRegexGet(ctx context.Context) ApiApiV1FuncWithRegexGetRequest {
+	return ApiApiV1FuncWithRegexGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2FunctionWithPath
-func (a *EXPERIMENTALApiService) ApiV1FuncWithRuleGetExecute(r ApiApiV1FuncWithRuleGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
+//
+//	@return []Sibyl2FunctionWithPath
+func (a *EXPERIMENTALApiService) ApiV1FuncWithRegexGetExecute(r ApiApiV1FuncWithRegexGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Sibyl2FunctionWithPath
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2FunctionWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncWithRuleGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncWithRegexGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/func/with/rule"
+	localVarPath := localBasePath + "/api/v1/func/with/regex"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -351,13 +371,17 @@ func (a *EXPERIMENTALApiService) ApiV1FuncWithRuleGetExecute(r ApiApiV1FuncWithR
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.rule == nil {
-		return localVarReturnValue, nil, reportError("rule is required and must be specified")
+	if r.field == nil {
+		return localVarReturnValue, nil, reportError("field is required and must be specified")
+	}
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("rule", parameterToString(*r.rule, ""))
+	localVarQueryParams.Add("field", parameterToString(*r.field, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -413,11 +437,11 @@ func (a *EXPERIMENTALApiService) ApiV1FuncWithRuleGetExecute(r ApiApiV1FuncWithR
 }
 
 type ApiApiV1FuncWithSignatureGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *EXPERIMENTALApiService
-	repo *string
-	rev *string
-	signature *string
+	repo       *string
+	rev        *string
+	signature  *string
 }
 
 // repo
@@ -445,24 +469,25 @@ func (r ApiApiV1FuncWithSignatureGetRequest) Execute() (*Sibyl2FunctionWithPath,
 /*
 ApiV1FuncWithSignatureGet func query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncWithSignatureGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncWithSignatureGetRequest
 */
 func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGet(ctx context.Context) ApiApiV1FuncWithSignatureGetRequest {
 	return ApiApiV1FuncWithSignatureGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return Sibyl2FunctionWithPath
+//
+//	@return Sibyl2FunctionWithPath
 func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1FuncWithSignatureGetRequest) (*Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *Sibyl2FunctionWithPath
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Sibyl2FunctionWithPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncWithSignatureGet")
@@ -542,65 +567,73 @@ func (a *EXPERIMENTALApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1Func
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncctxWithRuleGetRequest struct {
-	ctx context.Context
+type ApiApiV1FuncctxWithRegexGetRequest struct {
+	ctx        context.Context
 	ApiService *EXPERIMENTALApiService
-	repo *string
-	rev *string
-	rule *string
+	repo       *string
+	rev        *string
+	field      *string
+	regex      *string
 }
 
 // repo
-func (r ApiApiV1FuncctxWithRuleGetRequest) Repo(repo string) ApiApiV1FuncctxWithRuleGetRequest {
+func (r ApiApiV1FuncctxWithRegexGetRequest) Repo(repo string) ApiApiV1FuncctxWithRegexGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncctxWithRuleGetRequest) Rev(rev string) ApiApiV1FuncctxWithRuleGetRequest {
+func (r ApiApiV1FuncctxWithRegexGetRequest) Rev(rev string) ApiApiV1FuncctxWithRegexGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// rule
-func (r ApiApiV1FuncctxWithRuleGetRequest) Rule(rule string) ApiApiV1FuncctxWithRuleGetRequest {
-	r.rule = &rule
+// field
+func (r ApiApiV1FuncctxWithRegexGetRequest) Field(field string) ApiApiV1FuncctxWithRegexGetRequest {
+	r.field = &field
 	return r
 }
 
-func (r ApiApiV1FuncctxWithRuleGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
-	return r.ApiService.ApiV1FuncctxWithRuleGetExecute(r)
+// regex
+func (r ApiApiV1FuncctxWithRegexGetRequest) Regex(regex string) ApiApiV1FuncctxWithRegexGetRequest {
+	r.regex = &regex
+	return r
+}
+
+func (r ApiApiV1FuncctxWithRegexGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
+	return r.ApiService.ApiV1FuncctxWithRegexGetExecute(r)
 }
 
 /*
-ApiV1FuncctxWithRuleGet func ctx query
+ApiV1FuncctxWithRegexGet func ctx query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncctxWithRuleGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncctxWithRegexGetRequest
 */
-func (a *EXPERIMENTALApiService) ApiV1FuncctxWithRuleGet(ctx context.Context) ApiApiV1FuncctxWithRuleGetRequest {
-	return ApiApiV1FuncctxWithRuleGetRequest{
+func (a *EXPERIMENTALApiService) ApiV1FuncctxWithRegexGet(ctx context.Context) ApiApiV1FuncctxWithRegexGetRequest {
+	return ApiApiV1FuncctxWithRegexGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2FunctionContext
-func (a *EXPERIMENTALApiService) ApiV1FuncctxWithRuleGetExecute(r ApiApiV1FuncctxWithRuleGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
+//
+//	@return []Sibyl2FunctionContext
+func (a *EXPERIMENTALApiService) ApiV1FuncctxWithRegexGetExecute(r ApiApiV1FuncctxWithRegexGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Sibyl2FunctionContext
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2FunctionContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncctxWithRuleGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXPERIMENTALApiService.ApiV1FuncctxWithRegexGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/funcctx/with/rule"
+	localVarPath := localBasePath + "/api/v1/funcctx/with/regex"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -611,13 +644,17 @@ func (a *EXPERIMENTALApiService) ApiV1FuncctxWithRuleGetExecute(r ApiApiV1Funcct
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.rule == nil {
-		return localVarReturnValue, nil, reportError("rule is required and must be specified")
+	if r.field == nil {
+		return localVarReturnValue, nil, reportError("field is required and must be specified")
+	}
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("rule", parameterToString(*r.rule, ""))
+	localVarQueryParams.Add("field", parameterToString(*r.field, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

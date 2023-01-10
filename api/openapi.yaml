@@ -45,7 +45,7 @@ paths:
       summary: class query
       tags:
       - MAIN
-  /api/v1/clazz/with/rule:
+  /api/v1/clazz/with/regex:
     get:
       parameters:
       - description: repo
@@ -60,9 +60,15 @@ paths:
         required: true
         schema:
           type: string
-      - description: rule
+      - description: field
         in: query
-        name: rule
+        name: field
+        required: true
+        schema:
+          type: string
+      - description: regex
+        in: query
+        name: regex
         required: true
         schema:
           type: string
@@ -181,7 +187,7 @@ paths:
       summary: func query
       tags:
       - EXPERIMENTAL
-  /api/v1/func/with/rule:
+  /api/v1/func/with/regex:
     get:
       parameters:
       - description: repo
@@ -196,9 +202,15 @@ paths:
         required: true
         schema:
           type: string
-      - description: rule
+      - description: field
         in: query
-        name: rule
+        name: field
+        required: true
+        schema:
+          type: string
+      - description: regex
+        in: query
+        name: regex
         required: true
         schema:
           type: string
@@ -283,7 +295,7 @@ paths:
       summary: func ctx query
       tags:
       - MAIN
-  /api/v1/funcctx/with/rule:
+  /api/v1/funcctx/with/regex:
     get:
       parameters:
       - description: repo
@@ -298,9 +310,15 @@ paths:
         required: true
         schema:
           type: string
-      - description: rule
+      - description: field
         in: query
-        name: rule
+        name: field
+        required: true
+        schema:
+          type: string
+      - description: regex
+        in: query
+        name: regex
         required: true
         schema:
           type: string
@@ -317,6 +335,21 @@ paths:
       tags:
       - EXPERIMENTAL
   /api/v1/repo:
+    delete:
+      parameters:
+      - description: rev delete by repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: repo delete
+      tags:
+      - SCOPE
     get:
       responses:
         "200":
@@ -331,6 +364,27 @@ paths:
       tags:
       - SCOPE
   /api/v1/rev:
+    delete:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: rev delte
+      tags:
+      - SCOPE
     get:
       parameters:
       - description: rev search by repo
