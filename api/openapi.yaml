@@ -289,7 +289,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.FunctionContext'
+                  $ref: '#/components/schemas/sibyl2.FunctionContextSlim'
                 type: array
           description: OK
       summary: func ctx query
@@ -483,6 +483,31 @@ paths:
       summary: rev query
       tags:
       - SCOPE
+  /api/v1/rev/stat:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service.RevStat'
+          description: OK
+      summary: rev stat
+      tags:
+      - EXPERIMENTAL
   /ops/monitor/upload:
     get:
       responses:
@@ -597,6 +622,20 @@ components:
         span:
           $ref: '#/components/schemas/core.Span'
       type: object
+    object.RevInfo:
+      example:
+        createTime: 1
+        extras: "{}"
+        hash: hash
+      properties:
+        createTime:
+          type: integer
+        extras:
+          properties: {}
+          type: object
+        hash:
+          type: string
+      type: object
     object.ValueUnit:
       example:
         name: name
@@ -606,6 +645,22 @@ components:
           type: string
         type:
           type: string
+      type: object
+    service.RevStat:
+      example:
+        functionCount: 6
+        fileCount: 0
+        info:
+          createTime: 1
+          extras: "{}"
+          hash: hash
+      properties:
+        fileCount:
+          type: integer
+        functionCount:
+          type: integer
+        info:
+          $ref: '#/components/schemas/object.RevInfo'
       type: object
     sibyl2.ClazzWithPath:
       example:
@@ -816,6 +871,77 @@ components:
         reverseCalls:
           items:
             $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+          type: array
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
+    sibyl2.FunctionContextSlim:
+      example:
+        bodySpan:
+          start:
+            column: 0
+            row: 6
+          end:
+            column: 0
+            row: 6
+        path: path
+        receiver: receiver
+        calls:
+        - calls
+        - calls
+        name: name
+        extras: "{}"
+        reverseCalls:
+        - reverseCalls
+        - reverseCalls
+        returns:
+        - name: name
+          type: type
+        - name: name
+          type: type
+        lang: lang
+        parameters:
+        - name: name
+          type: type
+        - name: name
+          type: type
+        span:
+          start:
+            column: 0
+            row: 6
+          end:
+            column: 0
+            row: 6
+      properties:
+        bodySpan:
+          $ref: '#/components/schemas/core.Span'
+        calls:
+          items:
+            type: string
+          type: array
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        path:
+          type: string
+        receiver:
+          type: string
+        returns:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        reverseCalls:
+          items:
+            type: string
           type: array
         span:
           $ref: '#/components/schemas/core.Span'

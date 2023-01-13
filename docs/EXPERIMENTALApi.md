@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**ApiV1FuncctxWithReferenceCountGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithReferenceCountGet) | **Get** /api/v1/funcctx/with/reference/count | funcctx query by ref
 [**ApiV1FuncctxWithReferencedCountGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithReferencedCountGet) | **Get** /api/v1/funcctx/with/referenced/count | funcctx query by referenced
 [**ApiV1FuncctxWithRegexGet**](EXPERIMENTALApi.md#ApiV1FuncctxWithRegexGet) | **Get** /api/v1/funcctx/with/regex | func ctx query
+[**ApiV1RevStatGet**](EXPERIMENTALApi.md#ApiV1RevStatGet) | **Get** /api/v1/rev/stat | rev stat
 
 
 
@@ -485,6 +486,72 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]Sibyl2FunctionContext**](Sibyl2FunctionContext.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV1RevStatGet
+
+> ServiceRevStat ApiV1RevStatGet(ctx).Repo(repo).Rev(rev).Execute()
+
+rev stat
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    repo := "repo_example" // string | repo
+    rev := "rev_example" // string | rev
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EXPERIMENTALApi.ApiV1RevStatGet(context.Background()).Repo(repo).Rev(rev).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EXPERIMENTALApi.ApiV1RevStatGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiV1RevStatGet`: ServiceRevStat
+    fmt.Fprintf(os.Stdout, "Response from `EXPERIMENTALApi.ApiV1RevStatGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiV1RevStatGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repo** | **string** | repo | 
+ **rev** | **string** | rev | 
+
+### Return type
+
+[**ServiceRevStat**](ServiceRevStat.md)
 
 ### Authorization
 

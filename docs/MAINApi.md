@@ -150,7 +150,7 @@ No authorization required
 
 ## ApiV1FuncctxGet
 
-> []Sibyl2FunctionContext ApiV1FuncctxGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
+> []Sibyl2FunctionContextSlim ApiV1FuncctxGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
 
 func ctx query
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `MAINApi.ApiV1FuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncctxGet`: []Sibyl2FunctionContext
+    // response from `ApiV1FuncctxGet`: []Sibyl2FunctionContextSlim
     fmt.Fprintf(os.Stdout, "Response from `MAINApi.ApiV1FuncctxGet`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionContext**](Sibyl2FunctionContext.md)
+[**[]Sibyl2FunctionContextSlim**](Sibyl2FunctionContextSlim.md)
 
 ### Authorization
 

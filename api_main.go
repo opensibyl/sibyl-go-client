@@ -18,16 +18,15 @@ import (
 	"net/url"
 )
 
-
 // MAINApiService MAINApi service
 type MAINApiService service
 
 type ApiApiV1ClazzGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *MAINApiService
-	repo *string
-	rev *string
-	file *string
+	repo       *string
+	rev        *string
+	file       *string
 }
 
 // repo
@@ -55,24 +54,25 @@ func (r ApiApiV1ClazzGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Respons
 /*
 ApiV1ClazzGet class query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1ClazzGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1ClazzGetRequest
 */
 func (a *MAINApiService) ApiV1ClazzGet(ctx context.Context) ApiApiV1ClazzGetRequest {
 	return ApiApiV1ClazzGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2ClazzWithPath
+//
+//	@return []Sibyl2ClazzWithPath
 func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Sibyl2ClazzWithPath
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2ClazzWithPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1ClazzGet")
@@ -153,12 +153,12 @@ func (a *MAINApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Siby
 }
 
 type ApiApiV1FuncGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *MAINApiService
-	repo *string
-	rev *string
-	file *string
-	lines *string
+	repo       *string
+	rev        *string
+	file       *string
+	lines      *string
 }
 
 // repo
@@ -192,24 +192,25 @@ func (r ApiApiV1FuncGetRequest) Execute() ([]ObjectFunctionWithSignature, *http.
 /*
 ApiV1FuncGet func query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncGetRequest
 */
 func (a *MAINApiService) ApiV1FuncGet(ctx context.Context) ApiApiV1FuncGetRequest {
 	return ApiApiV1FuncGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []ObjectFunctionWithSignature
+//
+//	@return []ObjectFunctionWithSignature
 func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]ObjectFunctionWithSignature, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []ObjectFunctionWithSignature
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []ObjectFunctionWithSignature
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncGet")
@@ -293,12 +294,12 @@ func (a *MAINApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]Object
 }
 
 type ApiApiV1FuncctxGetRequest struct {
-	ctx context.Context
+	ctx        context.Context
 	ApiService *MAINApiService
-	repo *string
-	rev *string
-	file *string
-	lines *string
+	repo       *string
+	rev        *string
+	file       *string
+	lines      *string
 }
 
 // repo
@@ -325,31 +326,32 @@ func (r ApiApiV1FuncctxGetRequest) Lines(lines string) ApiApiV1FuncctxGetRequest
 	return r
 }
 
-func (r ApiApiV1FuncctxGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
+func (r ApiApiV1FuncctxGetRequest) Execute() ([]Sibyl2FunctionContextSlim, *http.Response, error) {
 	return r.ApiService.ApiV1FuncctxGetExecute(r)
 }
 
 /*
 ApiV1FuncctxGet func ctx query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiApiV1FuncctxGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1FuncctxGetRequest
 */
 func (a *MAINApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1FuncctxGetRequest {
 	return ApiApiV1FuncctxGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-//  @return []Sibyl2FunctionContext
-func (a *MAINApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
+//
+//	@return []Sibyl2FunctionContextSlim
+func (a *MAINApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]Sibyl2FunctionContextSlim, *http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  []Sibyl2FunctionContext
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []Sibyl2FunctionContextSlim
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MAINApiService.ApiV1FuncctxGet")
