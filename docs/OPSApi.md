@@ -1,12 +1,12 @@
-# \OPSApi
+# \OpsApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**OpsMonitorUploadGet**](OPSApi.md#OpsMonitorUploadGet) | **Get** /ops/monitor/upload | upload status query
-[**OpsPingGet**](OPSApi.md#OpsPingGet) | **Get** /ops/ping | ping example
-[**OpsVersionGet**](OPSApi.md#OpsVersionGet) | **Get** /ops/version | sibyl version
+[**OpsMonitorUploadGet**](OpsApi.md#OpsMonitorUploadGet) | **Get** /ops/monitor/upload | upload status query
+[**OpsPingGet**](OpsApi.md#OpsPingGet) | **Get** /ops/ping | ping example
+[**OpsVersionGet**](OpsApi.md#OpsVersionGet) | **Get** /ops/version | sibyl version
 
 
 
@@ -32,9 +32,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OPSApi.OpsMonitorUploadGet(context.Background()).Execute()
+    resp, r, err := apiClient.OpsApi.OpsMonitorUploadGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OPSApi.OpsMonitorUploadGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OpsApi.OpsMonitorUploadGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -89,9 +89,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OPSApi.OpsPingGet(context.Background()).Execute()
+    resp, r, err := apiClient.OpsApi.OpsPingGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OPSApi.OpsPingGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OpsApi.OpsPingGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -146,9 +146,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OPSApi.OpsVersionGet(context.Background()).Execute()
+    resp, r, err := apiClient.OpsApi.OpsVersionGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OPSApi.OpsVersionGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `OpsApi.OpsVersionGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }

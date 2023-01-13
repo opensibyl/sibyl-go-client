@@ -1,14 +1,14 @@
-# \ScopeApi
+# \ScopeQueryApi
 
 All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1FileGet**](ScopeApi.md#ApiV1FileGet) | **Get** /api/v1/file | file query
-[**ApiV1RepoDelete**](ScopeApi.md#ApiV1RepoDelete) | **Delete** /api/v1/repo | repo delete
-[**ApiV1RepoGet**](ScopeApi.md#ApiV1RepoGet) | **Get** /api/v1/repo | repo query
-[**ApiV1RevDelete**](ScopeApi.md#ApiV1RevDelete) | **Delete** /api/v1/rev | rev delte
-[**ApiV1RevGet**](ScopeApi.md#ApiV1RevGet) | **Get** /api/v1/rev | rev query
+[**ApiV1FileGet**](ScopeQueryApi.md#ApiV1FileGet) | **Get** /api/v1/file | file query
+[**ApiV1RepoDelete**](ScopeQueryApi.md#ApiV1RepoDelete) | **Delete** /api/v1/repo | repo delete
+[**ApiV1RepoGet**](ScopeQueryApi.md#ApiV1RepoGet) | **Get** /api/v1/repo | repo query
+[**ApiV1RevDelete**](ScopeQueryApi.md#ApiV1RevDelete) | **Delete** /api/v1/rev | rev delte
+[**ApiV1RevGet**](ScopeQueryApi.md#ApiV1RevGet) | **Get** /api/v1/rev | rev query
 
 
 
@@ -37,13 +37,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScopeApi.ApiV1FileGet(context.Background()).Repo(repo).Rev(rev).IncludeRegex(includeRegex).Execute()
+    resp, r, err := apiClient.ScopeQueryApi.ApiV1FileGet(context.Background()).Repo(repo).Rev(rev).IncludeRegex(includeRegex).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScopeApi.ApiV1FileGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScopeQueryApi.ApiV1FileGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApiV1FileGet`: []string
-    fmt.Fprintf(os.Stdout, "Response from `ScopeApi.ApiV1FileGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScopeQueryApi.ApiV1FileGet`: %v\n", resp)
 }
 ```
 
@@ -103,9 +103,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScopeApi.ApiV1RepoDelete(context.Background()).Repo(repo).Execute()
+    resp, r, err := apiClient.ScopeQueryApi.ApiV1RepoDelete(context.Background()).Repo(repo).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScopeApi.ApiV1RepoDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScopeQueryApi.ApiV1RepoDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -164,13 +164,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScopeApi.ApiV1RepoGet(context.Background()).Execute()
+    resp, r, err := apiClient.ScopeQueryApi.ApiV1RepoGet(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScopeApi.ApiV1RepoGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScopeQueryApi.ApiV1RepoGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApiV1RepoGet`: []string
-    fmt.Fprintf(os.Stdout, "Response from `ScopeApi.ApiV1RepoGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScopeQueryApi.ApiV1RepoGet`: %v\n", resp)
 }
 ```
 
@@ -225,9 +225,9 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScopeApi.ApiV1RevDelete(context.Background()).Repo(repo).Rev(rev).Execute()
+    resp, r, err := apiClient.ScopeQueryApi.ApiV1RevDelete(context.Background()).Repo(repo).Rev(rev).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScopeApi.ApiV1RevDelete``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScopeQueryApi.ApiV1RevDelete``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
 }
@@ -288,13 +288,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ScopeApi.ApiV1RevGet(context.Background()).Repo(repo).Execute()
+    resp, r, err := apiClient.ScopeQueryApi.ApiV1RevGet(context.Background()).Repo(repo).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ScopeApi.ApiV1RevGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ScopeQueryApi.ApiV1RevGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `ApiV1RevGet`: []string
-    fmt.Fprintf(os.Stdout, "Response from `ScopeApi.ApiV1RevGet`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `ScopeQueryApi.ApiV1RevGet`: %v\n", resp)
 }
 ```
 

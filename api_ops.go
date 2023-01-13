@@ -18,13 +18,12 @@ import (
 	"net/url"
 )
 
-
-// OPSApiService OPSApi service
-type OPSApiService service
+// OpsApiService OpsApi service
+type OpsApiService service
 
 type ApiOpsMonitorUploadGetRequest struct {
-	ctx context.Context
-	ApiService *OPSApiService
+	ctx        context.Context
+	ApiService *OpsApiService
 }
 
 func (r ApiOpsMonitorUploadGetRequest) Execute() (*http.Response, error) {
@@ -34,25 +33,25 @@ func (r ApiOpsMonitorUploadGetRequest) Execute() (*http.Response, error) {
 /*
 OpsMonitorUploadGet upload status query
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpsMonitorUploadGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpsMonitorUploadGetRequest
 */
-func (a *OPSApiService) OpsMonitorUploadGet(ctx context.Context) ApiOpsMonitorUploadGetRequest {
+func (a *OpsApiService) OpsMonitorUploadGet(ctx context.Context) ApiOpsMonitorUploadGetRequest {
 	return ApiOpsMonitorUploadGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *OPSApiService) OpsMonitorUploadGetExecute(r ApiOpsMonitorUploadGetRequest) (*http.Response, error) {
+func (a *OpsApiService) OpsMonitorUploadGetExecute(r ApiOpsMonitorUploadGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OPSApiService.OpsMonitorUploadGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpsApiService.OpsMonitorUploadGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -109,8 +108,8 @@ func (a *OPSApiService) OpsMonitorUploadGetExecute(r ApiOpsMonitorUploadGetReque
 }
 
 type ApiOpsPingGetRequest struct {
-	ctx context.Context
-	ApiService *OPSApiService
+	ctx        context.Context
+	ApiService *OpsApiService
 }
 
 func (r ApiOpsPingGetRequest) Execute() (*http.Response, error) {
@@ -120,25 +119,25 @@ func (r ApiOpsPingGetRequest) Execute() (*http.Response, error) {
 /*
 OpsPingGet ping example
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpsPingGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpsPingGetRequest
 */
-func (a *OPSApiService) OpsPingGet(ctx context.Context) ApiOpsPingGetRequest {
+func (a *OpsApiService) OpsPingGet(ctx context.Context) ApiOpsPingGetRequest {
 	return ApiOpsPingGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *OPSApiService) OpsPingGetExecute(r ApiOpsPingGetRequest) (*http.Response, error) {
+func (a *OpsApiService) OpsPingGetExecute(r ApiOpsPingGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OPSApiService.OpsPingGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpsApiService.OpsPingGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -195,8 +194,8 @@ func (a *OPSApiService) OpsPingGetExecute(r ApiOpsPingGetRequest) (*http.Respons
 }
 
 type ApiOpsVersionGetRequest struct {
-	ctx context.Context
-	ApiService *OPSApiService
+	ctx        context.Context
+	ApiService *OpsApiService
 }
 
 func (r ApiOpsVersionGetRequest) Execute() (*http.Response, error) {
@@ -206,25 +205,25 @@ func (r ApiOpsVersionGetRequest) Execute() (*http.Response, error) {
 /*
 OpsVersionGet sibyl version
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiOpsVersionGetRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiOpsVersionGetRequest
 */
-func (a *OPSApiService) OpsVersionGet(ctx context.Context) ApiOpsVersionGetRequest {
+func (a *OpsApiService) OpsVersionGet(ctx context.Context) ApiOpsVersionGetRequest {
 	return ApiOpsVersionGetRequest{
 		ApiService: a,
-		ctx: ctx,
+		ctx:        ctx,
 	}
 }
 
 // Execute executes the request
-func (a *OPSApiService) OpsVersionGetExecute(r ApiOpsVersionGetRequest) (*http.Response, error) {
+func (a *OpsApiService) OpsVersionGetExecute(r ApiOpsVersionGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OPSApiService.OpsVersionGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OpsApiService.OpsVersionGet")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}

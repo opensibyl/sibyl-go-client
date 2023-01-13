@@ -1,7 +1,7 @@
 /*
 openapi for sibyl2 server
 
-Testing OpsApiService
+Testing RegexQueryApiService
 
 */
 
@@ -10,23 +10,24 @@ Testing OpsApiService
 package openapi
 
 import (
-	openapiclient "./openapi"
 	"context"
+	"testing"
+
+	openapiclient "github.com/opensibyl/sibyl-go-client"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
-func Test_openapi_OpsApiService(t *testing.T) {
+func Test_openapi_RegexQueryApiService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test OpsApiService OpsMonitorUploadGet", func(t *testing.T) {
+	t.Run("Test RegexQueryApiService ApiV1ClazzWithRegexGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OpsApi.OpsMonitorUploadGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RegexQueryApi.ApiV1ClazzWithRegexGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +35,11 @@ func Test_openapi_OpsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OpsApiService OpsPingGet", func(t *testing.T) {
+	t.Run("Test RegexQueryApiService ApiV1FuncWithRegexGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OpsApi.OpsPingGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RegexQueryApi.ApiV1FuncWithRegexGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +47,11 @@ func Test_openapi_OpsApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test OpsApiService OpsVersionGet", func(t *testing.T) {
+	t.Run("Test RegexQueryApiService ApiV1FuncctxWithRegexGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.OpsApi.OpsVersionGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.RegexQueryApi.ApiV1FuncctxWithRegexGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

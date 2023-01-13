@@ -1,7 +1,7 @@
 /*
 openapi for sibyl2 server
 
-Testing ScopeApiService
+Testing ScopeQueryApiService
 
 */
 
@@ -17,16 +17,16 @@ import (
 	"testing"
 )
 
-func Test_openapi_ScopeApiService(t *testing.T) {
+func Test_openapi_ScopeQueryApiService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ScopeApiService ApiV1FileGet", func(t *testing.T) {
+	t.Run("Test ScopeQueryApiService ApiV1FileGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ScopeApi.ApiV1FileGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScopeQueryApi.ApiV1FileGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -34,11 +34,11 @@ func Test_openapi_ScopeApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScopeApiService ApiV1RepoDelete", func(t *testing.T) {
+	t.Run("Test ScopeQueryApiService ApiV1RepoDelete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ScopeApi.ApiV1RepoDelete(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScopeQueryApi.ApiV1RepoDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -46,11 +46,11 @@ func Test_openapi_ScopeApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScopeApiService ApiV1RepoGet", func(t *testing.T) {
+	t.Run("Test ScopeQueryApiService ApiV1RepoGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ScopeApi.ApiV1RepoGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScopeQueryApi.ApiV1RepoGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -58,11 +58,11 @@ func Test_openapi_ScopeApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScopeApiService ApiV1RevDelete", func(t *testing.T) {
+	t.Run("Test ScopeQueryApiService ApiV1RevDelete", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ScopeApi.ApiV1RevDelete(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScopeQueryApi.ApiV1RevDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -70,11 +70,11 @@ func Test_openapi_ScopeApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test ScopeApiService ApiV1RevGet", func(t *testing.T) {
+	t.Run("Test ScopeQueryApiService ApiV1RevGet", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.ScopeApi.ApiV1RevGet(context.Background()).Execute()
+		resp, httpRes, err := apiClient.ScopeQueryApi.ApiV1RevGet(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

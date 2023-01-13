@@ -44,7 +44,7 @@ paths:
           description: OK
       summary: class query
       tags:
-      - MAIN
+      - BasicQuery
   /api/v1/clazz/with/regex:
     get:
       parameters:
@@ -83,7 +83,7 @@ paths:
           description: OK
       summary: clazz query
       tags:
-      - EXPERIMENTAL
+      - RegexQuery
   /api/v1/file:
     get:
       parameters:
@@ -115,7 +115,7 @@ paths:
           description: OK
       summary: file query
       tags:
-      - SCOPE
+      - Scope
   /api/v1/func:
     get:
       parameters:
@@ -153,7 +153,7 @@ paths:
           description: OK
       summary: func query
       tags:
-      - MAIN
+      - BasicQuery
   /api/v1/func/signature:
     get:
       parameters:
@@ -186,7 +186,7 @@ paths:
           description: OK
       summary: func query
       tags:
-      - EXPERIMENTAL
+      - SignatureQuery
   /api/v1/func/with/regex:
     get:
       parameters:
@@ -225,7 +225,7 @@ paths:
           description: OK
       summary: func query
       tags:
-      - EXPERIMENTAL
+      - RegexQuery
   /api/v1/func/with/signature:
     get:
       parameters:
@@ -256,7 +256,7 @@ paths:
           description: OK
       summary: func query
       tags:
-      - EXPERIMENTAL
+      - SignatureQuery
   /api/v1/funcctx:
     get:
       parameters:
@@ -294,7 +294,7 @@ paths:
           description: OK
       summary: func ctx query
       tags:
-      - MAIN
+      - BasicQuery
   /api/v1/funcctx/with/reference/count:
     get:
       parameters:
@@ -328,12 +328,12 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+                  $ref: '#/components/schemas/sibyl2.FunctionContextSlim'
                 type: array
           description: OK
       summary: funcctx query by ref
       tags:
-      - EXPERIMENTAL
+      - ReferenceQuery
   /api/v1/funcctx/with/referenced/count:
     get:
       parameters:
@@ -367,12 +367,12 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+                  $ref: '#/components/schemas/sibyl2.FunctionContextSlim'
                 type: array
           description: OK
       summary: funcctx query by referenced
       tags:
-      - EXPERIMENTAL
+      - ReferenceQuery
   /api/v1/funcctx/with/regex:
     get:
       parameters:
@@ -411,7 +411,7 @@ paths:
           description: OK
       summary: func ctx query
       tags:
-      - EXPERIMENTAL
+      - RegexQuery
   /api/v1/repo:
     delete:
       parameters:
@@ -427,7 +427,7 @@ paths:
           description: OK
       summary: repo delete
       tags:
-      - SCOPE
+      - Scope
     get:
       responses:
         "200":
@@ -440,7 +440,7 @@ paths:
           description: OK
       summary: repo query
       tags:
-      - SCOPE
+      - Scope
   /api/v1/rev:
     delete:
       parameters:
@@ -462,7 +462,7 @@ paths:
           description: OK
       summary: rev delte
       tags:
-      - SCOPE
+      - Scope
     get:
       parameters:
       - description: rev search by repo
@@ -482,7 +482,7 @@ paths:
           description: OK
       summary: rev query
       tags:
-      - SCOPE
+      - Scope
   /api/v1/rev/stat:
     get:
       parameters:
@@ -507,7 +507,7 @@ paths:
           description: OK
       summary: rev stat
       tags:
-      - EXPERIMENTAL
+      - StatQuery
   /ops/monitor/upload:
     get:
       responses:
@@ -516,7 +516,7 @@ paths:
           description: OK
       summary: upload status query
       tags:
-      - OPS
+      - Ops
   /ops/ping:
     get:
       responses:
@@ -525,7 +525,7 @@ paths:
           description: OK
       summary: ping example
       tags:
-      - OPS
+      - Ops
   /ops/version:
     get:
       responses:
@@ -534,7 +534,7 @@ paths:
           description: OK
       summary: sibyl version
       tags:
-      - OPS
+      - Ops
 components:
   schemas:
     core.Point:

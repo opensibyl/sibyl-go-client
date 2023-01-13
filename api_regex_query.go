@@ -18,47 +18,54 @@ import (
 	"net/url"
 )
 
-// EXTRASApiService EXTRASApi service
-type EXTRASApiService service
+// RegexQueryApiService RegexQueryApi service
+type RegexQueryApiService service
 
-type ApiApiV1ClazzDiffGetRequest struct {
+type ApiApiV1ClazzWithRegexGetRequest struct {
 	ctx        context.Context
-	ApiService *EXTRASApiService
+	ApiService *RegexQueryApiService
 	repo       *string
 	rev        *string
-	diff       *string
+	field      *string
+	regex      *string
 }
 
 // repo
-func (r ApiApiV1ClazzDiffGetRequest) Repo(repo string) ApiApiV1ClazzDiffGetRequest {
+func (r ApiApiV1ClazzWithRegexGetRequest) Repo(repo string) ApiApiV1ClazzWithRegexGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1ClazzDiffGetRequest) Rev(rev string) ApiApiV1ClazzDiffGetRequest {
+func (r ApiApiV1ClazzWithRegexGetRequest) Rev(rev string) ApiApiV1ClazzWithRegexGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// unified diff
-func (r ApiApiV1ClazzDiffGetRequest) Diff(diff string) ApiApiV1ClazzDiffGetRequest {
-	r.diff = &diff
+// field
+func (r ApiApiV1ClazzWithRegexGetRequest) Field(field string) ApiApiV1ClazzWithRegexGetRequest {
+	r.field = &field
 	return r
 }
 
-func (r ApiApiV1ClazzDiffGetRequest) Execute() (*map[string][]Sibyl2ClazzWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1ClazzDiffGetExecute(r)
+// regex
+func (r ApiApiV1ClazzWithRegexGetRequest) Regex(regex string) ApiApiV1ClazzWithRegexGetRequest {
+	r.regex = &regex
+	return r
+}
+
+func (r ApiApiV1ClazzWithRegexGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1ClazzWithRegexGetExecute(r)
 }
 
 /*
-ApiV1ClazzDiffGet clazz diff query
+ApiV1ClazzWithRegexGet clazz query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1ClazzDiffGetRequest
+	@return ApiApiV1ClazzWithRegexGetRequest
 */
-func (a *EXTRASApiService) ApiV1ClazzDiffGet(ctx context.Context) ApiApiV1ClazzDiffGetRequest {
-	return ApiApiV1ClazzDiffGetRequest{
+func (a *RegexQueryApiService) ApiV1ClazzWithRegexGet(ctx context.Context) ApiApiV1ClazzWithRegexGetRequest {
+	return ApiApiV1ClazzWithRegexGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -66,21 +73,21 @@ func (a *EXTRASApiService) ApiV1ClazzDiffGet(ctx context.Context) ApiApiV1ClazzD
 
 // Execute executes the request
 //
-//	@return map[string][]Sibyl2ClazzWithPath
-func (a *EXTRASApiService) ApiV1ClazzDiffGetExecute(r ApiApiV1ClazzDiffGetRequest) (*map[string][]Sibyl2ClazzWithPath, *http.Response, error) {
+//	@return []Sibyl2ClazzWithPath
+func (a *RegexQueryApiService) ApiV1ClazzWithRegexGetExecute(r ApiApiV1ClazzWithRegexGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *map[string][]Sibyl2ClazzWithPath
+		localVarReturnValue []Sibyl2ClazzWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXTRASApiService.ApiV1ClazzDiffGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1ClazzWithRegexGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/clazz/diff"
+	localVarPath := localBasePath + "/api/v1/clazz/with/regex"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -91,13 +98,17 @@ func (a *EXTRASApiService) ApiV1ClazzDiffGetExecute(r ApiApiV1ClazzDiffGetReques
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.diff == nil {
-		return localVarReturnValue, nil, reportError("diff is required and must be specified")
+	if r.field == nil {
+		return localVarReturnValue, nil, reportError("field is required and must be specified")
+	}
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("diff", parameterToString(*r.diff, ""))
+	localVarQueryParams.Add("field", parameterToString(*r.field, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -152,44 +163,51 @@ func (a *EXTRASApiService) ApiV1ClazzDiffGetExecute(r ApiApiV1ClazzDiffGetReques
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncDiffGetRequest struct {
+type ApiApiV1FuncWithRegexGetRequest struct {
 	ctx        context.Context
-	ApiService *EXTRASApiService
+	ApiService *RegexQueryApiService
 	repo       *string
 	rev        *string
-	diff       *string
+	field      *string
+	regex      *string
 }
 
 // repo
-func (r ApiApiV1FuncDiffGetRequest) Repo(repo string) ApiApiV1FuncDiffGetRequest {
+func (r ApiApiV1FuncWithRegexGetRequest) Repo(repo string) ApiApiV1FuncWithRegexGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncDiffGetRequest) Rev(rev string) ApiApiV1FuncDiffGetRequest {
+func (r ApiApiV1FuncWithRegexGetRequest) Rev(rev string) ApiApiV1FuncWithRegexGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// unified diff
-func (r ApiApiV1FuncDiffGetRequest) Diff(diff string) ApiApiV1FuncDiffGetRequest {
-	r.diff = &diff
+// field
+func (r ApiApiV1FuncWithRegexGetRequest) Field(field string) ApiApiV1FuncWithRegexGetRequest {
+	r.field = &field
 	return r
 }
 
-func (r ApiApiV1FuncDiffGetRequest) Execute() (*map[string][]Sibyl2FunctionWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1FuncDiffGetExecute(r)
+// regex
+func (r ApiApiV1FuncWithRegexGetRequest) Regex(regex string) ApiApiV1FuncWithRegexGetRequest {
+	r.regex = &regex
+	return r
+}
+
+func (r ApiApiV1FuncWithRegexGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1FuncWithRegexGetExecute(r)
 }
 
 /*
-ApiV1FuncDiffGet func diff query
+ApiV1FuncWithRegexGet func query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncDiffGetRequest
+	@return ApiApiV1FuncWithRegexGetRequest
 */
-func (a *EXTRASApiService) ApiV1FuncDiffGet(ctx context.Context) ApiApiV1FuncDiffGetRequest {
-	return ApiApiV1FuncDiffGetRequest{
+func (a *RegexQueryApiService) ApiV1FuncWithRegexGet(ctx context.Context) ApiApiV1FuncWithRegexGetRequest {
+	return ApiApiV1FuncWithRegexGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -197,21 +215,21 @@ func (a *EXTRASApiService) ApiV1FuncDiffGet(ctx context.Context) ApiApiV1FuncDif
 
 // Execute executes the request
 //
-//	@return map[string][]Sibyl2FunctionWithPath
-func (a *EXTRASApiService) ApiV1FuncDiffGetExecute(r ApiApiV1FuncDiffGetRequest) (*map[string][]Sibyl2FunctionWithPath, *http.Response, error) {
+//	@return []Sibyl2FunctionWithPath
+func (a *RegexQueryApiService) ApiV1FuncWithRegexGetExecute(r ApiApiV1FuncWithRegexGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *map[string][]Sibyl2FunctionWithPath
+		localVarReturnValue []Sibyl2FunctionWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXTRASApiService.ApiV1FuncDiffGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1FuncWithRegexGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/func/diff"
+	localVarPath := localBasePath + "/api/v1/func/with/regex"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -222,13 +240,17 @@ func (a *EXTRASApiService) ApiV1FuncDiffGetExecute(r ApiApiV1FuncDiffGetRequest)
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.diff == nil {
-		return localVarReturnValue, nil, reportError("diff is required and must be specified")
+	if r.field == nil {
+		return localVarReturnValue, nil, reportError("field is required and must be specified")
+	}
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("diff", parameterToString(*r.diff, ""))
+	localVarQueryParams.Add("field", parameterToString(*r.field, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -283,44 +305,51 @@ func (a *EXTRASApiService) ApiV1FuncDiffGetExecute(r ApiApiV1FuncDiffGetRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncctxDiffGetRequest struct {
+type ApiApiV1FuncctxWithRegexGetRequest struct {
 	ctx        context.Context
-	ApiService *EXTRASApiService
+	ApiService *RegexQueryApiService
 	repo       *string
 	rev        *string
-	diff       *string
+	field      *string
+	regex      *string
 }
 
 // repo
-func (r ApiApiV1FuncctxDiffGetRequest) Repo(repo string) ApiApiV1FuncctxDiffGetRequest {
+func (r ApiApiV1FuncctxWithRegexGetRequest) Repo(repo string) ApiApiV1FuncctxWithRegexGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncctxDiffGetRequest) Rev(rev string) ApiApiV1FuncctxDiffGetRequest {
+func (r ApiApiV1FuncctxWithRegexGetRequest) Rev(rev string) ApiApiV1FuncctxWithRegexGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// unified diff
-func (r ApiApiV1FuncctxDiffGetRequest) Diff(diff string) ApiApiV1FuncctxDiffGetRequest {
-	r.diff = &diff
+// field
+func (r ApiApiV1FuncctxWithRegexGetRequest) Field(field string) ApiApiV1FuncctxWithRegexGetRequest {
+	r.field = &field
 	return r
 }
 
-func (r ApiApiV1FuncctxDiffGetRequest) Execute() (*map[string][]Sibyl2FunctionContext, *http.Response, error) {
-	return r.ApiService.ApiV1FuncctxDiffGetExecute(r)
+// regex
+func (r ApiApiV1FuncctxWithRegexGetRequest) Regex(regex string) ApiApiV1FuncctxWithRegexGetRequest {
+	r.regex = &regex
+	return r
+}
+
+func (r ApiApiV1FuncctxWithRegexGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
+	return r.ApiService.ApiV1FuncctxWithRegexGetExecute(r)
 }
 
 /*
-ApiV1FuncctxDiffGet func ctx diff query
+ApiV1FuncctxWithRegexGet func ctx query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncctxDiffGetRequest
+	@return ApiApiV1FuncctxWithRegexGetRequest
 */
-func (a *EXTRASApiService) ApiV1FuncctxDiffGet(ctx context.Context) ApiApiV1FuncctxDiffGetRequest {
-	return ApiApiV1FuncctxDiffGetRequest{
+func (a *RegexQueryApiService) ApiV1FuncctxWithRegexGet(ctx context.Context) ApiApiV1FuncctxWithRegexGetRequest {
+	return ApiApiV1FuncctxWithRegexGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -328,21 +357,21 @@ func (a *EXTRASApiService) ApiV1FuncctxDiffGet(ctx context.Context) ApiApiV1Func
 
 // Execute executes the request
 //
-//	@return map[string][]Sibyl2FunctionContext
-func (a *EXTRASApiService) ApiV1FuncctxDiffGetExecute(r ApiApiV1FuncctxDiffGetRequest) (*map[string][]Sibyl2FunctionContext, *http.Response, error) {
+//	@return []Sibyl2FunctionContext
+func (a *RegexQueryApiService) ApiV1FuncctxWithRegexGetExecute(r ApiApiV1FuncctxWithRegexGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *map[string][]Sibyl2FunctionContext
+		localVarReturnValue []Sibyl2FunctionContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EXTRASApiService.ApiV1FuncctxDiffGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1FuncctxWithRegexGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/funcctx/diff"
+	localVarPath := localBasePath + "/api/v1/funcctx/with/regex"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -353,13 +382,17 @@ func (a *EXTRASApiService) ApiV1FuncctxDiffGetExecute(r ApiApiV1FuncctxDiffGetRe
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.diff == nil {
-		return localVarReturnValue, nil, reportError("diff is required and must be specified")
+	if r.field == nil {
+		return localVarReturnValue, nil, reportError("field is required and must be specified")
+	}
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("diff", parameterToString(*r.diff, ""))
+	localVarQueryParams.Add("field", parameterToString(*r.field, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
