@@ -74,7 +74,7 @@ paths:
                   type: string
                 type: array
           description: OK
-      summary: file query
+      summary: file query by repo and rev
       tags:
       - Scope
   /api/v1/func:
@@ -374,7 +374,7 @@ paths:
                   type: string
                 type: array
           description: OK
-      summary: repo query
+      summary: query all the repos
       tags:
       - Scope
   /api/v1/rev:
@@ -396,7 +396,7 @@ paths:
         "200":
           content: {}
           description: OK
-      summary: rev delte
+      summary: rev delete
       tags:
       - Scope
     get:
@@ -416,7 +416,7 @@ paths:
                   type: string
                 type: array
           description: OK
-      summary: rev query
+      summary: rev query by repo name
       tags:
       - Scope
   /api/v1/rev/stat:
@@ -506,6 +506,43 @@ paths:
       summary: funcctx query
       tags:
       - SignatureQuery
+  /api/v1/signature/funcctx/chain:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: signature
+        in: query
+        name: signature
+        required: true
+        schema:
+          type: string
+      - description: depth
+        in: query
+        name: depth
+        required: true
+        schema:
+          type: integer
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/service.FunctionContextChain'
+          description: OK
+      summary: funcctx chain query
+      tags:
+      - SignatureQuery
   /api/v1/signature/funcctx/rchain:
     get:
       parameters:
@@ -532,13 +569,13 @@ paths:
         name: depth
         required: true
         schema:
-          type: string
+          type: integer
       responses:
         "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/service.FunctionContextReverseChain'
+                $ref: '#/components/schemas/service.FunctionContextChain'
           description: OK
       summary: funcctx reverse chain query
       tags:
@@ -802,8 +839,23 @@ components:
         content:
           type: string
       type: object
-    service.FunctionContextReverseChain:
+    service.FunctionContextChain:
       example:
+        callChains:
+          children:
+          - null
+          - null
+          content: content
+        receiver: receiver
+        extras: "{}"
+        reverseCalls:
+        - reverseCalls
+        - reverseCalls
+        reverseCallChains:
+          children:
+          - null
+          - null
+          content: content
         bodySpan:
           start:
             column: 0
@@ -812,25 +864,15 @@ components:
             column: 0
             row: 6
         path: path
-        receiver: receiver
         calls:
         - calls
         - calls
         name: name
-        extras: "{}"
-        reverseCalls:
-        - reverseCalls
-        - reverseCalls
         returns:
         - name: name
           type: type
         - name: name
           type: type
-        reverseCallChains:
-          children:
-          - null
-          - null
-          content: content
         lang: lang
         parameters:
         - name: name
@@ -847,6 +889,8 @@ components:
       properties:
         bodySpan:
           $ref: '#/components/schemas/core.Span'
+        callChains:
+          $ref: '#/components/schemas/service.ContextTree'
         calls:
           items:
             type: string

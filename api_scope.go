@@ -52,7 +52,7 @@ func (r ApiApiV1FileGetRequest) Execute() ([]string, *http.Response, error) {
 }
 
 /*
-ApiV1FileGet file query
+ApiV1FileGet file query by repo and rev
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiApiV1FileGetRequest
@@ -258,7 +258,7 @@ func (r ApiApiV1RepoGetRequest) Execute() ([]string, *http.Response, error) {
 }
 
 /*
-ApiV1RepoGet repo query
+ApiV1RepoGet query all the repos
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiApiV1RepoGetRequest
@@ -370,7 +370,7 @@ func (r ApiApiV1RevDeleteRequest) Execute() (*http.Response, error) {
 }
 
 /*
-ApiV1RevDelete rev delte
+ApiV1RevDelete rev delete
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiApiV1RevDeleteRequest
@@ -471,7 +471,7 @@ func (r ApiApiV1RevGetRequest) Execute() ([]string, *http.Response, error) {
 }
 
 /*
-ApiV1RevGet rev query
+ApiV1RevGet rev query by repo name
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiApiV1RevGetRequest

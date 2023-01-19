@@ -22,7 +22,7 @@ docs/ReferenceQueryApi.md
 docs/RegexQueryApi.md
 docs/ScopeApi.md
 docs/ServiceContextTree.md
-docs/ServiceFunctionContextReverseChain.md
+docs/ServiceFunctionContextChain.md
 docs/ServiceRevStat.md
 docs/Sibyl2ClazzWithPath.md
 docs/Sibyl2FunctionContext.md
@@ -38,7 +38,7 @@ model_object_function_with_signature.go
 model_object_rev_info.go
 model_object_value_unit.go
 model_service_context_tree.go
-model_service_function_context_reverse_chain.go
+model_service_function_context_chain.go
 model_service_rev_stat.go
 model_sibyl2_clazz_with_path.go
 model_sibyl2_function_context.go

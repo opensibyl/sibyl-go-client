@@ -4,11 +4,11 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1FileGet**](ScopeApi.md#ApiV1FileGet) | **Get** /api/v1/file | file query
+[**ApiV1FileGet**](ScopeApi.md#ApiV1FileGet) | **Get** /api/v1/file | file query by repo and rev
 [**ApiV1RepoDelete**](ScopeApi.md#ApiV1RepoDelete) | **Delete** /api/v1/repo | repo delete
-[**ApiV1RepoGet**](ScopeApi.md#ApiV1RepoGet) | **Get** /api/v1/repo | repo query
-[**ApiV1RevDelete**](ScopeApi.md#ApiV1RevDelete) | **Delete** /api/v1/rev | rev delte
-[**ApiV1RevGet**](ScopeApi.md#ApiV1RevGet) | **Get** /api/v1/rev | rev query
+[**ApiV1RepoGet**](ScopeApi.md#ApiV1RepoGet) | **Get** /api/v1/repo | query all the repos
+[**ApiV1RevDelete**](ScopeApi.md#ApiV1RevDelete) | **Delete** /api/v1/rev | rev delete
+[**ApiV1RevGet**](ScopeApi.md#ApiV1RevGet) | **Get** /api/v1/rev | rev query by repo name
 
 
 
@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 > []string ApiV1FileGet(ctx).Repo(repo).Rev(rev).IncludeRegex(includeRegex).Execute()
 
-file query
+file query by repo and rev
 
 ### Example
 
@@ -146,7 +146,7 @@ No authorization required
 
 > []string ApiV1RepoGet(ctx).Execute()
 
-repo query
+query all the repos
 
 ### Example
 
@@ -205,7 +205,7 @@ No authorization required
 
 > ApiV1RevDelete(ctx).Repo(repo).Rev(rev).Execute()
 
-rev delte
+rev delete
 
 ### Example
 
@@ -269,7 +269,7 @@ No authorization required
 
 > []string ApiV1RevGet(ctx).Repo(repo).Execute()
 
-rev query
+rev query by repo name
 
 ### Example
 

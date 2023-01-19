@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ApiV1SignatureFuncGet**](SignatureQueryApi.md#ApiV1SignatureFuncGet) | **Get** /api/v1/signature/func | func query
+[**ApiV1SignatureFuncctxChainGet**](SignatureQueryApi.md#ApiV1SignatureFuncctxChainGet) | **Get** /api/v1/signature/funcctx/chain | funcctx chain query
 [**ApiV1SignatureFuncctxGet**](SignatureQueryApi.md#ApiV1SignatureFuncctxGet) | **Get** /api/v1/signature/funcctx | funcctx query
 [**ApiV1SignatureFuncctxRchainGet**](SignatureQueryApi.md#ApiV1SignatureFuncctxRchainGet) | **Get** /api/v1/signature/funcctx/rchain | funcctx reverse chain query
 [**ApiV1SignatureRegexFuncGet**](SignatureQueryApi.md#ApiV1SignatureRegexFuncGet) | **Get** /api/v1/signature/regex/func | func query
@@ -64,6 +65,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ApiV1SignatureFuncctxChainGet
+
+> ServiceFunctionContextChain ApiV1SignatureFuncctxChainGet(ctx).Repo(repo).Rev(rev).Signature(signature).Depth(depth).Execute()
+
+funcctx chain query
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "./openapi"
+)
+
+func main() {
+    repo := "repo_example" // string | repo
+    rev := "rev_example" // string | rev
+    signature := "signature_example" // string | signature
+    depth := int32(56) // int32 | depth
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.SignatureQueryApi.ApiV1SignatureFuncctxChainGet(context.Background()).Repo(repo).Rev(rev).Signature(signature).Depth(depth).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `SignatureQueryApi.ApiV1SignatureFuncctxChainGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ApiV1SignatureFuncctxChainGet`: ServiceFunctionContextChain
+    fmt.Fprintf(os.Stdout, "Response from `SignatureQueryApi.ApiV1SignatureFuncctxChainGet`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiApiV1SignatureFuncctxChainGetRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **repo** | **string** | repo | 
+ **rev** | **string** | rev | 
+ **signature** | **string** | signature | 
+ **depth** | **int32** | depth | 
+
+### Return type
+
+[**ServiceFunctionContextChain**](ServiceFunctionContextChain.md)
 
 ### Authorization
 
@@ -149,7 +220,7 @@ No authorization required
 
 ## ApiV1SignatureFuncctxRchainGet
 
-> ServiceFunctionContextReverseChain ApiV1SignatureFuncctxRchainGet(ctx).Repo(repo).Rev(rev).Signature(signature).Depth(depth).Execute()
+> ServiceFunctionContextChain ApiV1SignatureFuncctxRchainGet(ctx).Repo(repo).Rev(rev).Signature(signature).Depth(depth).Execute()
 
 funcctx reverse chain query
 
@@ -169,7 +240,7 @@ func main() {
     repo := "repo_example" // string | repo
     rev := "rev_example" // string | rev
     signature := "signature_example" // string | signature
-    depth := "depth_example" // string | depth
+    depth := int32(56) // int32 | depth
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -178,7 +249,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SignatureQueryApi.ApiV1SignatureFuncctxRchainGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1SignatureFuncctxRchainGet`: ServiceFunctionContextReverseChain
+    // response from `ApiV1SignatureFuncctxRchainGet`: ServiceFunctionContextChain
     fmt.Fprintf(os.Stdout, "Response from `SignatureQueryApi.ApiV1SignatureFuncctxRchainGet`: %v\n", resp)
 }
 ```
@@ -197,11 +268,11 @@ Name | Type | Description  | Notes
  **repo** | **string** | repo | 
  **rev** | **string** | rev | 
  **signature** | **string** | signature | 
- **depth** | **string** | depth | 
+ **depth** | **int32** | depth | 
 
 ### Return type
 
-[**ServiceFunctionContextReverseChain**](ServiceFunctionContextReverseChain.md)
+[**ServiceFunctionContextChain**](ServiceFunctionContextChain.md)
 
 ### Authorization
 
