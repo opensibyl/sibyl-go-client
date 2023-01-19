@@ -150,7 +150,7 @@ No authorization required
 
 ## ApiV1FuncctxGet
 
-> []Sibyl2FunctionContextSlim ApiV1FuncctxGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
+> []ObjectFunctionContextSlimWithSignature ApiV1FuncctxGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
 
 func ctx query
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BasicQueryApi.ApiV1FuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncctxGet`: []Sibyl2FunctionContextSlim
+    // response from `ApiV1FuncctxGet`: []ObjectFunctionContextSlimWithSignature
     fmt.Fprintf(os.Stdout, "Response from `BasicQueryApi.ApiV1FuncctxGet`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionContextSlim**](Sibyl2FunctionContextSlim.md)
+[**[]ObjectFunctionContextSlimWithSignature**](ObjectFunctionContextSlimWithSignature.md)
 
 ### Authorization
 

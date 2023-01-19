@@ -50,7 +50,7 @@ func (o *ObjectValueUnit) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *ObjectValueUnit) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
-    return nil, false
+		return nil, false
 	}
 	return o.Name, true
 }
@@ -82,7 +82,7 @@ func (o *ObjectValueUnit) GetType() string {
 // and a boolean to check if the value has been set.
 func (o *ObjectValueUnit) GetTypeOk() (*string, bool) {
 	if o == nil || isNil(o.Type) {
-    return nil, false
+		return nil, false
 	}
 	return o.Type, true
 }
@@ -147,5 +147,3 @@ func (v *NullableObjectValueUnit) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

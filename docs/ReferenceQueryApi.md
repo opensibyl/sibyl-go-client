@@ -4,14 +4,14 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ApiV1FuncctxWithReferenceCountGet**](ReferenceQueryApi.md#ApiV1FuncctxWithReferenceCountGet) | **Get** /api/v1/funcctx/with/reference/count | funcctx query by ref
-[**ApiV1FuncctxWithReferencedCountGet**](ReferenceQueryApi.md#ApiV1FuncctxWithReferencedCountGet) | **Get** /api/v1/funcctx/with/referenced/count | funcctx query by referenced
+[**ApiV1ReferenceCountFuncctxGet**](ReferenceQueryApi.md#ApiV1ReferenceCountFuncctxGet) | **Get** /api/v1/reference/count/funcctx | funcctx query by ref
+[**ApiV1ReferenceCountFuncctxReverseGet**](ReferenceQueryApi.md#ApiV1ReferenceCountFuncctxReverseGet) | **Get** /api/v1/reference/count/funcctx/reverse | funcctx query by referenced
 
 
 
-## ApiV1FuncctxWithReferenceCountGet
+## ApiV1ReferenceCountFuncctxGet
 
-> []Sibyl2FunctionContextSlim ApiV1FuncctxWithReferenceCountGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+> []Sibyl2FunctionContextSlim ApiV1ReferenceCountFuncctxGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
 
 funcctx query by ref
 
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReferenceQueryApi.ApiV1FuncctxWithReferenceCountGet(context.Background()).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+    resp, r, err := apiClient.ReferenceQueryApi.ApiV1ReferenceCountFuncctxGet(context.Background()).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceQueryApi.ApiV1FuncctxWithReferenceCountGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceQueryApi.ApiV1ReferenceCountFuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncctxWithReferenceCountGet`: []Sibyl2FunctionContextSlim
-    fmt.Fprintf(os.Stdout, "Response from `ReferenceQueryApi.ApiV1FuncctxWithReferenceCountGet`: %v\n", resp)
+    // response from `ApiV1ReferenceCountFuncctxGet`: []Sibyl2FunctionContextSlim
+    fmt.Fprintf(os.Stdout, "Response from `ReferenceQueryApi.ApiV1ReferenceCountFuncctxGet`: %v\n", resp)
 }
 ```
 
@@ -51,7 +51,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiV1FuncctxWithReferenceCountGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiV1ReferenceCountFuncctxGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -79,9 +79,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## ApiV1FuncctxWithReferencedCountGet
+## ApiV1ReferenceCountFuncctxReverseGet
 
-> []Sibyl2FunctionContextSlim ApiV1FuncctxWithReferencedCountGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+> []Sibyl2FunctionContextSlim ApiV1ReferenceCountFuncctxReverseGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
 
 funcctx query by referenced
 
@@ -105,13 +105,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ReferenceQueryApi.ApiV1FuncctxWithReferencedCountGet(context.Background()).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+    resp, r, err := apiClient.ReferenceQueryApi.ApiV1ReferenceCountFuncctxReverseGet(context.Background()).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceQueryApi.ApiV1FuncctxWithReferencedCountGet``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferenceQueryApi.ApiV1ReferenceCountFuncctxReverseGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncctxWithReferencedCountGet`: []Sibyl2FunctionContextSlim
-    fmt.Fprintf(os.Stdout, "Response from `ReferenceQueryApi.ApiV1FuncctxWithReferencedCountGet`: %v\n", resp)
+    // response from `ApiV1ReferenceCountFuncctxReverseGet`: []Sibyl2FunctionContextSlim
+    fmt.Fprintf(os.Stdout, "Response from `ReferenceQueryApi.ApiV1ReferenceCountFuncctxReverseGet`: %v\n", resp)
 }
 ```
 
@@ -121,7 +121,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiApiV1FuncctxWithReferencedCountGetRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiApiV1ReferenceCountFuncctxReverseGetRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -326,7 +326,7 @@ func (r ApiApiV1FuncctxGetRequest) Lines(lines string) ApiApiV1FuncctxGetRequest
 	return r
 }
 
-func (r ApiApiV1FuncctxGetRequest) Execute() ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+func (r ApiApiV1FuncctxGetRequest) Execute() ([]ObjectFunctionContextSlimWithSignature, *http.Response, error) {
 	return r.ApiService.ApiV1FuncctxGetExecute(r)
 }
 
@@ -345,13 +345,13 @@ func (a *BasicQueryApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1Func
 
 // Execute executes the request
 //
-//	@return []Sibyl2FunctionContextSlim
-func (a *BasicQueryApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+//	@return []ObjectFunctionContextSlimWithSignature
+func (a *BasicQueryApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]ObjectFunctionContextSlimWithSignature, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Sibyl2FunctionContextSlim
+		localVarReturnValue []ObjectFunctionContextSlimWithSignature
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BasicQueryApiService.ApiV1FuncctxGet")

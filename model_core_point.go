@@ -51,7 +51,7 @@ func (o *CorePoint) GetColumn() int32 {
 // and a boolean to check if the value has been set.
 func (o *CorePoint) GetColumnOk() (*int32, bool) {
 	if o == nil || isNil(o.Column) {
-    return nil, false
+		return nil, false
 	}
 	return o.Column, true
 }
@@ -83,7 +83,7 @@ func (o *CorePoint) GetRow() int32 {
 // and a boolean to check if the value has been set.
 func (o *CorePoint) GetRowOk() (*int32, bool) {
 	if o == nil || isNil(o.Row) {
-    return nil, false
+		return nil, false
 	}
 	return o.Row, true
 }
@@ -148,5 +148,3 @@ func (v *NullableCorePoint) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

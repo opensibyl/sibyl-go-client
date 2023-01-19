@@ -16,7 +16,7 @@ import (
 
 // CoreSpan struct for CoreSpan
 type CoreSpan struct {
-	End *CorePoint `json:"end,omitempty"`
+	End   *CorePoint `json:"end,omitempty"`
 	Start *CorePoint `json:"start,omitempty"`
 }
 
@@ -50,7 +50,7 @@ func (o *CoreSpan) GetEnd() CorePoint {
 // and a boolean to check if the value has been set.
 func (o *CoreSpan) GetEndOk() (*CorePoint, bool) {
 	if o == nil || isNil(o.End) {
-    return nil, false
+		return nil, false
 	}
 	return o.End, true
 }
@@ -82,7 +82,7 @@ func (o *CoreSpan) GetStart() CorePoint {
 // and a boolean to check if the value has been set.
 func (o *CoreSpan) GetStartOk() (*CorePoint, bool) {
 	if o == nil || isNil(o.Start) {
-    return nil, false
+		return nil, false
 	}
 	return o.Start, true
 }
@@ -147,5 +147,3 @@ func (v *NullableCoreSpan) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

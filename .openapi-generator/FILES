@@ -13,6 +13,7 @@ configuration.go
 docs/BasicQueryApi.md
 docs/CorePoint.md
 docs/CoreSpan.md
+docs/ObjectFunctionContextSlimWithSignature.md
 docs/ObjectFunctionWithSignature.md
 docs/ObjectRevInfo.md
 docs/ObjectValueUnit.md
@@ -20,6 +21,8 @@ docs/OpsApi.md
 docs/ReferenceQueryApi.md
 docs/RegexQueryApi.md
 docs/ScopeApi.md
+docs/ServiceContextTree.md
+docs/ServiceFunctionContextReverseChain.md
 docs/ServiceRevStat.md
 docs/Sibyl2ClazzWithPath.md
 docs/Sibyl2FunctionContext.md
@@ -30,14 +33,16 @@ docs/StatQueryApi.md
 git_push.sh
 model_core_point.go
 model_core_span.go
+model_object_function_context_slim_with_signature.go
 model_object_function_with_signature.go
 model_object_rev_info.go
 model_object_value_unit.go
+model_service_context_tree.go
+model_service_function_context_reverse_chain.go
 model_service_rev_stat.go
 model_sibyl2_clazz_with_path.go
 model_sibyl2_function_context.go
 model_sibyl2_function_context_slim.go
 model_sibyl2_function_with_path.go
 response.go
-test/api_scope_test.go
 utils.go

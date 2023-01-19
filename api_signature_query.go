@@ -21,44 +21,44 @@ import (
 // SignatureQueryApiService SignatureQueryApi service
 type SignatureQueryApiService service
 
-type ApiApiV1FuncSignatureGetRequest struct {
+type ApiApiV1SignatureFuncGetRequest struct {
 	ctx        context.Context
 	ApiService *SignatureQueryApiService
 	repo       *string
 	rev        *string
-	regex      *string
+	signature  *string
 }
 
 // repo
-func (r ApiApiV1FuncSignatureGetRequest) Repo(repo string) ApiApiV1FuncSignatureGetRequest {
+func (r ApiApiV1SignatureFuncGetRequest) Repo(repo string) ApiApiV1SignatureFuncGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncSignatureGetRequest) Rev(rev string) ApiApiV1FuncSignatureGetRequest {
+func (r ApiApiV1SignatureFuncGetRequest) Rev(rev string) ApiApiV1SignatureFuncGetRequest {
 	r.rev = &rev
 	return r
 }
 
-// regex
-func (r ApiApiV1FuncSignatureGetRequest) Regex(regex string) ApiApiV1FuncSignatureGetRequest {
-	r.regex = &regex
+// signature
+func (r ApiApiV1SignatureFuncGetRequest) Signature(signature string) ApiApiV1SignatureFuncGetRequest {
+	r.signature = &signature
 	return r
 }
 
-func (r ApiApiV1FuncSignatureGetRequest) Execute() ([]string, *http.Response, error) {
-	return r.ApiService.ApiV1FuncSignatureGetExecute(r)
+func (r ApiApiV1SignatureFuncGetRequest) Execute() (*Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1SignatureFuncGetExecute(r)
 }
 
 /*
-ApiV1FuncSignatureGet func query
+ApiV1SignatureFuncGet func query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncSignatureGetRequest
+	@return ApiApiV1SignatureFuncGetRequest
 */
-func (a *SignatureQueryApiService) ApiV1FuncSignatureGet(ctx context.Context) ApiApiV1FuncSignatureGetRequest {
-	return ApiApiV1FuncSignatureGetRequest{
+func (a *SignatureQueryApiService) ApiV1SignatureFuncGet(ctx context.Context) ApiApiV1SignatureFuncGetRequest {
+	return ApiApiV1SignatureFuncGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -66,21 +66,21 @@ func (a *SignatureQueryApiService) ApiV1FuncSignatureGet(ctx context.Context) Ap
 
 // Execute executes the request
 //
-//	@return []string
-func (a *SignatureQueryApiService) ApiV1FuncSignatureGetExecute(r ApiApiV1FuncSignatureGetRequest) ([]string, *http.Response, error) {
+//	@return Sibyl2FunctionWithPath
+func (a *SignatureQueryApiService) ApiV1SignatureFuncGetExecute(r ApiApiV1SignatureFuncGetRequest) (*Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []string
+		localVarReturnValue *Sibyl2FunctionWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1FuncSignatureGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureFuncGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/func/signature"
+	localVarPath := localBasePath + "/api/v1/signature/func"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -91,13 +91,13 @@ func (a *SignatureQueryApiService) ApiV1FuncSignatureGetExecute(r ApiApiV1FuncSi
 	if r.rev == nil {
 		return localVarReturnValue, nil, reportError("rev is required and must be specified")
 	}
-	if r.regex == nil {
-		return localVarReturnValue, nil, reportError("regex is required and must be specified")
+	if r.signature == nil {
+		return localVarReturnValue, nil, reportError("signature is required and must be specified")
 	}
 
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
-	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
+	localVarQueryParams.Add("signature", parameterToString(*r.signature, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -152,7 +152,7 @@ func (a *SignatureQueryApiService) ApiV1FuncSignatureGetExecute(r ApiApiV1FuncSi
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncWithSignatureGetRequest struct {
+type ApiApiV1SignatureFuncctxGetRequest struct {
 	ctx        context.Context
 	ApiService *SignatureQueryApiService
 	repo       *string
@@ -161,35 +161,35 @@ type ApiApiV1FuncWithSignatureGetRequest struct {
 }
 
 // repo
-func (r ApiApiV1FuncWithSignatureGetRequest) Repo(repo string) ApiApiV1FuncWithSignatureGetRequest {
+func (r ApiApiV1SignatureFuncctxGetRequest) Repo(repo string) ApiApiV1SignatureFuncctxGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncWithSignatureGetRequest) Rev(rev string) ApiApiV1FuncWithSignatureGetRequest {
+func (r ApiApiV1SignatureFuncctxGetRequest) Rev(rev string) ApiApiV1SignatureFuncctxGetRequest {
 	r.rev = &rev
 	return r
 }
 
 // signature
-func (r ApiApiV1FuncWithSignatureGetRequest) Signature(signature string) ApiApiV1FuncWithSignatureGetRequest {
+func (r ApiApiV1SignatureFuncctxGetRequest) Signature(signature string) ApiApiV1SignatureFuncctxGetRequest {
 	r.signature = &signature
 	return r
 }
 
-func (r ApiApiV1FuncWithSignatureGetRequest) Execute() (*Sibyl2FunctionWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1FuncWithSignatureGetExecute(r)
+func (r ApiApiV1SignatureFuncctxGetRequest) Execute() (*Sibyl2FunctionContextSlim, *http.Response, error) {
+	return r.ApiService.ApiV1SignatureFuncctxGetExecute(r)
 }
 
 /*
-ApiV1FuncWithSignatureGet func query
+ApiV1SignatureFuncctxGet funcctx query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncWithSignatureGetRequest
+	@return ApiApiV1SignatureFuncctxGetRequest
 */
-func (a *SignatureQueryApiService) ApiV1FuncWithSignatureGet(ctx context.Context) ApiApiV1FuncWithSignatureGetRequest {
-	return ApiApiV1FuncWithSignatureGetRequest{
+func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGet(ctx context.Context) ApiApiV1SignatureFuncctxGetRequest {
+	return ApiApiV1SignatureFuncctxGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -197,21 +197,21 @@ func (a *SignatureQueryApiService) ApiV1FuncWithSignatureGet(ctx context.Context
 
 // Execute executes the request
 //
-//	@return Sibyl2FunctionWithPath
-func (a *SignatureQueryApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1FuncWithSignatureGetRequest) (*Sibyl2FunctionWithPath, *http.Response, error) {
+//	@return Sibyl2FunctionContextSlim
+func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGetExecute(r ApiApiV1SignatureFuncctxGetRequest) (*Sibyl2FunctionContextSlim, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Sibyl2FunctionWithPath
+		localVarReturnValue *Sibyl2FunctionContextSlim
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1FuncWithSignatureGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureFuncctxGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/func/with/signature"
+	localVarPath := localBasePath + "/api/v1/signature/funcctx"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -229,6 +229,279 @@ func (a *SignatureQueryApiService) ApiV1FuncWithSignatureGetExecute(r ApiApiV1Fu
 	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
 	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
 	localVarQueryParams.Add("signature", parameterToString(*r.signature, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1SignatureFuncctxRchainGetRequest struct {
+	ctx        context.Context
+	ApiService *SignatureQueryApiService
+	repo       *string
+	rev        *string
+	signature  *string
+	depth      *string
+}
+
+// repo
+func (r ApiApiV1SignatureFuncctxRchainGetRequest) Repo(repo string) ApiApiV1SignatureFuncctxRchainGetRequest {
+	r.repo = &repo
+	return r
+}
+
+// rev
+func (r ApiApiV1SignatureFuncctxRchainGetRequest) Rev(rev string) ApiApiV1SignatureFuncctxRchainGetRequest {
+	r.rev = &rev
+	return r
+}
+
+// signature
+func (r ApiApiV1SignatureFuncctxRchainGetRequest) Signature(signature string) ApiApiV1SignatureFuncctxRchainGetRequest {
+	r.signature = &signature
+	return r
+}
+
+// depth
+func (r ApiApiV1SignatureFuncctxRchainGetRequest) Depth(depth string) ApiApiV1SignatureFuncctxRchainGetRequest {
+	r.depth = &depth
+	return r
+}
+
+func (r ApiApiV1SignatureFuncctxRchainGetRequest) Execute() (*ServiceFunctionContextReverseChain, *http.Response, error) {
+	return r.ApiService.ApiV1SignatureFuncctxRchainGetExecute(r)
+}
+
+/*
+ApiV1SignatureFuncctxRchainGet funcctx reverse chain query
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1SignatureFuncctxRchainGetRequest
+*/
+func (a *SignatureQueryApiService) ApiV1SignatureFuncctxRchainGet(ctx context.Context) ApiApiV1SignatureFuncctxRchainGetRequest {
+	return ApiApiV1SignatureFuncctxRchainGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ServiceFunctionContextReverseChain
+func (a *SignatureQueryApiService) ApiV1SignatureFuncctxRchainGetExecute(r ApiApiV1SignatureFuncctxRchainGetRequest) (*ServiceFunctionContextReverseChain, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ServiceFunctionContextReverseChain
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureFuncctxRchainGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/signature/funcctx/rchain"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.repo == nil {
+		return localVarReturnValue, nil, reportError("repo is required and must be specified")
+	}
+	if r.rev == nil {
+		return localVarReturnValue, nil, reportError("rev is required and must be specified")
+	}
+	if r.signature == nil {
+		return localVarReturnValue, nil, reportError("signature is required and must be specified")
+	}
+	if r.depth == nil {
+		return localVarReturnValue, nil, reportError("depth is required and must be specified")
+	}
+
+	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
+	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
+	localVarQueryParams.Add("signature", parameterToString(*r.signature, ""))
+	localVarQueryParams.Add("depth", parameterToString(*r.depth, ""))
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = ioutil.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiApiV1SignatureRegexFuncGetRequest struct {
+	ctx        context.Context
+	ApiService *SignatureQueryApiService
+	repo       *string
+	rev        *string
+	regex      *string
+}
+
+// repo
+func (r ApiApiV1SignatureRegexFuncGetRequest) Repo(repo string) ApiApiV1SignatureRegexFuncGetRequest {
+	r.repo = &repo
+	return r
+}
+
+// rev
+func (r ApiApiV1SignatureRegexFuncGetRequest) Rev(rev string) ApiApiV1SignatureRegexFuncGetRequest {
+	r.rev = &rev
+	return r
+}
+
+// regex
+func (r ApiApiV1SignatureRegexFuncGetRequest) Regex(regex string) ApiApiV1SignatureRegexFuncGetRequest {
+	r.regex = &regex
+	return r
+}
+
+func (r ApiApiV1SignatureRegexFuncGetRequest) Execute() ([]string, *http.Response, error) {
+	return r.ApiService.ApiV1SignatureRegexFuncGetExecute(r)
+}
+
+/*
+ApiV1SignatureRegexFuncGet func query
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiApiV1SignatureRegexFuncGetRequest
+*/
+func (a *SignatureQueryApiService) ApiV1SignatureRegexFuncGet(ctx context.Context) ApiApiV1SignatureRegexFuncGetRequest {
+	return ApiApiV1SignatureRegexFuncGetRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return []string
+func (a *SignatureQueryApiService) ApiV1SignatureRegexFuncGetExecute(r ApiApiV1SignatureRegexFuncGetRequest) ([]string, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue []string
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureRegexFuncGet")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/signature/regex/func"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.repo == nil {
+		return localVarReturnValue, nil, reportError("repo is required and must be specified")
+	}
+	if r.rev == nil {
+		return localVarReturnValue, nil, reportError("rev is required and must be specified")
+	}
+	if r.regex == nil {
+		return localVarReturnValue, nil, reportError("regex is required and must be specified")
+	}
+
+	localVarQueryParams.Add("repo", parameterToString(*r.repo, ""))
+	localVarQueryParams.Add("rev", parameterToString(*r.rev, ""))
+	localVarQueryParams.Add("regex", parameterToString(*r.regex, ""))
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

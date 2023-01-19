@@ -21,7 +21,7 @@ import (
 // RegexQueryApiService RegexQueryApi service
 type RegexQueryApiService service
 
-type ApiApiV1ClazzWithRegexGetRequest struct {
+type ApiApiV1RegexClazzGetRequest struct {
 	ctx        context.Context
 	ApiService *RegexQueryApiService
 	repo       *string
@@ -31,41 +31,41 @@ type ApiApiV1ClazzWithRegexGetRequest struct {
 }
 
 // repo
-func (r ApiApiV1ClazzWithRegexGetRequest) Repo(repo string) ApiApiV1ClazzWithRegexGetRequest {
+func (r ApiApiV1RegexClazzGetRequest) Repo(repo string) ApiApiV1RegexClazzGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1ClazzWithRegexGetRequest) Rev(rev string) ApiApiV1ClazzWithRegexGetRequest {
+func (r ApiApiV1RegexClazzGetRequest) Rev(rev string) ApiApiV1RegexClazzGetRequest {
 	r.rev = &rev
 	return r
 }
 
 // field
-func (r ApiApiV1ClazzWithRegexGetRequest) Field(field string) ApiApiV1ClazzWithRegexGetRequest {
+func (r ApiApiV1RegexClazzGetRequest) Field(field string) ApiApiV1RegexClazzGetRequest {
 	r.field = &field
 	return r
 }
 
 // regex
-func (r ApiApiV1ClazzWithRegexGetRequest) Regex(regex string) ApiApiV1ClazzWithRegexGetRequest {
+func (r ApiApiV1RegexClazzGetRequest) Regex(regex string) ApiApiV1RegexClazzGetRequest {
 	r.regex = &regex
 	return r
 }
 
-func (r ApiApiV1ClazzWithRegexGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1ClazzWithRegexGetExecute(r)
+func (r ApiApiV1RegexClazzGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1RegexClazzGetExecute(r)
 }
 
 /*
-ApiV1ClazzWithRegexGet clazz query
+ApiV1RegexClazzGet clazz query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1ClazzWithRegexGetRequest
+	@return ApiApiV1RegexClazzGetRequest
 */
-func (a *RegexQueryApiService) ApiV1ClazzWithRegexGet(ctx context.Context) ApiApiV1ClazzWithRegexGetRequest {
-	return ApiApiV1ClazzWithRegexGetRequest{
+func (a *RegexQueryApiService) ApiV1RegexClazzGet(ctx context.Context) ApiApiV1RegexClazzGetRequest {
+	return ApiApiV1RegexClazzGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -74,7 +74,7 @@ func (a *RegexQueryApiService) ApiV1ClazzWithRegexGet(ctx context.Context) ApiAp
 // Execute executes the request
 //
 //	@return []Sibyl2ClazzWithPath
-func (a *RegexQueryApiService) ApiV1ClazzWithRegexGetExecute(r ApiApiV1ClazzWithRegexGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
+func (a *RegexQueryApiService) ApiV1RegexClazzGetExecute(r ApiApiV1RegexClazzGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -82,12 +82,12 @@ func (a *RegexQueryApiService) ApiV1ClazzWithRegexGetExecute(r ApiApiV1ClazzWith
 		localVarReturnValue []Sibyl2ClazzWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1ClazzWithRegexGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1RegexClazzGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/clazz/with/regex"
+	localVarPath := localBasePath + "/api/v1/regex/clazz"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -163,7 +163,7 @@ func (a *RegexQueryApiService) ApiV1ClazzWithRegexGetExecute(r ApiApiV1ClazzWith
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncWithRegexGetRequest struct {
+type ApiApiV1RegexFuncGetRequest struct {
 	ctx        context.Context
 	ApiService *RegexQueryApiService
 	repo       *string
@@ -173,41 +173,41 @@ type ApiApiV1FuncWithRegexGetRequest struct {
 }
 
 // repo
-func (r ApiApiV1FuncWithRegexGetRequest) Repo(repo string) ApiApiV1FuncWithRegexGetRequest {
+func (r ApiApiV1RegexFuncGetRequest) Repo(repo string) ApiApiV1RegexFuncGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncWithRegexGetRequest) Rev(rev string) ApiApiV1FuncWithRegexGetRequest {
+func (r ApiApiV1RegexFuncGetRequest) Rev(rev string) ApiApiV1RegexFuncGetRequest {
 	r.rev = &rev
 	return r
 }
 
 // field
-func (r ApiApiV1FuncWithRegexGetRequest) Field(field string) ApiApiV1FuncWithRegexGetRequest {
+func (r ApiApiV1RegexFuncGetRequest) Field(field string) ApiApiV1RegexFuncGetRequest {
 	r.field = &field
 	return r
 }
 
 // regex
-func (r ApiApiV1FuncWithRegexGetRequest) Regex(regex string) ApiApiV1FuncWithRegexGetRequest {
+func (r ApiApiV1RegexFuncGetRequest) Regex(regex string) ApiApiV1RegexFuncGetRequest {
 	r.regex = &regex
 	return r
 }
 
-func (r ApiApiV1FuncWithRegexGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
-	return r.ApiService.ApiV1FuncWithRegexGetExecute(r)
+func (r ApiApiV1RegexFuncGetRequest) Execute() ([]Sibyl2FunctionWithPath, *http.Response, error) {
+	return r.ApiService.ApiV1RegexFuncGetExecute(r)
 }
 
 /*
-ApiV1FuncWithRegexGet func query
+ApiV1RegexFuncGet func query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncWithRegexGetRequest
+	@return ApiApiV1RegexFuncGetRequest
 */
-func (a *RegexQueryApiService) ApiV1FuncWithRegexGet(ctx context.Context) ApiApiV1FuncWithRegexGetRequest {
-	return ApiApiV1FuncWithRegexGetRequest{
+func (a *RegexQueryApiService) ApiV1RegexFuncGet(ctx context.Context) ApiApiV1RegexFuncGetRequest {
+	return ApiApiV1RegexFuncGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -216,7 +216,7 @@ func (a *RegexQueryApiService) ApiV1FuncWithRegexGet(ctx context.Context) ApiApi
 // Execute executes the request
 //
 //	@return []Sibyl2FunctionWithPath
-func (a *RegexQueryApiService) ApiV1FuncWithRegexGetExecute(r ApiApiV1FuncWithRegexGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
+func (a *RegexQueryApiService) ApiV1RegexFuncGetExecute(r ApiApiV1RegexFuncGetRequest) ([]Sibyl2FunctionWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -224,12 +224,12 @@ func (a *RegexQueryApiService) ApiV1FuncWithRegexGetExecute(r ApiApiV1FuncWithRe
 		localVarReturnValue []Sibyl2FunctionWithPath
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1FuncWithRegexGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1RegexFuncGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/func/with/regex"
+	localVarPath := localBasePath + "/api/v1/regex/func"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -305,7 +305,7 @@ func (a *RegexQueryApiService) ApiV1FuncWithRegexGetExecute(r ApiApiV1FuncWithRe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncctxWithRegexGetRequest struct {
+type ApiApiV1RegexFuncctxGetRequest struct {
 	ctx        context.Context
 	ApiService *RegexQueryApiService
 	repo       *string
@@ -315,41 +315,41 @@ type ApiApiV1FuncctxWithRegexGetRequest struct {
 }
 
 // repo
-func (r ApiApiV1FuncctxWithRegexGetRequest) Repo(repo string) ApiApiV1FuncctxWithRegexGetRequest {
+func (r ApiApiV1RegexFuncctxGetRequest) Repo(repo string) ApiApiV1RegexFuncctxGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncctxWithRegexGetRequest) Rev(rev string) ApiApiV1FuncctxWithRegexGetRequest {
+func (r ApiApiV1RegexFuncctxGetRequest) Rev(rev string) ApiApiV1RegexFuncctxGetRequest {
 	r.rev = &rev
 	return r
 }
 
 // field
-func (r ApiApiV1FuncctxWithRegexGetRequest) Field(field string) ApiApiV1FuncctxWithRegexGetRequest {
+func (r ApiApiV1RegexFuncctxGetRequest) Field(field string) ApiApiV1RegexFuncctxGetRequest {
 	r.field = &field
 	return r
 }
 
 // regex
-func (r ApiApiV1FuncctxWithRegexGetRequest) Regex(regex string) ApiApiV1FuncctxWithRegexGetRequest {
+func (r ApiApiV1RegexFuncctxGetRequest) Regex(regex string) ApiApiV1RegexFuncctxGetRequest {
 	r.regex = &regex
 	return r
 }
 
-func (r ApiApiV1FuncctxWithRegexGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
-	return r.ApiService.ApiV1FuncctxWithRegexGetExecute(r)
+func (r ApiApiV1RegexFuncctxGetRequest) Execute() ([]Sibyl2FunctionContext, *http.Response, error) {
+	return r.ApiService.ApiV1RegexFuncctxGetExecute(r)
 }
 
 /*
-ApiV1FuncctxWithRegexGet func ctx query
+ApiV1RegexFuncctxGet func ctx query
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncctxWithRegexGetRequest
+	@return ApiApiV1RegexFuncctxGetRequest
 */
-func (a *RegexQueryApiService) ApiV1FuncctxWithRegexGet(ctx context.Context) ApiApiV1FuncctxWithRegexGetRequest {
-	return ApiApiV1FuncctxWithRegexGetRequest{
+func (a *RegexQueryApiService) ApiV1RegexFuncctxGet(ctx context.Context) ApiApiV1RegexFuncctxGetRequest {
+	return ApiApiV1RegexFuncctxGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -358,7 +358,7 @@ func (a *RegexQueryApiService) ApiV1FuncctxWithRegexGet(ctx context.Context) Api
 // Execute executes the request
 //
 //	@return []Sibyl2FunctionContext
-func (a *RegexQueryApiService) ApiV1FuncctxWithRegexGetExecute(r ApiApiV1FuncctxWithRegexGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
+func (a *RegexQueryApiService) ApiV1RegexFuncctxGetExecute(r ApiApiV1RegexFuncctxGetRequest) ([]Sibyl2FunctionContext, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -366,12 +366,12 @@ func (a *RegexQueryApiService) ApiV1FuncctxWithRegexGetExecute(r ApiApiV1Funcctx
 		localVarReturnValue []Sibyl2FunctionContext
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1FuncctxWithRegexGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1RegexFuncctxGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/funcctx/with/regex"
+	localVarPath := localBasePath + "/api/v1/regex/funcctx"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

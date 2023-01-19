@@ -19,11 +19,11 @@ type Sibyl2ClazzWithPath struct {
 	// which contains language-specific contents
 	Extras map[string]interface{} `json:"extras,omitempty"`
 	// language
-	Lang *string `json:"lang,omitempty"`
-	Module *string `json:"module,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Path *string `json:"path,omitempty"`
-	Span *CoreSpan `json:"span,omitempty"`
+	Lang   *string   `json:"lang,omitempty"`
+	Module *string   `json:"module,omitempty"`
+	Name   *string   `json:"name,omitempty"`
+	Path   *string   `json:"path,omitempty"`
+	Span   *CoreSpan `json:"span,omitempty"`
 }
 
 // NewSibyl2ClazzWithPath instantiates a new Sibyl2ClazzWithPath object
@@ -56,7 +56,7 @@ func (o *Sibyl2ClazzWithPath) GetExtras() map[string]interface{} {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
-    return map[string]interface{}{}, false
+		return map[string]interface{}{}, false
 	}
 	return o.Extras, true
 }
@@ -88,7 +88,7 @@ func (o *Sibyl2ClazzWithPath) GetLang() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetLangOk() (*string, bool) {
 	if o == nil || isNil(o.Lang) {
-    return nil, false
+		return nil, false
 	}
 	return o.Lang, true
 }
@@ -120,7 +120,7 @@ func (o *Sibyl2ClazzWithPath) GetModule() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetModuleOk() (*string, bool) {
 	if o == nil || isNil(o.Module) {
-    return nil, false
+		return nil, false
 	}
 	return o.Module, true
 }
@@ -152,7 +152,7 @@ func (o *Sibyl2ClazzWithPath) GetName() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
-    return nil, false
+		return nil, false
 	}
 	return o.Name, true
 }
@@ -184,7 +184,7 @@ func (o *Sibyl2ClazzWithPath) GetPath() string {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetPathOk() (*string, bool) {
 	if o == nil || isNil(o.Path) {
-    return nil, false
+		return nil, false
 	}
 	return o.Path, true
 }
@@ -216,7 +216,7 @@ func (o *Sibyl2ClazzWithPath) GetSpan() CoreSpan {
 // and a boolean to check if the value has been set.
 func (o *Sibyl2ClazzWithPath) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
-    return nil, false
+		return nil, false
 	}
 	return o.Span, true
 }
@@ -293,5 +293,3 @@ func (v *NullableSibyl2ClazzWithPath) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
-

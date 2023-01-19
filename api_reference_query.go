@@ -21,7 +21,7 @@ import (
 // ReferenceQueryApiService ReferenceQueryApi service
 type ReferenceQueryApiService service
 
-type ApiApiV1FuncctxWithReferenceCountGetRequest struct {
+type ApiApiV1ReferenceCountFuncctxGetRequest struct {
 	ctx        context.Context
 	ApiService *ReferenceQueryApiService
 	repo       *string
@@ -31,41 +31,41 @@ type ApiApiV1FuncctxWithReferenceCountGetRequest struct {
 }
 
 // repo
-func (r ApiApiV1FuncctxWithReferenceCountGetRequest) Repo(repo string) ApiApiV1FuncctxWithReferenceCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxGetRequest) Repo(repo string) ApiApiV1ReferenceCountFuncctxGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncctxWithReferenceCountGetRequest) Rev(rev string) ApiApiV1FuncctxWithReferenceCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxGetRequest) Rev(rev string) ApiApiV1ReferenceCountFuncctxGetRequest {
 	r.rev = &rev
 	return r
 }
 
 // moreThan
-func (r ApiApiV1FuncctxWithReferenceCountGetRequest) MoreThan(moreThan int32) ApiApiV1FuncctxWithReferenceCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxGetRequest) MoreThan(moreThan int32) ApiApiV1ReferenceCountFuncctxGetRequest {
 	r.moreThan = &moreThan
 	return r
 }
 
 // lessThan
-func (r ApiApiV1FuncctxWithReferenceCountGetRequest) LessThan(lessThan int32) ApiApiV1FuncctxWithReferenceCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxGetRequest) LessThan(lessThan int32) ApiApiV1ReferenceCountFuncctxGetRequest {
 	r.lessThan = &lessThan
 	return r
 }
 
-func (r ApiApiV1FuncctxWithReferenceCountGetRequest) Execute() ([]Sibyl2FunctionContextSlim, *http.Response, error) {
-	return r.ApiService.ApiV1FuncctxWithReferenceCountGetExecute(r)
+func (r ApiApiV1ReferenceCountFuncctxGetRequest) Execute() ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+	return r.ApiService.ApiV1ReferenceCountFuncctxGetExecute(r)
 }
 
 /*
-ApiV1FuncctxWithReferenceCountGet funcctx query by ref
+ApiV1ReferenceCountFuncctxGet funcctx query by ref
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncctxWithReferenceCountGetRequest
+	@return ApiApiV1ReferenceCountFuncctxGetRequest
 */
-func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferenceCountGet(ctx context.Context) ApiApiV1FuncctxWithReferenceCountGetRequest {
-	return ApiApiV1FuncctxWithReferenceCountGetRequest{
+func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxGet(ctx context.Context) ApiApiV1ReferenceCountFuncctxGetRequest {
+	return ApiApiV1ReferenceCountFuncctxGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -74,7 +74,7 @@ func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferenceCountGet(ctx context
 // Execute executes the request
 //
 //	@return []Sibyl2FunctionContextSlim
-func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferenceCountGetExecute(r ApiApiV1FuncctxWithReferenceCountGetRequest) ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxGetExecute(r ApiApiV1ReferenceCountFuncctxGetRequest) ([]Sibyl2FunctionContextSlim, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -82,12 +82,12 @@ func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferenceCountGetExecute(r Ap
 		localVarReturnValue []Sibyl2FunctionContextSlim
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferenceQueryApiService.ApiV1FuncctxWithReferenceCountGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferenceQueryApiService.ApiV1ReferenceCountFuncctxGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/funcctx/with/reference/count"
+	localVarPath := localBasePath + "/api/v1/reference/count/funcctx"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -163,7 +163,7 @@ func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferenceCountGetExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiApiV1FuncctxWithReferencedCountGetRequest struct {
+type ApiApiV1ReferenceCountFuncctxReverseGetRequest struct {
 	ctx        context.Context
 	ApiService *ReferenceQueryApiService
 	repo       *string
@@ -173,41 +173,41 @@ type ApiApiV1FuncctxWithReferencedCountGetRequest struct {
 }
 
 // repo
-func (r ApiApiV1FuncctxWithReferencedCountGetRequest) Repo(repo string) ApiApiV1FuncctxWithReferencedCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) Repo(repo string) ApiApiV1ReferenceCountFuncctxReverseGetRequest {
 	r.repo = &repo
 	return r
 }
 
 // rev
-func (r ApiApiV1FuncctxWithReferencedCountGetRequest) Rev(rev string) ApiApiV1FuncctxWithReferencedCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) Rev(rev string) ApiApiV1ReferenceCountFuncctxReverseGetRequest {
 	r.rev = &rev
 	return r
 }
 
 // moreThan
-func (r ApiApiV1FuncctxWithReferencedCountGetRequest) MoreThan(moreThan int32) ApiApiV1FuncctxWithReferencedCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) MoreThan(moreThan int32) ApiApiV1ReferenceCountFuncctxReverseGetRequest {
 	r.moreThan = &moreThan
 	return r
 }
 
 // lessThan
-func (r ApiApiV1FuncctxWithReferencedCountGetRequest) LessThan(lessThan int32) ApiApiV1FuncctxWithReferencedCountGetRequest {
+func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) LessThan(lessThan int32) ApiApiV1ReferenceCountFuncctxReverseGetRequest {
 	r.lessThan = &lessThan
 	return r
 }
 
-func (r ApiApiV1FuncctxWithReferencedCountGetRequest) Execute() ([]Sibyl2FunctionContextSlim, *http.Response, error) {
-	return r.ApiService.ApiV1FuncctxWithReferencedCountGetExecute(r)
+func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) Execute() ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+	return r.ApiService.ApiV1ReferenceCountFuncctxReverseGetExecute(r)
 }
 
 /*
-ApiV1FuncctxWithReferencedCountGet funcctx query by referenced
+ApiV1ReferenceCountFuncctxReverseGet funcctx query by referenced
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiApiV1FuncctxWithReferencedCountGetRequest
+	@return ApiApiV1ReferenceCountFuncctxReverseGetRequest
 */
-func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferencedCountGet(ctx context.Context) ApiApiV1FuncctxWithReferencedCountGetRequest {
-	return ApiApiV1FuncctxWithReferencedCountGetRequest{
+func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxReverseGet(ctx context.Context) ApiApiV1ReferenceCountFuncctxReverseGetRequest {
+	return ApiApiV1ReferenceCountFuncctxReverseGetRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -216,7 +216,7 @@ func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferencedCountGet(ctx contex
 // Execute executes the request
 //
 //	@return []Sibyl2FunctionContextSlim
-func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferencedCountGetExecute(r ApiApiV1FuncctxWithReferencedCountGetRequest) ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxReverseGetExecute(r ApiApiV1ReferenceCountFuncctxReverseGetRequest) ([]Sibyl2FunctionContextSlim, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -224,12 +224,12 @@ func (a *ReferenceQueryApiService) ApiV1FuncctxWithReferencedCountGetExecute(r A
 		localVarReturnValue []Sibyl2FunctionContextSlim
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferenceQueryApiService.ApiV1FuncctxWithReferencedCountGet")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferenceQueryApiService.ApiV1ReferenceCountFuncctxReverseGet")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/funcctx/with/referenced/count"
+	localVarPath := localBasePath + "/api/v1/reference/count/funcctx/reverse"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
