@@ -25,7 +25,6 @@ docs/ServiceContextTree.md
 docs/ServiceFunctionContextChain.md
 docs/ServiceRevStat.md
 docs/Sibyl2ClazzWithPath.md
-docs/Sibyl2FunctionContext.md
 docs/Sibyl2FunctionContextSlim.md
 docs/Sibyl2FunctionWithPath.md
 docs/SignatureQueryApi.md
@@ -41,7 +40,6 @@ model_service_context_tree.go
 model_service_function_context_chain.go
 model_service_rev_stat.go
 model_sibyl2_clazz_with_path.go
-model_sibyl2_function_context.go
 model_sibyl2_function_context_slim.go
 model_sibyl2_function_with_path.go
 response.go

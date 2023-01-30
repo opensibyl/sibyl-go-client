@@ -152,7 +152,7 @@ No authorization required
 
 ## ApiV1RegexFuncctxGet
 
-> []Sibyl2FunctionContext ApiV1RegexFuncctxGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
+> []Sibyl2FunctionContextSlim ApiV1RegexFuncctxGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 func ctx query
 
@@ -181,7 +181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegexQueryApi.ApiV1RegexFuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1RegexFuncctxGet`: []Sibyl2FunctionContext
+    // response from `ApiV1RegexFuncctxGet`: []Sibyl2FunctionContextSlim
     fmt.Fprintf(os.Stdout, "Response from `RegexQueryApi.ApiV1RegexFuncctxGet`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionContext**](Sibyl2FunctionContext.md)
+[**[]Sibyl2FunctionContextSlim**](Sibyl2FunctionContextSlim.md)
 
 ### Authorization
 
