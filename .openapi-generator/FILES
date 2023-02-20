@@ -39,7 +39,6 @@ docs/Sibyl2ClazzWithPath.md
 docs/Sibyl2FunctionContext.md
 docs/Sibyl2FunctionContextSlim.md
 docs/Sibyl2FunctionWithPath.md
-docs/Sibyl2FunctionWithTag.md
 docs/SignatureQueryApi.md
 docs/StatQueryApi.md
 docs/TagApi.md
@@ -67,6 +66,5 @@ model_sibyl2_clazz_with_path.go
 model_sibyl2_function_context.go
 model_sibyl2_function_context_slim.go
 model_sibyl2_function_with_path.go
-model_sibyl2_function_with_tag.go
 response.go
 utils.go
