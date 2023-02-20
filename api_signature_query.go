@@ -47,7 +47,7 @@ func (r ApiApiV1SignatureFuncGetRequest) Signature(signature string) ApiApiV1Sig
 	return r
 }
 
-func (r ApiApiV1SignatureFuncGetRequest) Execute() (*Sibyl2FunctionWithPath, *http.Response, error) {
+func (r ApiApiV1SignatureFuncGetRequest) Execute() (*Sibyl2FunctionWithTag, *http.Response, error) {
 	return r.ApiService.ApiV1SignatureFuncGetExecute(r)
 }
 
@@ -66,13 +66,13 @@ func (a *SignatureQueryApiService) ApiV1SignatureFuncGet(ctx context.Context) Ap
 
 // Execute executes the request
 //
-//	@return Sibyl2FunctionWithPath
-func (a *SignatureQueryApiService) ApiV1SignatureFuncGetExecute(r ApiApiV1SignatureFuncGetRequest) (*Sibyl2FunctionWithPath, *http.Response, error) {
+//	@return Sibyl2FunctionWithTag
+func (a *SignatureQueryApiService) ApiV1SignatureFuncGetExecute(r ApiApiV1SignatureFuncGetRequest) (*Sibyl2FunctionWithTag, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Sibyl2FunctionWithPath
+		localVarReturnValue *Sibyl2FunctionWithTag
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureFuncGet")

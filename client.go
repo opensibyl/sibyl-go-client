@@ -62,6 +62,10 @@ type APIClient struct {
 	SignatureQueryApi *SignatureQueryApiService
 
 	StatQueryApi *StatQueryApiService
+
+	TagApi *TagApiService
+
+	UploadApi *UploadApiService
 }
 
 type service struct {
@@ -87,6 +91,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ScopeApi = (*ScopeApiService)(&c.common)
 	c.SignatureQueryApi = (*SignatureQueryApiService)(&c.common)
 	c.StatQueryApi = (*StatQueryApiService)(&c.common)
+	c.TagApi = (*TagApiService)(&c.common)
+	c.UploadApi = (*UploadApiService)(&c.common)
 
 	return c
 }

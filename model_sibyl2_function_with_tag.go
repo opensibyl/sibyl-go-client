@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// ObjectFunctionWithSignature struct for ObjectFunctionWithSignature
-type ObjectFunctionWithSignature struct {
+// Sibyl2FunctionWithTag struct for Sibyl2FunctionWithTag
+type Sibyl2FunctionWithTag struct {
 	BodySpan *CoreSpan `json:"bodySpan,omitempty"`
 	// which contains language-specific contents
 	Extras map[string]interface{} `json:"extras,omitempty"`
@@ -26,30 +26,29 @@ type ObjectFunctionWithSignature struct {
 	Path       *string           `json:"path,omitempty"`
 	Receiver   *string           `json:"receiver,omitempty"`
 	Returns    []ObjectValueUnit `json:"returns,omitempty"`
-	Signature  *string           `json:"signature,omitempty"`
 	Span       *CoreSpan         `json:"span,omitempty"`
 	Tags       []string          `json:"tags,omitempty"`
 }
 
-// NewObjectFunctionWithSignature instantiates a new ObjectFunctionWithSignature object
+// NewSibyl2FunctionWithTag instantiates a new Sibyl2FunctionWithTag object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewObjectFunctionWithSignature() *ObjectFunctionWithSignature {
-	this := ObjectFunctionWithSignature{}
+func NewSibyl2FunctionWithTag() *Sibyl2FunctionWithTag {
+	this := Sibyl2FunctionWithTag{}
 	return &this
 }
 
-// NewObjectFunctionWithSignatureWithDefaults instantiates a new ObjectFunctionWithSignature object
+// NewSibyl2FunctionWithTagWithDefaults instantiates a new Sibyl2FunctionWithTag object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewObjectFunctionWithSignatureWithDefaults() *ObjectFunctionWithSignature {
-	this := ObjectFunctionWithSignature{}
+func NewSibyl2FunctionWithTagWithDefaults() *Sibyl2FunctionWithTag {
+	this := Sibyl2FunctionWithTag{}
 	return &this
 }
 
 // GetBodySpan returns the BodySpan field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetBodySpan() CoreSpan {
+func (o *Sibyl2FunctionWithTag) GetBodySpan() CoreSpan {
 	if o == nil || isNil(o.BodySpan) {
 		var ret CoreSpan
 		return ret
@@ -59,7 +58,7 @@ func (o *ObjectFunctionWithSignature) GetBodySpan() CoreSpan {
 
 // GetBodySpanOk returns a tuple with the BodySpan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetBodySpanOk() (*CoreSpan, bool) {
+func (o *Sibyl2FunctionWithTag) GetBodySpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.BodySpan) {
 		return nil, false
 	}
@@ -67,7 +66,7 @@ func (o *ObjectFunctionWithSignature) GetBodySpanOk() (*CoreSpan, bool) {
 }
 
 // HasBodySpan returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasBodySpan() bool {
+func (o *Sibyl2FunctionWithTag) HasBodySpan() bool {
 	if o != nil && !isNil(o.BodySpan) {
 		return true
 	}
@@ -76,12 +75,12 @@ func (o *ObjectFunctionWithSignature) HasBodySpan() bool {
 }
 
 // SetBodySpan gets a reference to the given CoreSpan and assigns it to the BodySpan field.
-func (o *ObjectFunctionWithSignature) SetBodySpan(v CoreSpan) {
+func (o *Sibyl2FunctionWithTag) SetBodySpan(v CoreSpan) {
 	o.BodySpan = &v
 }
 
 // GetExtras returns the Extras field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetExtras() map[string]interface{} {
+func (o *Sibyl2FunctionWithTag) GetExtras() map[string]interface{} {
 	if o == nil || isNil(o.Extras) {
 		var ret map[string]interface{}
 		return ret
@@ -91,7 +90,7 @@ func (o *ObjectFunctionWithSignature) GetExtras() map[string]interface{} {
 
 // GetExtrasOk returns a tuple with the Extras field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetExtrasOk() (map[string]interface{}, bool) {
+func (o *Sibyl2FunctionWithTag) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
 		return map[string]interface{}{}, false
 	}
@@ -99,7 +98,7 @@ func (o *ObjectFunctionWithSignature) GetExtrasOk() (map[string]interface{}, boo
 }
 
 // HasExtras returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasExtras() bool {
+func (o *Sibyl2FunctionWithTag) HasExtras() bool {
 	if o != nil && !isNil(o.Extras) {
 		return true
 	}
@@ -108,12 +107,12 @@ func (o *ObjectFunctionWithSignature) HasExtras() bool {
 }
 
 // SetExtras gets a reference to the given map[string]interface{} and assigns it to the Extras field.
-func (o *ObjectFunctionWithSignature) SetExtras(v map[string]interface{}) {
+func (o *Sibyl2FunctionWithTag) SetExtras(v map[string]interface{}) {
 	o.Extras = v
 }
 
 // GetLang returns the Lang field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetLang() string {
+func (o *Sibyl2FunctionWithTag) GetLang() string {
 	if o == nil || isNil(o.Lang) {
 		var ret string
 		return ret
@@ -123,7 +122,7 @@ func (o *ObjectFunctionWithSignature) GetLang() string {
 
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetLangOk() (*string, bool) {
+func (o *Sibyl2FunctionWithTag) GetLangOk() (*string, bool) {
 	if o == nil || isNil(o.Lang) {
 		return nil, false
 	}
@@ -131,7 +130,7 @@ func (o *ObjectFunctionWithSignature) GetLangOk() (*string, bool) {
 }
 
 // HasLang returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasLang() bool {
+func (o *Sibyl2FunctionWithTag) HasLang() bool {
 	if o != nil && !isNil(o.Lang) {
 		return true
 	}
@@ -140,12 +139,12 @@ func (o *ObjectFunctionWithSignature) HasLang() bool {
 }
 
 // SetLang gets a reference to the given string and assigns it to the Lang field.
-func (o *ObjectFunctionWithSignature) SetLang(v string) {
+func (o *Sibyl2FunctionWithTag) SetLang(v string) {
 	o.Lang = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetName() string {
+func (o *Sibyl2FunctionWithTag) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -155,7 +154,7 @@ func (o *ObjectFunctionWithSignature) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetNameOk() (*string, bool) {
+func (o *Sibyl2FunctionWithTag) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -163,7 +162,7 @@ func (o *ObjectFunctionWithSignature) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasName() bool {
+func (o *Sibyl2FunctionWithTag) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -172,12 +171,12 @@ func (o *ObjectFunctionWithSignature) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ObjectFunctionWithSignature) SetName(v string) {
+func (o *Sibyl2FunctionWithTag) SetName(v string) {
 	o.Name = &v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetParameters() []ObjectValueUnit {
+func (o *Sibyl2FunctionWithTag) GetParameters() []ObjectValueUnit {
 	if o == nil || isNil(o.Parameters) {
 		var ret []ObjectValueUnit
 		return ret
@@ -187,7 +186,7 @@ func (o *ObjectFunctionWithSignature) GetParameters() []ObjectValueUnit {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetParametersOk() ([]ObjectValueUnit, bool) {
+func (o *Sibyl2FunctionWithTag) GetParametersOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Parameters) {
 		return nil, false
 	}
@@ -195,7 +194,7 @@ func (o *ObjectFunctionWithSignature) GetParametersOk() ([]ObjectValueUnit, bool
 }
 
 // HasParameters returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasParameters() bool {
+func (o *Sibyl2FunctionWithTag) HasParameters() bool {
 	if o != nil && !isNil(o.Parameters) {
 		return true
 	}
@@ -204,12 +203,12 @@ func (o *ObjectFunctionWithSignature) HasParameters() bool {
 }
 
 // SetParameters gets a reference to the given []ObjectValueUnit and assigns it to the Parameters field.
-func (o *ObjectFunctionWithSignature) SetParameters(v []ObjectValueUnit) {
+func (o *Sibyl2FunctionWithTag) SetParameters(v []ObjectValueUnit) {
 	o.Parameters = v
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetPath() string {
+func (o *Sibyl2FunctionWithTag) GetPath() string {
 	if o == nil || isNil(o.Path) {
 		var ret string
 		return ret
@@ -219,7 +218,7 @@ func (o *ObjectFunctionWithSignature) GetPath() string {
 
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetPathOk() (*string, bool) {
+func (o *Sibyl2FunctionWithTag) GetPathOk() (*string, bool) {
 	if o == nil || isNil(o.Path) {
 		return nil, false
 	}
@@ -227,7 +226,7 @@ func (o *ObjectFunctionWithSignature) GetPathOk() (*string, bool) {
 }
 
 // HasPath returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasPath() bool {
+func (o *Sibyl2FunctionWithTag) HasPath() bool {
 	if o != nil && !isNil(o.Path) {
 		return true
 	}
@@ -236,12 +235,12 @@ func (o *ObjectFunctionWithSignature) HasPath() bool {
 }
 
 // SetPath gets a reference to the given string and assigns it to the Path field.
-func (o *ObjectFunctionWithSignature) SetPath(v string) {
+func (o *Sibyl2FunctionWithTag) SetPath(v string) {
 	o.Path = &v
 }
 
 // GetReceiver returns the Receiver field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetReceiver() string {
+func (o *Sibyl2FunctionWithTag) GetReceiver() string {
 	if o == nil || isNil(o.Receiver) {
 		var ret string
 		return ret
@@ -251,7 +250,7 @@ func (o *ObjectFunctionWithSignature) GetReceiver() string {
 
 // GetReceiverOk returns a tuple with the Receiver field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetReceiverOk() (*string, bool) {
+func (o *Sibyl2FunctionWithTag) GetReceiverOk() (*string, bool) {
 	if o == nil || isNil(o.Receiver) {
 		return nil, false
 	}
@@ -259,7 +258,7 @@ func (o *ObjectFunctionWithSignature) GetReceiverOk() (*string, bool) {
 }
 
 // HasReceiver returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasReceiver() bool {
+func (o *Sibyl2FunctionWithTag) HasReceiver() bool {
 	if o != nil && !isNil(o.Receiver) {
 		return true
 	}
@@ -268,12 +267,12 @@ func (o *ObjectFunctionWithSignature) HasReceiver() bool {
 }
 
 // SetReceiver gets a reference to the given string and assigns it to the Receiver field.
-func (o *ObjectFunctionWithSignature) SetReceiver(v string) {
+func (o *Sibyl2FunctionWithTag) SetReceiver(v string) {
 	o.Receiver = &v
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetReturns() []ObjectValueUnit {
+func (o *Sibyl2FunctionWithTag) GetReturns() []ObjectValueUnit {
 	if o == nil || isNil(o.Returns) {
 		var ret []ObjectValueUnit
 		return ret
@@ -283,7 +282,7 @@ func (o *ObjectFunctionWithSignature) GetReturns() []ObjectValueUnit {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetReturnsOk() ([]ObjectValueUnit, bool) {
+func (o *Sibyl2FunctionWithTag) GetReturnsOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Returns) {
 		return nil, false
 	}
@@ -291,7 +290,7 @@ func (o *ObjectFunctionWithSignature) GetReturnsOk() ([]ObjectValueUnit, bool) {
 }
 
 // HasReturns returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasReturns() bool {
+func (o *Sibyl2FunctionWithTag) HasReturns() bool {
 	if o != nil && !isNil(o.Returns) {
 		return true
 	}
@@ -300,44 +299,12 @@ func (o *ObjectFunctionWithSignature) HasReturns() bool {
 }
 
 // SetReturns gets a reference to the given []ObjectValueUnit and assigns it to the Returns field.
-func (o *ObjectFunctionWithSignature) SetReturns(v []ObjectValueUnit) {
+func (o *Sibyl2FunctionWithTag) SetReturns(v []ObjectValueUnit) {
 	o.Returns = v
 }
 
-// GetSignature returns the Signature field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetSignature() string {
-	if o == nil || isNil(o.Signature) {
-		var ret string
-		return ret
-	}
-	return *o.Signature
-}
-
-// GetSignatureOk returns a tuple with the Signature field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetSignatureOk() (*string, bool) {
-	if o == nil || isNil(o.Signature) {
-		return nil, false
-	}
-	return o.Signature, true
-}
-
-// HasSignature returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasSignature() bool {
-	if o != nil && !isNil(o.Signature) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignature gets a reference to the given string and assigns it to the Signature field.
-func (o *ObjectFunctionWithSignature) SetSignature(v string) {
-	o.Signature = &v
-}
-
 // GetSpan returns the Span field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetSpan() CoreSpan {
+func (o *Sibyl2FunctionWithTag) GetSpan() CoreSpan {
 	if o == nil || isNil(o.Span) {
 		var ret CoreSpan
 		return ret
@@ -347,7 +314,7 @@ func (o *ObjectFunctionWithSignature) GetSpan() CoreSpan {
 
 // GetSpanOk returns a tuple with the Span field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetSpanOk() (*CoreSpan, bool) {
+func (o *Sibyl2FunctionWithTag) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
 		return nil, false
 	}
@@ -355,7 +322,7 @@ func (o *ObjectFunctionWithSignature) GetSpanOk() (*CoreSpan, bool) {
 }
 
 // HasSpan returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasSpan() bool {
+func (o *Sibyl2FunctionWithTag) HasSpan() bool {
 	if o != nil && !isNil(o.Span) {
 		return true
 	}
@@ -364,12 +331,12 @@ func (o *ObjectFunctionWithSignature) HasSpan() bool {
 }
 
 // SetSpan gets a reference to the given CoreSpan and assigns it to the Span field.
-func (o *ObjectFunctionWithSignature) SetSpan(v CoreSpan) {
+func (o *Sibyl2FunctionWithTag) SetSpan(v CoreSpan) {
 	o.Span = &v
 }
 
 // GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetTags() []string {
+func (o *Sibyl2FunctionWithTag) GetTags() []string {
 	if o == nil || isNil(o.Tags) {
 		var ret []string
 		return ret
@@ -379,7 +346,7 @@ func (o *ObjectFunctionWithSignature) GetTags() []string {
 
 // GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetTagsOk() ([]string, bool) {
+func (o *Sibyl2FunctionWithTag) GetTagsOk() ([]string, bool) {
 	if o == nil || isNil(o.Tags) {
 		return nil, false
 	}
@@ -387,7 +354,7 @@ func (o *ObjectFunctionWithSignature) GetTagsOk() ([]string, bool) {
 }
 
 // HasTags returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasTags() bool {
+func (o *Sibyl2FunctionWithTag) HasTags() bool {
 	if o != nil && !isNil(o.Tags) {
 		return true
 	}
@@ -396,11 +363,11 @@ func (o *ObjectFunctionWithSignature) HasTags() bool {
 }
 
 // SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *ObjectFunctionWithSignature) SetTags(v []string) {
+func (o *Sibyl2FunctionWithTag) SetTags(v []string) {
 	o.Tags = v
 }
 
-func (o ObjectFunctionWithSignature) MarshalJSON() ([]byte, error) {
+func (o Sibyl2FunctionWithTag) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.BodySpan) {
 		toSerialize["bodySpan"] = o.BodySpan
@@ -426,9 +393,6 @@ func (o ObjectFunctionWithSignature) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Returns) {
 		toSerialize["returns"] = o.Returns
 	}
-	if !isNil(o.Signature) {
-		toSerialize["signature"] = o.Signature
-	}
 	if !isNil(o.Span) {
 		toSerialize["span"] = o.Span
 	}
@@ -438,38 +402,38 @@ func (o ObjectFunctionWithSignature) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableObjectFunctionWithSignature struct {
-	value *ObjectFunctionWithSignature
+type NullableSibyl2FunctionWithTag struct {
+	value *Sibyl2FunctionWithTag
 	isSet bool
 }
 
-func (v NullableObjectFunctionWithSignature) Get() *ObjectFunctionWithSignature {
+func (v NullableSibyl2FunctionWithTag) Get() *Sibyl2FunctionWithTag {
 	return v.value
 }
 
-func (v *NullableObjectFunctionWithSignature) Set(val *ObjectFunctionWithSignature) {
+func (v *NullableSibyl2FunctionWithTag) Set(val *Sibyl2FunctionWithTag) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableObjectFunctionWithSignature) IsSet() bool {
+func (v NullableSibyl2FunctionWithTag) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableObjectFunctionWithSignature) Unset() {
+func (v *NullableSibyl2FunctionWithTag) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableObjectFunctionWithSignature(val *ObjectFunctionWithSignature) *NullableObjectFunctionWithSignature {
-	return &NullableObjectFunctionWithSignature{value: val, isSet: true}
+func NewNullableSibyl2FunctionWithTag(val *Sibyl2FunctionWithTag) *NullableSibyl2FunctionWithTag {
+	return &NullableSibyl2FunctionWithTag{value: val, isSet: true}
 }
 
-func (v NullableObjectFunctionWithSignature) MarshalJSON() ([]byte, error) {
+func (v NullableSibyl2FunctionWithTag) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableObjectFunctionWithSignature) UnmarshalJSON(src []byte) error {
+func (v *NullableSibyl2FunctionWithTag) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -14,8 +14,8 @@ import (
 	"encoding/json"
 )
 
-// ObjectFunctionWithSignature struct for ObjectFunctionWithSignature
-type ObjectFunctionWithSignature struct {
+// ExtractorFunction struct for ExtractorFunction
+type ExtractorFunction struct {
 	BodySpan *CoreSpan `json:"bodySpan,omitempty"`
 	// which contains language-specific contents
 	Extras map[string]interface{} `json:"extras,omitempty"`
@@ -23,33 +23,30 @@ type ObjectFunctionWithSignature struct {
 	Lang       *string           `json:"lang,omitempty"`
 	Name       *string           `json:"name,omitempty"`
 	Parameters []ObjectValueUnit `json:"parameters,omitempty"`
-	Path       *string           `json:"path,omitempty"`
 	Receiver   *string           `json:"receiver,omitempty"`
 	Returns    []ObjectValueUnit `json:"returns,omitempty"`
-	Signature  *string           `json:"signature,omitempty"`
 	Span       *CoreSpan         `json:"span,omitempty"`
-	Tags       []string          `json:"tags,omitempty"`
 }
 
-// NewObjectFunctionWithSignature instantiates a new ObjectFunctionWithSignature object
+// NewExtractorFunction instantiates a new ExtractorFunction object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewObjectFunctionWithSignature() *ObjectFunctionWithSignature {
-	this := ObjectFunctionWithSignature{}
+func NewExtractorFunction() *ExtractorFunction {
+	this := ExtractorFunction{}
 	return &this
 }
 
-// NewObjectFunctionWithSignatureWithDefaults instantiates a new ObjectFunctionWithSignature object
+// NewExtractorFunctionWithDefaults instantiates a new ExtractorFunction object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewObjectFunctionWithSignatureWithDefaults() *ObjectFunctionWithSignature {
-	this := ObjectFunctionWithSignature{}
+func NewExtractorFunctionWithDefaults() *ExtractorFunction {
+	this := ExtractorFunction{}
 	return &this
 }
 
 // GetBodySpan returns the BodySpan field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetBodySpan() CoreSpan {
+func (o *ExtractorFunction) GetBodySpan() CoreSpan {
 	if o == nil || isNil(o.BodySpan) {
 		var ret CoreSpan
 		return ret
@@ -59,7 +56,7 @@ func (o *ObjectFunctionWithSignature) GetBodySpan() CoreSpan {
 
 // GetBodySpanOk returns a tuple with the BodySpan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetBodySpanOk() (*CoreSpan, bool) {
+func (o *ExtractorFunction) GetBodySpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.BodySpan) {
 		return nil, false
 	}
@@ -67,7 +64,7 @@ func (o *ObjectFunctionWithSignature) GetBodySpanOk() (*CoreSpan, bool) {
 }
 
 // HasBodySpan returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasBodySpan() bool {
+func (o *ExtractorFunction) HasBodySpan() bool {
 	if o != nil && !isNil(o.BodySpan) {
 		return true
 	}
@@ -76,12 +73,12 @@ func (o *ObjectFunctionWithSignature) HasBodySpan() bool {
 }
 
 // SetBodySpan gets a reference to the given CoreSpan and assigns it to the BodySpan field.
-func (o *ObjectFunctionWithSignature) SetBodySpan(v CoreSpan) {
+func (o *ExtractorFunction) SetBodySpan(v CoreSpan) {
 	o.BodySpan = &v
 }
 
 // GetExtras returns the Extras field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetExtras() map[string]interface{} {
+func (o *ExtractorFunction) GetExtras() map[string]interface{} {
 	if o == nil || isNil(o.Extras) {
 		var ret map[string]interface{}
 		return ret
@@ -91,7 +88,7 @@ func (o *ObjectFunctionWithSignature) GetExtras() map[string]interface{} {
 
 // GetExtrasOk returns a tuple with the Extras field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetExtrasOk() (map[string]interface{}, bool) {
+func (o *ExtractorFunction) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
 		return map[string]interface{}{}, false
 	}
@@ -99,7 +96,7 @@ func (o *ObjectFunctionWithSignature) GetExtrasOk() (map[string]interface{}, boo
 }
 
 // HasExtras returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasExtras() bool {
+func (o *ExtractorFunction) HasExtras() bool {
 	if o != nil && !isNil(o.Extras) {
 		return true
 	}
@@ -108,12 +105,12 @@ func (o *ObjectFunctionWithSignature) HasExtras() bool {
 }
 
 // SetExtras gets a reference to the given map[string]interface{} and assigns it to the Extras field.
-func (o *ObjectFunctionWithSignature) SetExtras(v map[string]interface{}) {
+func (o *ExtractorFunction) SetExtras(v map[string]interface{}) {
 	o.Extras = v
 }
 
 // GetLang returns the Lang field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetLang() string {
+func (o *ExtractorFunction) GetLang() string {
 	if o == nil || isNil(o.Lang) {
 		var ret string
 		return ret
@@ -123,7 +120,7 @@ func (o *ObjectFunctionWithSignature) GetLang() string {
 
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetLangOk() (*string, bool) {
+func (o *ExtractorFunction) GetLangOk() (*string, bool) {
 	if o == nil || isNil(o.Lang) {
 		return nil, false
 	}
@@ -131,7 +128,7 @@ func (o *ObjectFunctionWithSignature) GetLangOk() (*string, bool) {
 }
 
 // HasLang returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasLang() bool {
+func (o *ExtractorFunction) HasLang() bool {
 	if o != nil && !isNil(o.Lang) {
 		return true
 	}
@@ -140,12 +137,12 @@ func (o *ObjectFunctionWithSignature) HasLang() bool {
 }
 
 // SetLang gets a reference to the given string and assigns it to the Lang field.
-func (o *ObjectFunctionWithSignature) SetLang(v string) {
+func (o *ExtractorFunction) SetLang(v string) {
 	o.Lang = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetName() string {
+func (o *ExtractorFunction) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -155,7 +152,7 @@ func (o *ObjectFunctionWithSignature) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetNameOk() (*string, bool) {
+func (o *ExtractorFunction) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -163,7 +160,7 @@ func (o *ObjectFunctionWithSignature) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasName() bool {
+func (o *ExtractorFunction) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -172,12 +169,12 @@ func (o *ObjectFunctionWithSignature) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ObjectFunctionWithSignature) SetName(v string) {
+func (o *ExtractorFunction) SetName(v string) {
 	o.Name = &v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetParameters() []ObjectValueUnit {
+func (o *ExtractorFunction) GetParameters() []ObjectValueUnit {
 	if o == nil || isNil(o.Parameters) {
 		var ret []ObjectValueUnit
 		return ret
@@ -187,7 +184,7 @@ func (o *ObjectFunctionWithSignature) GetParameters() []ObjectValueUnit {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetParametersOk() ([]ObjectValueUnit, bool) {
+func (o *ExtractorFunction) GetParametersOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Parameters) {
 		return nil, false
 	}
@@ -195,7 +192,7 @@ func (o *ObjectFunctionWithSignature) GetParametersOk() ([]ObjectValueUnit, bool
 }
 
 // HasParameters returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasParameters() bool {
+func (o *ExtractorFunction) HasParameters() bool {
 	if o != nil && !isNil(o.Parameters) {
 		return true
 	}
@@ -204,44 +201,12 @@ func (o *ObjectFunctionWithSignature) HasParameters() bool {
 }
 
 // SetParameters gets a reference to the given []ObjectValueUnit and assigns it to the Parameters field.
-func (o *ObjectFunctionWithSignature) SetParameters(v []ObjectValueUnit) {
+func (o *ExtractorFunction) SetParameters(v []ObjectValueUnit) {
 	o.Parameters = v
 }
 
-// GetPath returns the Path field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetPath() string {
-	if o == nil || isNil(o.Path) {
-		var ret string
-		return ret
-	}
-	return *o.Path
-}
-
-// GetPathOk returns a tuple with the Path field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetPathOk() (*string, bool) {
-	if o == nil || isNil(o.Path) {
-		return nil, false
-	}
-	return o.Path, true
-}
-
-// HasPath returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasPath() bool {
-	if o != nil && !isNil(o.Path) {
-		return true
-	}
-
-	return false
-}
-
-// SetPath gets a reference to the given string and assigns it to the Path field.
-func (o *ObjectFunctionWithSignature) SetPath(v string) {
-	o.Path = &v
-}
-
 // GetReceiver returns the Receiver field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetReceiver() string {
+func (o *ExtractorFunction) GetReceiver() string {
 	if o == nil || isNil(o.Receiver) {
 		var ret string
 		return ret
@@ -251,7 +216,7 @@ func (o *ObjectFunctionWithSignature) GetReceiver() string {
 
 // GetReceiverOk returns a tuple with the Receiver field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetReceiverOk() (*string, bool) {
+func (o *ExtractorFunction) GetReceiverOk() (*string, bool) {
 	if o == nil || isNil(o.Receiver) {
 		return nil, false
 	}
@@ -259,7 +224,7 @@ func (o *ObjectFunctionWithSignature) GetReceiverOk() (*string, bool) {
 }
 
 // HasReceiver returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasReceiver() bool {
+func (o *ExtractorFunction) HasReceiver() bool {
 	if o != nil && !isNil(o.Receiver) {
 		return true
 	}
@@ -268,12 +233,12 @@ func (o *ObjectFunctionWithSignature) HasReceiver() bool {
 }
 
 // SetReceiver gets a reference to the given string and assigns it to the Receiver field.
-func (o *ObjectFunctionWithSignature) SetReceiver(v string) {
+func (o *ExtractorFunction) SetReceiver(v string) {
 	o.Receiver = &v
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetReturns() []ObjectValueUnit {
+func (o *ExtractorFunction) GetReturns() []ObjectValueUnit {
 	if o == nil || isNil(o.Returns) {
 		var ret []ObjectValueUnit
 		return ret
@@ -283,7 +248,7 @@ func (o *ObjectFunctionWithSignature) GetReturns() []ObjectValueUnit {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetReturnsOk() ([]ObjectValueUnit, bool) {
+func (o *ExtractorFunction) GetReturnsOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Returns) {
 		return nil, false
 	}
@@ -291,7 +256,7 @@ func (o *ObjectFunctionWithSignature) GetReturnsOk() ([]ObjectValueUnit, bool) {
 }
 
 // HasReturns returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasReturns() bool {
+func (o *ExtractorFunction) HasReturns() bool {
 	if o != nil && !isNil(o.Returns) {
 		return true
 	}
@@ -300,44 +265,12 @@ func (o *ObjectFunctionWithSignature) HasReturns() bool {
 }
 
 // SetReturns gets a reference to the given []ObjectValueUnit and assigns it to the Returns field.
-func (o *ObjectFunctionWithSignature) SetReturns(v []ObjectValueUnit) {
+func (o *ExtractorFunction) SetReturns(v []ObjectValueUnit) {
 	o.Returns = v
 }
 
-// GetSignature returns the Signature field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetSignature() string {
-	if o == nil || isNil(o.Signature) {
-		var ret string
-		return ret
-	}
-	return *o.Signature
-}
-
-// GetSignatureOk returns a tuple with the Signature field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetSignatureOk() (*string, bool) {
-	if o == nil || isNil(o.Signature) {
-		return nil, false
-	}
-	return o.Signature, true
-}
-
-// HasSignature returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasSignature() bool {
-	if o != nil && !isNil(o.Signature) {
-		return true
-	}
-
-	return false
-}
-
-// SetSignature gets a reference to the given string and assigns it to the Signature field.
-func (o *ObjectFunctionWithSignature) SetSignature(v string) {
-	o.Signature = &v
-}
-
 // GetSpan returns the Span field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetSpan() CoreSpan {
+func (o *ExtractorFunction) GetSpan() CoreSpan {
 	if o == nil || isNil(o.Span) {
 		var ret CoreSpan
 		return ret
@@ -347,7 +280,7 @@ func (o *ObjectFunctionWithSignature) GetSpan() CoreSpan {
 
 // GetSpanOk returns a tuple with the Span field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetSpanOk() (*CoreSpan, bool) {
+func (o *ExtractorFunction) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
 		return nil, false
 	}
@@ -355,7 +288,7 @@ func (o *ObjectFunctionWithSignature) GetSpanOk() (*CoreSpan, bool) {
 }
 
 // HasSpan returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasSpan() bool {
+func (o *ExtractorFunction) HasSpan() bool {
 	if o != nil && !isNil(o.Span) {
 		return true
 	}
@@ -364,43 +297,11 @@ func (o *ObjectFunctionWithSignature) HasSpan() bool {
 }
 
 // SetSpan gets a reference to the given CoreSpan and assigns it to the Span field.
-func (o *ObjectFunctionWithSignature) SetSpan(v CoreSpan) {
+func (o *ExtractorFunction) SetSpan(v CoreSpan) {
 	o.Span = &v
 }
 
-// GetTags returns the Tags field value if set, zero value otherwise.
-func (o *ObjectFunctionWithSignature) GetTags() []string {
-	if o == nil || isNil(o.Tags) {
-		var ret []string
-		return ret
-	}
-	return o.Tags
-}
-
-// GetTagsOk returns a tuple with the Tags field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ObjectFunctionWithSignature) GetTagsOk() ([]string, bool) {
-	if o == nil || isNil(o.Tags) {
-		return nil, false
-	}
-	return o.Tags, true
-}
-
-// HasTags returns a boolean if a field has been set.
-func (o *ObjectFunctionWithSignature) HasTags() bool {
-	if o != nil && !isNil(o.Tags) {
-		return true
-	}
-
-	return false
-}
-
-// SetTags gets a reference to the given []string and assigns it to the Tags field.
-func (o *ObjectFunctionWithSignature) SetTags(v []string) {
-	o.Tags = v
-}
-
-func (o ObjectFunctionWithSignature) MarshalJSON() ([]byte, error) {
+func (o ExtractorFunction) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.BodySpan) {
 		toSerialize["bodySpan"] = o.BodySpan
@@ -417,59 +318,50 @@ func (o ObjectFunctionWithSignature) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Parameters) {
 		toSerialize["parameters"] = o.Parameters
 	}
-	if !isNil(o.Path) {
-		toSerialize["path"] = o.Path
-	}
 	if !isNil(o.Receiver) {
 		toSerialize["receiver"] = o.Receiver
 	}
 	if !isNil(o.Returns) {
 		toSerialize["returns"] = o.Returns
 	}
-	if !isNil(o.Signature) {
-		toSerialize["signature"] = o.Signature
-	}
 	if !isNil(o.Span) {
 		toSerialize["span"] = o.Span
-	}
-	if !isNil(o.Tags) {
-		toSerialize["tags"] = o.Tags
 	}
 	return json.Marshal(toSerialize)
 }
 
-type NullableObjectFunctionWithSignature struct {
-	value *ObjectFunctionWithSignature
+type NullableExtractorFunction struct {
+	value *ExtractorFunction
 	isSet bool
 }
 
-func (v NullableObjectFunctionWithSignature) Get() *ObjectFunctionWithSignature {
+func (v NullableExtractorFunction) Get() *ExtractorFunction {
 	return v.value
 }
 
-func (v *NullableObjectFunctionWithSignature) Set(val *ObjectFunctionWithSignature) {
+func (v *NullableExtractorFunction) Set(val *ExtractorFunction) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableObjectFunctionWithSignature) IsSet() bool {
+func (v NullableExtractorFunction) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableObjectFunctionWithSignature) Unset() {
+func (v *NullableExtractorFunction) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableObjectFunctionWithSignature(val *ObjectFunctionWithSignature) *NullableObjectFunctionWithSignature {
-	return &NullableObjectFunctionWithSignature{value: val, isSet: true}
+func NewNullableExtractorFunction(val *ExtractorFunction) *NullableExtractorFunction {
+	return &NullableExtractorFunction{value: val, isSet: true}
 }
 
-func (v NullableObjectFunctionWithSignature) MarshalJSON() ([]byte, error) {
+func (v NullableExtractorFunction) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableObjectFunctionWithSignature) UnmarshalJSON(src []byte) error {
+func (v *NullableExtractorFunction) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

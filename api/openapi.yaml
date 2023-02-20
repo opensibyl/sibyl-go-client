@@ -45,6 +45,22 @@ paths:
       summary: class query
       tags:
       - BasicQuery
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object.ClazzUploadUnit'
+        description: Payload description
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: upload class
+      tags:
+      - Upload
+      x-codegen-request-body-name: payload
   /api/v1/file:
     get:
       parameters:
@@ -115,6 +131,22 @@ paths:
       summary: func query
       tags:
       - BasicQuery
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object.FunctionUploadUnit'
+        description: Payload description
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: upload functions
+      tags:
+      - Upload
+      x-codegen-request-body-name: payload
   /api/v1/funcctx:
     get:
       parameters:
@@ -153,6 +185,22 @@ paths:
       summary: func ctx query
       tags:
       - BasicQuery
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/object.FunctionContextUploadUnit'
+        description: Payload description
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: upload functions ctx
+      tags:
+      - Upload
+      x-codegen-request-body-name: payload
   /api/v1/reference/count/funcctx:
     get:
       parameters:
@@ -303,7 +351,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+                  $ref: '#/components/schemas/sibyl2.FunctionWithTag'
                 type: array
           description: OK
       summary: func query
@@ -470,7 +518,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+                $ref: '#/components/schemas/sibyl2.FunctionWithTag'
           description: OK
       summary: func query
       tags:
@@ -613,6 +661,55 @@ paths:
       summary: func query
       tags:
       - SignatureQuery
+  /api/v1/tag/func:
+    get:
+      parameters:
+      - description: repo
+        in: query
+        name: repo
+        required: true
+        schema:
+          type: string
+      - description: rev
+        in: query
+        name: rev
+        required: true
+        schema:
+          type: string
+      - description: tag
+        in: query
+        name: tag
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  type: string
+                type: array
+          description: OK
+      summary: query func by tag
+      tags:
+      - Tag
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/service.tagUpload'
+        description: Payload description
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: OK
+      summary: create func tag
+      tags:
+      - Tag
+      x-codegen-request-body-name: payload
   /ops/monitor/upload:
     get:
       responses:
@@ -666,6 +763,81 @@ components:
           $ref: '#/components/schemas/core.Point'
         start:
           $ref: '#/components/schemas/core.Point'
+      type: object
+    extractor.Clazz:
+      properties:
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        module:
+          type: string
+        name:
+          type: string
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
+    extractor.ClazzFileResult:
+      properties:
+        language:
+          description: language
+          type: string
+        path:
+          type: string
+        type:
+          type: string
+        units:
+          items:
+            $ref: '#/components/schemas/extractor.Clazz'
+          type: array
+      type: object
+    extractor.Function:
+      properties:
+        bodySpan:
+          $ref: '#/components/schemas/core.Span'
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        receiver:
+          type: string
+        returns:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
+    extractor.FunctionFileResult:
+      properties:
+        language:
+          description: language
+          type: string
+        path:
+          type: string
+        type:
+          type: string
+        units:
+          items:
+            $ref: '#/components/schemas/extractor.Function'
+          type: array
+      type: object
+    object.ClazzUploadUnit:
+      properties:
+        clazzFileResult:
+          $ref: '#/components/schemas/extractor.ClazzFileResult'
+        workspace:
+          $ref: '#/components/schemas/object.WorkspaceConfig'
       type: object
     object.FunctionContextSlimWithSignature:
       example:
@@ -741,6 +913,22 @@ components:
         span:
           $ref: '#/components/schemas/core.Span'
       type: object
+    object.FunctionContextUploadUnit:
+      properties:
+        functionContext:
+          items:
+            $ref: '#/components/schemas/sibyl2.FunctionContext'
+          type: array
+        workspace:
+          $ref: '#/components/schemas/object.WorkspaceConfig'
+      type: object
+    object.FunctionUploadUnit:
+      properties:
+        funcResult:
+          $ref: '#/components/schemas/extractor.FunctionFileResult'
+        workspace:
+          $ref: '#/components/schemas/object.WorkspaceConfig'
+      type: object
     object.FunctionWithSignature:
       example:
         bodySpan:
@@ -773,6 +961,9 @@ components:
           end:
             column: 0
             row: 6
+        tags:
+        - tags
+        - tags
       properties:
         bodySpan:
           $ref: '#/components/schemas/core.Span'
@@ -800,6 +991,10 @@ components:
           type: string
         span:
           $ref: '#/components/schemas/core.Span'
+        tags:
+          items:
+            type: string
+          type: array
       type: object
     object.RevInfo:
       example:
@@ -823,6 +1018,13 @@ components:
         name:
           type: string
         type:
+          type: string
+      type: object
+    object.WorkspaceConfig:
+      properties:
+        repoId:
+          type: string
+        revHash:
           type: string
       type: object
     service.ContextTree:
@@ -940,6 +1142,17 @@ components:
         info:
           $ref: '#/components/schemas/object.RevInfo'
       type: object
+    service.tagUpload:
+      properties:
+        repoId:
+          type: string
+        revHash:
+          type: string
+        signature:
+          type: string
+        tag:
+          type: string
+      type: object
     sibyl2.ClazzWithPath:
       example:
         path: path
@@ -967,6 +1180,41 @@ components:
           type: string
         path:
           type: string
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
+    sibyl2.FunctionContext:
+      properties:
+        bodySpan:
+          $ref: '#/components/schemas/core.Span'
+        calls:
+          items:
+            $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+          type: array
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        path:
+          type: string
+        receiver:
+          type: string
+        returns:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        reverseCalls:
+          items:
+            $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+          type: array
         span:
           $ref: '#/components/schemas/core.Span'
       type: object
@@ -1042,6 +1290,33 @@ components:
           $ref: '#/components/schemas/core.Span'
       type: object
     sibyl2.FunctionWithPath:
+      properties:
+        bodySpan:
+          $ref: '#/components/schemas/core.Span'
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        path:
+          type: string
+        receiver:
+          type: string
+        returns:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
+    sibyl2.FunctionWithTag:
       example:
         bodySpan:
           start:
@@ -1072,6 +1347,9 @@ components:
           end:
             column: 0
             row: 6
+        tags:
+        - tags
+        - tags
       properties:
         bodySpan:
           $ref: '#/components/schemas/core.Span'
@@ -1097,5 +1375,9 @@ components:
           type: array
         span:
           $ref: '#/components/schemas/core.Span'
+        tags:
+          items:
+            type: string
+          type: array
       type: object
 x-original-swagger-version: "2.0"

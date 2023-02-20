@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## ApiV1SignatureFuncGet
 
-> Sibyl2FunctionWithPath ApiV1SignatureFuncGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
+> Sibyl2FunctionWithTag ApiV1SignatureFuncGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
 
 func query
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SignatureQueryApi.ApiV1SignatureFuncGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1SignatureFuncGet`: Sibyl2FunctionWithPath
+    // response from `ApiV1SignatureFuncGet`: Sibyl2FunctionWithTag
     fmt.Fprintf(os.Stdout, "Response from `SignatureQueryApi.ApiV1SignatureFuncGet`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
+[**Sibyl2FunctionWithTag**](Sibyl2FunctionWithTag.md)
 
 ### Authorization
 

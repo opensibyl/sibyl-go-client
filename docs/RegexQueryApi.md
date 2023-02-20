@@ -82,7 +82,7 @@ No authorization required
 
 ## ApiV1RegexFuncGet
 
-> []Sibyl2FunctionWithPath ApiV1RegexFuncGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
+> []Sibyl2FunctionWithTag ApiV1RegexFuncGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 func query
 
@@ -111,7 +111,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegexQueryApi.ApiV1RegexFuncGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1RegexFuncGet`: []Sibyl2FunctionWithPath
+    // response from `ApiV1RegexFuncGet`: []Sibyl2FunctionWithTag
     fmt.Fprintf(os.Stdout, "Response from `RegexQueryApi.ApiV1RegexFuncGet`: %v\n", resp)
 }
 ```
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionWithPath**](Sibyl2FunctionWithPath.md)
+[**[]Sibyl2FunctionWithTag**](Sibyl2FunctionWithTag.md)
 
 ### Authorization
 
