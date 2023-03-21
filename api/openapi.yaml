@@ -39,7 +39,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.ClazzWithPath'
+                  $ref: '#/components/schemas/extractor.ClazzWithPath'
                 type: array
           description: OK
       summary: class query
@@ -125,7 +125,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/object.FunctionWithSignature'
+                  $ref: '#/components/schemas/object.FunctionServiceDTO'
                 type: array
           description: OK
       summary: func query
@@ -179,7 +179,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/object.FunctionContextSlimWithSignature'
+                  $ref: '#/components/schemas/object.FuncCtxServiceDTO'
                 type: array
           description: OK
       summary: func ctx query
@@ -234,7 +234,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.FunctionContextSlim'
+                  $ref: '#/components/schemas/object.FunctionContextSlim'
                 type: array
           description: OK
       summary: funcctx query by ref
@@ -273,7 +273,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.FunctionContextSlim'
+                  $ref: '#/components/schemas/object.FunctionContextSlim'
                 type: array
           description: OK
       summary: funcctx query by referenced
@@ -312,7 +312,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.ClazzWithPath'
+                  $ref: '#/components/schemas/extractor.ClazzWithPath'
                 type: array
           description: OK
       summary: clazz query
@@ -351,7 +351,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/object.FunctionWithSignature'
+                  $ref: '#/components/schemas/object.FunctionServiceDTO'
                 type: array
           description: OK
       summary: func query
@@ -390,7 +390,7 @@ paths:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/sibyl2.FunctionContextSlim'
+                  $ref: '#/components/schemas/object.FunctionContextSlim'
                 type: array
           description: OK
       summary: func ctx query
@@ -518,7 +518,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/object.FunctionWithSignature'
+                $ref: '#/components/schemas/object.FunctionServiceDTO'
           description: OK
       summary: func query
       tags:
@@ -549,7 +549,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/sibyl2.FunctionContextSlim'
+                $ref: '#/components/schemas/object.FunctionContextSlim'
           description: OK
       summary: funcctx query
       tags:
@@ -700,7 +700,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/service.tagUpload'
-        description: Payload description
+        description: tag upload payload
         required: true
       responses:
         "200":
@@ -793,6 +793,36 @@ components:
             $ref: '#/components/schemas/extractor.Clazz'
           type: array
       type: object
+    extractor.ClazzWithPath:
+      example:
+        path: path
+        module: module
+        name: name
+        extras: "{}"
+        lang: lang
+        span:
+          start:
+            column: 0
+            row: 6
+          end:
+            column: 0
+            row: 6
+      properties:
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        module:
+          type: string
+        name:
+          type: string
+        path:
+          type: string
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
     extractor.Function:
       properties:
         bodySpan:
@@ -804,6 +834,8 @@ components:
           description: language
           type: string
         name:
+          type: string
+        namespace:
           type: string
         parameters:
           items:
@@ -832,6 +864,35 @@ components:
             $ref: '#/components/schemas/extractor.Function'
           type: array
       type: object
+    extractor.FunctionWithPath:
+      properties:
+        bodySpan:
+          $ref: '#/components/schemas/core.Span'
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        path:
+          type: string
+        receiver:
+          type: string
+        returns:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
     object.ClazzUploadUnit:
       properties:
         clazzFileResult:
@@ -839,7 +900,84 @@ components:
         workspace:
           $ref: '#/components/schemas/object.WorkspaceConfig'
       type: object
-    object.FunctionContextSlimWithSignature:
+    object.FuncCtxServiceDTO:
+      example:
+        receiver: receiver
+        signature: signature
+        extras: "{}"
+        reverseCalls:
+        - reverseCalls
+        - reverseCalls
+        bodySpan:
+          start:
+            column: 0
+            row: 6
+          end:
+            column: 0
+            row: 6
+        path: path
+        calls:
+        - calls
+        - calls
+        name: name
+        namespace: namespace
+        returns:
+        - name: name
+          type: type
+        - name: name
+          type: type
+        lang: lang
+        parameters:
+        - name: name
+          type: type
+        - name: name
+          type: type
+        span:
+          start:
+            column: 0
+            row: 6
+          end:
+            column: 0
+            row: 6
+      properties:
+        bodySpan:
+          $ref: '#/components/schemas/core.Span'
+        calls:
+          items:
+            type: string
+          type: array
+        extras:
+          description: which contains language-specific contents
+          type: object
+        lang:
+          description: language
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        path:
+          type: string
+        receiver:
+          type: string
+        returns:
+          items:
+            $ref: '#/components/schemas/object.ValueUnit'
+          type: array
+        reverseCalls:
+          items:
+            type: string
+          type: array
+        signature:
+          type: string
+        span:
+          $ref: '#/components/schemas/core.Span'
+      type: object
+    object.FunctionContextSlim:
       example:
         bodySpan:
           start:
@@ -853,8 +991,8 @@ components:
         calls:
         - calls
         - calls
-        signature: signature
         name: name
+        namespace: namespace
         extras: "{}"
         reverseCalls:
         - reverseCalls
@@ -892,6 +1030,8 @@ components:
           type: string
         name:
           type: string
+        namespace:
+          type: string
         parameters:
           items:
             $ref: '#/components/schemas/object.ValueUnit'
@@ -908,8 +1048,6 @@ components:
           items:
             type: string
           type: array
-        signature:
-          type: string
         span:
           $ref: '#/components/schemas/core.Span'
       type: object
@@ -922,14 +1060,7 @@ components:
         workspace:
           $ref: '#/components/schemas/object.WorkspaceConfig'
       type: object
-    object.FunctionUploadUnit:
-      properties:
-        funcResult:
-          $ref: '#/components/schemas/extractor.FunctionFileResult'
-        workspace:
-          $ref: '#/components/schemas/object.WorkspaceConfig'
-      type: object
-    object.FunctionWithSignature:
+    object.FunctionServiceDTO:
       example:
         bodySpan:
           start:
@@ -942,6 +1073,7 @@ components:
         receiver: receiver
         signature: signature
         name: name
+        namespace: namespace
         extras: "{}"
         returns:
         - name: name
@@ -975,6 +1107,8 @@ components:
           type: string
         name:
           type: string
+        namespace:
+          type: string
         parameters:
           items:
             $ref: '#/components/schemas/object.ValueUnit'
@@ -995,6 +1129,13 @@ components:
           items:
             type: string
           type: array
+      type: object
+    object.FunctionUploadUnit:
+      properties:
+        funcResult:
+          $ref: '#/components/schemas/extractor.FunctionFileResult'
+        workspace:
+          $ref: '#/components/schemas/object.WorkspaceConfig'
       type: object
     object.RevInfo:
       example:
@@ -1070,6 +1211,7 @@ components:
         - calls
         - calls
         name: name
+        namespace: namespace
         returns:
         - name: name
           type: type
@@ -1104,6 +1246,8 @@ components:
           description: language
           type: string
         name:
+          type: string
+        namespace:
           type: string
         parameters:
           items:
@@ -1153,43 +1297,13 @@ components:
         tag:
           type: string
       type: object
-    sibyl2.ClazzWithPath:
-      example:
-        path: path
-        module: module
-        name: name
-        extras: "{}"
-        lang: lang
-        span:
-          start:
-            column: 0
-            row: 6
-          end:
-            column: 0
-            row: 6
-      properties:
-        extras:
-          description: which contains language-specific contents
-          type: object
-        lang:
-          description: language
-          type: string
-        module:
-          type: string
-        name:
-          type: string
-        path:
-          type: string
-        span:
-          $ref: '#/components/schemas/core.Span'
-      type: object
     sibyl2.FunctionContext:
       properties:
         bodySpan:
           $ref: '#/components/schemas/core.Span'
         calls:
           items:
-            $ref: '#/components/schemas/sibyl2.FunctionWithPath'
+            $ref: '#/components/schemas/extractor.FunctionWithPath'
           type: array
         extras:
           description: which contains language-specific contents
@@ -1198,6 +1312,8 @@ components:
           description: language
           type: string
         name:
+          type: string
+        namespace:
           type: string
         parameters:
           items:
@@ -1213,105 +1329,7 @@ components:
           type: array
         reverseCalls:
           items:
-            $ref: '#/components/schemas/sibyl2.FunctionWithPath'
-          type: array
-        span:
-          $ref: '#/components/schemas/core.Span'
-      type: object
-    sibyl2.FunctionContextSlim:
-      example:
-        bodySpan:
-          start:
-            column: 0
-            row: 6
-          end:
-            column: 0
-            row: 6
-        path: path
-        receiver: receiver
-        calls:
-        - calls
-        - calls
-        name: name
-        extras: "{}"
-        reverseCalls:
-        - reverseCalls
-        - reverseCalls
-        returns:
-        - name: name
-          type: type
-        - name: name
-          type: type
-        lang: lang
-        parameters:
-        - name: name
-          type: type
-        - name: name
-          type: type
-        span:
-          start:
-            column: 0
-            row: 6
-          end:
-            column: 0
-            row: 6
-      properties:
-        bodySpan:
-          $ref: '#/components/schemas/core.Span'
-        calls:
-          items:
-            type: string
-          type: array
-        extras:
-          description: which contains language-specific contents
-          type: object
-        lang:
-          description: language
-          type: string
-        name:
-          type: string
-        parameters:
-          items:
-            $ref: '#/components/schemas/object.ValueUnit'
-          type: array
-        path:
-          type: string
-        receiver:
-          type: string
-        returns:
-          items:
-            $ref: '#/components/schemas/object.ValueUnit'
-          type: array
-        reverseCalls:
-          items:
-            type: string
-          type: array
-        span:
-          $ref: '#/components/schemas/core.Span'
-      type: object
-    sibyl2.FunctionWithPath:
-      properties:
-        bodySpan:
-          $ref: '#/components/schemas/core.Span'
-        extras:
-          description: which contains language-specific contents
-          type: object
-        lang:
-          description: language
-          type: string
-        name:
-          type: string
-        parameters:
-          items:
-            $ref: '#/components/schemas/object.ValueUnit'
-          type: array
-        path:
-          type: string
-        receiver:
-          type: string
-        returns:
-          items:
-            $ref: '#/components/schemas/object.ValueUnit'
+            $ref: '#/components/schemas/extractor.FunctionWithPath'
           type: array
         span:
           $ref: '#/components/schemas/core.Span'

@@ -16,19 +16,20 @@ import (
 
 // Sibyl2FunctionContext struct for Sibyl2FunctionContext
 type Sibyl2FunctionContext struct {
-	BodySpan *CoreSpan                `json:"bodySpan,omitempty"`
-	Calls    []Sibyl2FunctionWithPath `json:"calls,omitempty"`
+	BodySpan *CoreSpan                   `json:"bodySpan,omitempty"`
+	Calls    []ExtractorFunctionWithPath `json:"calls,omitempty"`
 	// which contains language-specific contents
 	Extras map[string]interface{} `json:"extras,omitempty"`
 	// language
-	Lang         *string                  `json:"lang,omitempty"`
-	Name         *string                  `json:"name,omitempty"`
-	Parameters   []ObjectValueUnit        `json:"parameters,omitempty"`
-	Path         *string                  `json:"path,omitempty"`
-	Receiver     *string                  `json:"receiver,omitempty"`
-	Returns      []ObjectValueUnit        `json:"returns,omitempty"`
-	ReverseCalls []Sibyl2FunctionWithPath `json:"reverseCalls,omitempty"`
-	Span         *CoreSpan                `json:"span,omitempty"`
+	Lang         *string                     `json:"lang,omitempty"`
+	Name         *string                     `json:"name,omitempty"`
+	Namespace    *string                     `json:"namespace,omitempty"`
+	Parameters   []ObjectValueUnit           `json:"parameters,omitempty"`
+	Path         *string                     `json:"path,omitempty"`
+	Receiver     *string                     `json:"receiver,omitempty"`
+	Returns      []ObjectValueUnit           `json:"returns,omitempty"`
+	ReverseCalls []ExtractorFunctionWithPath `json:"reverseCalls,omitempty"`
+	Span         *CoreSpan                   `json:"span,omitempty"`
 }
 
 // NewSibyl2FunctionContext instantiates a new Sibyl2FunctionContext object
@@ -81,9 +82,9 @@ func (o *Sibyl2FunctionContext) SetBodySpan(v CoreSpan) {
 }
 
 // GetCalls returns the Calls field value if set, zero value otherwise.
-func (o *Sibyl2FunctionContext) GetCalls() []Sibyl2FunctionWithPath {
+func (o *Sibyl2FunctionContext) GetCalls() []ExtractorFunctionWithPath {
 	if o == nil || isNil(o.Calls) {
-		var ret []Sibyl2FunctionWithPath
+		var ret []ExtractorFunctionWithPath
 		return ret
 	}
 	return o.Calls
@@ -91,7 +92,7 @@ func (o *Sibyl2FunctionContext) GetCalls() []Sibyl2FunctionWithPath {
 
 // GetCallsOk returns a tuple with the Calls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sibyl2FunctionContext) GetCallsOk() ([]Sibyl2FunctionWithPath, bool) {
+func (o *Sibyl2FunctionContext) GetCallsOk() ([]ExtractorFunctionWithPath, bool) {
 	if o == nil || isNil(o.Calls) {
 		return nil, false
 	}
@@ -107,8 +108,8 @@ func (o *Sibyl2FunctionContext) HasCalls() bool {
 	return false
 }
 
-// SetCalls gets a reference to the given []Sibyl2FunctionWithPath and assigns it to the Calls field.
-func (o *Sibyl2FunctionContext) SetCalls(v []Sibyl2FunctionWithPath) {
+// SetCalls gets a reference to the given []ExtractorFunctionWithPath and assigns it to the Calls field.
+func (o *Sibyl2FunctionContext) SetCalls(v []ExtractorFunctionWithPath) {
 	o.Calls = v
 }
 
@@ -206,6 +207,38 @@ func (o *Sibyl2FunctionContext) HasName() bool {
 // SetName gets a reference to the given string and assigns it to the Name field.
 func (o *Sibyl2FunctionContext) SetName(v string) {
 	o.Name = &v
+}
+
+// GetNamespace returns the Namespace field value if set, zero value otherwise.
+func (o *Sibyl2FunctionContext) GetNamespace() string {
+	if o == nil || isNil(o.Namespace) {
+		var ret string
+		return ret
+	}
+	return *o.Namespace
+}
+
+// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Sibyl2FunctionContext) GetNamespaceOk() (*string, bool) {
+	if o == nil || isNil(o.Namespace) {
+		return nil, false
+	}
+	return o.Namespace, true
+}
+
+// HasNamespace returns a boolean if a field has been set.
+func (o *Sibyl2FunctionContext) HasNamespace() bool {
+	if o != nil && !isNil(o.Namespace) {
+		return true
+	}
+
+	return false
+}
+
+// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
+func (o *Sibyl2FunctionContext) SetNamespace(v string) {
+	o.Namespace = &v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
@@ -337,9 +370,9 @@ func (o *Sibyl2FunctionContext) SetReturns(v []ObjectValueUnit) {
 }
 
 // GetReverseCalls returns the ReverseCalls field value if set, zero value otherwise.
-func (o *Sibyl2FunctionContext) GetReverseCalls() []Sibyl2FunctionWithPath {
+func (o *Sibyl2FunctionContext) GetReverseCalls() []ExtractorFunctionWithPath {
 	if o == nil || isNil(o.ReverseCalls) {
-		var ret []Sibyl2FunctionWithPath
+		var ret []ExtractorFunctionWithPath
 		return ret
 	}
 	return o.ReverseCalls
@@ -347,7 +380,7 @@ func (o *Sibyl2FunctionContext) GetReverseCalls() []Sibyl2FunctionWithPath {
 
 // GetReverseCallsOk returns a tuple with the ReverseCalls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Sibyl2FunctionContext) GetReverseCallsOk() ([]Sibyl2FunctionWithPath, bool) {
+func (o *Sibyl2FunctionContext) GetReverseCallsOk() ([]ExtractorFunctionWithPath, bool) {
 	if o == nil || isNil(o.ReverseCalls) {
 		return nil, false
 	}
@@ -363,8 +396,8 @@ func (o *Sibyl2FunctionContext) HasReverseCalls() bool {
 	return false
 }
 
-// SetReverseCalls gets a reference to the given []Sibyl2FunctionWithPath and assigns it to the ReverseCalls field.
-func (o *Sibyl2FunctionContext) SetReverseCalls(v []Sibyl2FunctionWithPath) {
+// SetReverseCalls gets a reference to the given []ExtractorFunctionWithPath and assigns it to the ReverseCalls field.
+func (o *Sibyl2FunctionContext) SetReverseCalls(v []ExtractorFunctionWithPath) {
 	o.ReverseCalls = v
 }
 
@@ -416,6 +449,9 @@ func (o Sibyl2FunctionContext) MarshalJSON() ([]byte, error) {
 	}
 	if !isNil(o.Name) {
 		toSerialize["name"] = o.Name
+	}
+	if !isNil(o.Namespace) {
+		toSerialize["namespace"] = o.Namespace
 	}
 	if !isNil(o.Parameters) {
 		toSerialize["parameters"] = o.Parameters

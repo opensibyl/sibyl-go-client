@@ -1,11 +1,10 @@
-# Sibyl2FunctionContext
+# ObjectFunctionServiceDTO
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **BodySpan** | Pointer to [**CoreSpan**](CoreSpan.md) |  | [optional] 
-**Calls** | Pointer to [**[]ExtractorFunctionWithPath**](ExtractorFunctionWithPath.md) |  | [optional] 
 **Extras** | Pointer to **map[string]interface{}** | which contains language-specific contents | [optional] 
 **Lang** | Pointer to **string** | language | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
@@ -14,327 +13,328 @@ Name | Type | Description | Notes
 **Path** | Pointer to **string** |  | [optional] 
 **Receiver** | Pointer to **string** |  | [optional] 
 **Returns** | Pointer to [**[]ObjectValueUnit**](ObjectValueUnit.md) |  | [optional] 
-**ReverseCalls** | Pointer to [**[]ExtractorFunctionWithPath**](ExtractorFunctionWithPath.md) |  | [optional] 
+**Signature** | Pointer to **string** |  | [optional] 
 **Span** | Pointer to [**CoreSpan**](CoreSpan.md) |  | [optional] 
+**Tags** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
-### NewSibyl2FunctionContext
+### NewObjectFunctionServiceDTO
 
-`func NewSibyl2FunctionContext() *Sibyl2FunctionContext`
+`func NewObjectFunctionServiceDTO() *ObjectFunctionServiceDTO`
 
-NewSibyl2FunctionContext instantiates a new Sibyl2FunctionContext object
+NewObjectFunctionServiceDTO instantiates a new ObjectFunctionServiceDTO object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewSibyl2FunctionContextWithDefaults
+### NewObjectFunctionServiceDTOWithDefaults
 
-`func NewSibyl2FunctionContextWithDefaults() *Sibyl2FunctionContext`
+`func NewObjectFunctionServiceDTOWithDefaults() *ObjectFunctionServiceDTO`
 
-NewSibyl2FunctionContextWithDefaults instantiates a new Sibyl2FunctionContext object
+NewObjectFunctionServiceDTOWithDefaults instantiates a new ObjectFunctionServiceDTO object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetBodySpan
 
-`func (o *Sibyl2FunctionContext) GetBodySpan() CoreSpan`
+`func (o *ObjectFunctionServiceDTO) GetBodySpan() CoreSpan`
 
 GetBodySpan returns the BodySpan field if non-nil, zero value otherwise.
 
 ### GetBodySpanOk
 
-`func (o *Sibyl2FunctionContext) GetBodySpanOk() (*CoreSpan, bool)`
+`func (o *ObjectFunctionServiceDTO) GetBodySpanOk() (*CoreSpan, bool)`
 
 GetBodySpanOk returns a tuple with the BodySpan field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBodySpan
 
-`func (o *Sibyl2FunctionContext) SetBodySpan(v CoreSpan)`
+`func (o *ObjectFunctionServiceDTO) SetBodySpan(v CoreSpan)`
 
 SetBodySpan sets BodySpan field to given value.
 
 ### HasBodySpan
 
-`func (o *Sibyl2FunctionContext) HasBodySpan() bool`
+`func (o *ObjectFunctionServiceDTO) HasBodySpan() bool`
 
 HasBodySpan returns a boolean if a field has been set.
 
-### GetCalls
-
-`func (o *Sibyl2FunctionContext) GetCalls() []ExtractorFunctionWithPath`
-
-GetCalls returns the Calls field if non-nil, zero value otherwise.
-
-### GetCallsOk
-
-`func (o *Sibyl2FunctionContext) GetCallsOk() (*[]ExtractorFunctionWithPath, bool)`
-
-GetCallsOk returns a tuple with the Calls field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCalls
-
-`func (o *Sibyl2FunctionContext) SetCalls(v []ExtractorFunctionWithPath)`
-
-SetCalls sets Calls field to given value.
-
-### HasCalls
-
-`func (o *Sibyl2FunctionContext) HasCalls() bool`
-
-HasCalls returns a boolean if a field has been set.
-
 ### GetExtras
 
-`func (o *Sibyl2FunctionContext) GetExtras() map[string]interface{}`
+`func (o *ObjectFunctionServiceDTO) GetExtras() map[string]interface{}`
 
 GetExtras returns the Extras field if non-nil, zero value otherwise.
 
 ### GetExtrasOk
 
-`func (o *Sibyl2FunctionContext) GetExtrasOk() (*map[string]interface{}, bool)`
+`func (o *ObjectFunctionServiceDTO) GetExtrasOk() (*map[string]interface{}, bool)`
 
 GetExtrasOk returns a tuple with the Extras field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExtras
 
-`func (o *Sibyl2FunctionContext) SetExtras(v map[string]interface{})`
+`func (o *ObjectFunctionServiceDTO) SetExtras(v map[string]interface{})`
 
 SetExtras sets Extras field to given value.
 
 ### HasExtras
 
-`func (o *Sibyl2FunctionContext) HasExtras() bool`
+`func (o *ObjectFunctionServiceDTO) HasExtras() bool`
 
 HasExtras returns a boolean if a field has been set.
 
 ### GetLang
 
-`func (o *Sibyl2FunctionContext) GetLang() string`
+`func (o *ObjectFunctionServiceDTO) GetLang() string`
 
 GetLang returns the Lang field if non-nil, zero value otherwise.
 
 ### GetLangOk
 
-`func (o *Sibyl2FunctionContext) GetLangOk() (*string, bool)`
+`func (o *ObjectFunctionServiceDTO) GetLangOk() (*string, bool)`
 
 GetLangOk returns a tuple with the Lang field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLang
 
-`func (o *Sibyl2FunctionContext) SetLang(v string)`
+`func (o *ObjectFunctionServiceDTO) SetLang(v string)`
 
 SetLang sets Lang field to given value.
 
 ### HasLang
 
-`func (o *Sibyl2FunctionContext) HasLang() bool`
+`func (o *ObjectFunctionServiceDTO) HasLang() bool`
 
 HasLang returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *Sibyl2FunctionContext) GetName() string`
+`func (o *ObjectFunctionServiceDTO) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *Sibyl2FunctionContext) GetNameOk() (*string, bool)`
+`func (o *ObjectFunctionServiceDTO) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *Sibyl2FunctionContext) SetName(v string)`
+`func (o *ObjectFunctionServiceDTO) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *Sibyl2FunctionContext) HasName() bool`
+`func (o *ObjectFunctionServiceDTO) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetNamespace
 
-`func (o *Sibyl2FunctionContext) GetNamespace() string`
+`func (o *ObjectFunctionServiceDTO) GetNamespace() string`
 
 GetNamespace returns the Namespace field if non-nil, zero value otherwise.
 
 ### GetNamespaceOk
 
-`func (o *Sibyl2FunctionContext) GetNamespaceOk() (*string, bool)`
+`func (o *ObjectFunctionServiceDTO) GetNamespaceOk() (*string, bool)`
 
 GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNamespace
 
-`func (o *Sibyl2FunctionContext) SetNamespace(v string)`
+`func (o *ObjectFunctionServiceDTO) SetNamespace(v string)`
 
 SetNamespace sets Namespace field to given value.
 
 ### HasNamespace
 
-`func (o *Sibyl2FunctionContext) HasNamespace() bool`
+`func (o *ObjectFunctionServiceDTO) HasNamespace() bool`
 
 HasNamespace returns a boolean if a field has been set.
 
 ### GetParameters
 
-`func (o *Sibyl2FunctionContext) GetParameters() []ObjectValueUnit`
+`func (o *ObjectFunctionServiceDTO) GetParameters() []ObjectValueUnit`
 
 GetParameters returns the Parameters field if non-nil, zero value otherwise.
 
 ### GetParametersOk
 
-`func (o *Sibyl2FunctionContext) GetParametersOk() (*[]ObjectValueUnit, bool)`
+`func (o *ObjectFunctionServiceDTO) GetParametersOk() (*[]ObjectValueUnit, bool)`
 
 GetParametersOk returns a tuple with the Parameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetParameters
 
-`func (o *Sibyl2FunctionContext) SetParameters(v []ObjectValueUnit)`
+`func (o *ObjectFunctionServiceDTO) SetParameters(v []ObjectValueUnit)`
 
 SetParameters sets Parameters field to given value.
 
 ### HasParameters
 
-`func (o *Sibyl2FunctionContext) HasParameters() bool`
+`func (o *ObjectFunctionServiceDTO) HasParameters() bool`
 
 HasParameters returns a boolean if a field has been set.
 
 ### GetPath
 
-`func (o *Sibyl2FunctionContext) GetPath() string`
+`func (o *ObjectFunctionServiceDTO) GetPath() string`
 
 GetPath returns the Path field if non-nil, zero value otherwise.
 
 ### GetPathOk
 
-`func (o *Sibyl2FunctionContext) GetPathOk() (*string, bool)`
+`func (o *ObjectFunctionServiceDTO) GetPathOk() (*string, bool)`
 
 GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPath
 
-`func (o *Sibyl2FunctionContext) SetPath(v string)`
+`func (o *ObjectFunctionServiceDTO) SetPath(v string)`
 
 SetPath sets Path field to given value.
 
 ### HasPath
 
-`func (o *Sibyl2FunctionContext) HasPath() bool`
+`func (o *ObjectFunctionServiceDTO) HasPath() bool`
 
 HasPath returns a boolean if a field has been set.
 
 ### GetReceiver
 
-`func (o *Sibyl2FunctionContext) GetReceiver() string`
+`func (o *ObjectFunctionServiceDTO) GetReceiver() string`
 
 GetReceiver returns the Receiver field if non-nil, zero value otherwise.
 
 ### GetReceiverOk
 
-`func (o *Sibyl2FunctionContext) GetReceiverOk() (*string, bool)`
+`func (o *ObjectFunctionServiceDTO) GetReceiverOk() (*string, bool)`
 
 GetReceiverOk returns a tuple with the Receiver field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReceiver
 
-`func (o *Sibyl2FunctionContext) SetReceiver(v string)`
+`func (o *ObjectFunctionServiceDTO) SetReceiver(v string)`
 
 SetReceiver sets Receiver field to given value.
 
 ### HasReceiver
 
-`func (o *Sibyl2FunctionContext) HasReceiver() bool`
+`func (o *ObjectFunctionServiceDTO) HasReceiver() bool`
 
 HasReceiver returns a boolean if a field has been set.
 
 ### GetReturns
 
-`func (o *Sibyl2FunctionContext) GetReturns() []ObjectValueUnit`
+`func (o *ObjectFunctionServiceDTO) GetReturns() []ObjectValueUnit`
 
 GetReturns returns the Returns field if non-nil, zero value otherwise.
 
 ### GetReturnsOk
 
-`func (o *Sibyl2FunctionContext) GetReturnsOk() (*[]ObjectValueUnit, bool)`
+`func (o *ObjectFunctionServiceDTO) GetReturnsOk() (*[]ObjectValueUnit, bool)`
 
 GetReturnsOk returns a tuple with the Returns field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetReturns
 
-`func (o *Sibyl2FunctionContext) SetReturns(v []ObjectValueUnit)`
+`func (o *ObjectFunctionServiceDTO) SetReturns(v []ObjectValueUnit)`
 
 SetReturns sets Returns field to given value.
 
 ### HasReturns
 
-`func (o *Sibyl2FunctionContext) HasReturns() bool`
+`func (o *ObjectFunctionServiceDTO) HasReturns() bool`
 
 HasReturns returns a boolean if a field has been set.
 
-### GetReverseCalls
+### GetSignature
 
-`func (o *Sibyl2FunctionContext) GetReverseCalls() []ExtractorFunctionWithPath`
+`func (o *ObjectFunctionServiceDTO) GetSignature() string`
 
-GetReverseCalls returns the ReverseCalls field if non-nil, zero value otherwise.
+GetSignature returns the Signature field if non-nil, zero value otherwise.
 
-### GetReverseCallsOk
+### GetSignatureOk
 
-`func (o *Sibyl2FunctionContext) GetReverseCallsOk() (*[]ExtractorFunctionWithPath, bool)`
+`func (o *ObjectFunctionServiceDTO) GetSignatureOk() (*string, bool)`
 
-GetReverseCallsOk returns a tuple with the ReverseCalls field if it's non-nil, zero value otherwise
+GetSignatureOk returns a tuple with the Signature field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetReverseCalls
+### SetSignature
 
-`func (o *Sibyl2FunctionContext) SetReverseCalls(v []ExtractorFunctionWithPath)`
+`func (o *ObjectFunctionServiceDTO) SetSignature(v string)`
 
-SetReverseCalls sets ReverseCalls field to given value.
+SetSignature sets Signature field to given value.
 
-### HasReverseCalls
+### HasSignature
 
-`func (o *Sibyl2FunctionContext) HasReverseCalls() bool`
+`func (o *ObjectFunctionServiceDTO) HasSignature() bool`
 
-HasReverseCalls returns a boolean if a field has been set.
+HasSignature returns a boolean if a field has been set.
 
 ### GetSpan
 
-`func (o *Sibyl2FunctionContext) GetSpan() CoreSpan`
+`func (o *ObjectFunctionServiceDTO) GetSpan() CoreSpan`
 
 GetSpan returns the Span field if non-nil, zero value otherwise.
 
 ### GetSpanOk
 
-`func (o *Sibyl2FunctionContext) GetSpanOk() (*CoreSpan, bool)`
+`func (o *ObjectFunctionServiceDTO) GetSpanOk() (*CoreSpan, bool)`
 
 GetSpanOk returns a tuple with the Span field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpan
 
-`func (o *Sibyl2FunctionContext) SetSpan(v CoreSpan)`
+`func (o *ObjectFunctionServiceDTO) SetSpan(v CoreSpan)`
 
 SetSpan sets Span field to given value.
 
 ### HasSpan
 
-`func (o *Sibyl2FunctionContext) HasSpan() bool`
+`func (o *ObjectFunctionServiceDTO) HasSpan() bool`
 
 HasSpan returns a boolean if a field has been set.
+
+### GetTags
+
+`func (o *ObjectFunctionServiceDTO) GetTags() []string`
+
+GetTags returns the Tags field if non-nil, zero value otherwise.
+
+### GetTagsOk
+
+`func (o *ObjectFunctionServiceDTO) GetTagsOk() (*[]string, bool)`
+
+GetTagsOk returns a tuple with the Tags field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTags
+
+`func (o *ObjectFunctionServiceDTO) SetTags(v []string)`
+
+SetTags sets Tags field to given value.
+
+### HasTags
+
+`func (o *ObjectFunctionServiceDTO) HasTags() bool`
+
+HasTags returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

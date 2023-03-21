@@ -96,7 +96,7 @@ import (
 )
 
 func main() {
-    payload := *openapiclient.NewServiceTagUpload() // ServiceTagUpload | Payload description
+    payload := *openapiclient.NewServiceTagUpload() // ServiceTagUpload | tag upload payload
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -119,7 +119,7 @@ Other parameters are passed through a pointer to a apiApiV1TagFuncPostRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **payload** | [**ServiceTagUpload**](ServiceTagUpload.md) | Payload description | 
+ **payload** | [**ServiceTagUpload**](ServiceTagUpload.md) | tag upload payload | 
 
 ### Return type
 

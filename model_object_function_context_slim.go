@@ -14,40 +14,43 @@ import (
 	"encoding/json"
 )
 
-// ExtractorFunction struct for ExtractorFunction
-type ExtractorFunction struct {
+// ObjectFunctionContextSlim struct for ObjectFunctionContextSlim
+type ObjectFunctionContextSlim struct {
 	BodySpan *CoreSpan `json:"bodySpan,omitempty"`
+	Calls    []string  `json:"calls,omitempty"`
 	// which contains language-specific contents
 	Extras map[string]interface{} `json:"extras,omitempty"`
 	// language
-	Lang       *string           `json:"lang,omitempty"`
-	Name       *string           `json:"name,omitempty"`
-	Namespace  *string           `json:"namespace,omitempty"`
-	Parameters []ObjectValueUnit `json:"parameters,omitempty"`
-	Receiver   *string           `json:"receiver,omitempty"`
-	Returns    []ObjectValueUnit `json:"returns,omitempty"`
-	Span       *CoreSpan         `json:"span,omitempty"`
+	Lang         *string           `json:"lang,omitempty"`
+	Name         *string           `json:"name,omitempty"`
+	Namespace    *string           `json:"namespace,omitempty"`
+	Parameters   []ObjectValueUnit `json:"parameters,omitempty"`
+	Path         *string           `json:"path,omitempty"`
+	Receiver     *string           `json:"receiver,omitempty"`
+	Returns      []ObjectValueUnit `json:"returns,omitempty"`
+	ReverseCalls []string          `json:"reverseCalls,omitempty"`
+	Span         *CoreSpan         `json:"span,omitempty"`
 }
 
-// NewExtractorFunction instantiates a new ExtractorFunction object
+// NewObjectFunctionContextSlim instantiates a new ObjectFunctionContextSlim object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewExtractorFunction() *ExtractorFunction {
-	this := ExtractorFunction{}
+func NewObjectFunctionContextSlim() *ObjectFunctionContextSlim {
+	this := ObjectFunctionContextSlim{}
 	return &this
 }
 
-// NewExtractorFunctionWithDefaults instantiates a new ExtractorFunction object
+// NewObjectFunctionContextSlimWithDefaults instantiates a new ObjectFunctionContextSlim object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewExtractorFunctionWithDefaults() *ExtractorFunction {
-	this := ExtractorFunction{}
+func NewObjectFunctionContextSlimWithDefaults() *ObjectFunctionContextSlim {
+	this := ObjectFunctionContextSlim{}
 	return &this
 }
 
 // GetBodySpan returns the BodySpan field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetBodySpan() CoreSpan {
+func (o *ObjectFunctionContextSlim) GetBodySpan() CoreSpan {
 	if o == nil || isNil(o.BodySpan) {
 		var ret CoreSpan
 		return ret
@@ -57,7 +60,7 @@ func (o *ExtractorFunction) GetBodySpan() CoreSpan {
 
 // GetBodySpanOk returns a tuple with the BodySpan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetBodySpanOk() (*CoreSpan, bool) {
+func (o *ObjectFunctionContextSlim) GetBodySpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.BodySpan) {
 		return nil, false
 	}
@@ -65,7 +68,7 @@ func (o *ExtractorFunction) GetBodySpanOk() (*CoreSpan, bool) {
 }
 
 // HasBodySpan returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasBodySpan() bool {
+func (o *ObjectFunctionContextSlim) HasBodySpan() bool {
 	if o != nil && !isNil(o.BodySpan) {
 		return true
 	}
@@ -74,12 +77,44 @@ func (o *ExtractorFunction) HasBodySpan() bool {
 }
 
 // SetBodySpan gets a reference to the given CoreSpan and assigns it to the BodySpan field.
-func (o *ExtractorFunction) SetBodySpan(v CoreSpan) {
+func (o *ObjectFunctionContextSlim) SetBodySpan(v CoreSpan) {
 	o.BodySpan = &v
 }
 
+// GetCalls returns the Calls field value if set, zero value otherwise.
+func (o *ObjectFunctionContextSlim) GetCalls() []string {
+	if o == nil || isNil(o.Calls) {
+		var ret []string
+		return ret
+	}
+	return o.Calls
+}
+
+// GetCallsOk returns a tuple with the Calls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectFunctionContextSlim) GetCallsOk() ([]string, bool) {
+	if o == nil || isNil(o.Calls) {
+		return nil, false
+	}
+	return o.Calls, true
+}
+
+// HasCalls returns a boolean if a field has been set.
+func (o *ObjectFunctionContextSlim) HasCalls() bool {
+	if o != nil && !isNil(o.Calls) {
+		return true
+	}
+
+	return false
+}
+
+// SetCalls gets a reference to the given []string and assigns it to the Calls field.
+func (o *ObjectFunctionContextSlim) SetCalls(v []string) {
+	o.Calls = v
+}
+
 // GetExtras returns the Extras field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetExtras() map[string]interface{} {
+func (o *ObjectFunctionContextSlim) GetExtras() map[string]interface{} {
 	if o == nil || isNil(o.Extras) {
 		var ret map[string]interface{}
 		return ret
@@ -89,7 +124,7 @@ func (o *ExtractorFunction) GetExtras() map[string]interface{} {
 
 // GetExtrasOk returns a tuple with the Extras field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetExtrasOk() (map[string]interface{}, bool) {
+func (o *ObjectFunctionContextSlim) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
 		return map[string]interface{}{}, false
 	}
@@ -97,7 +132,7 @@ func (o *ExtractorFunction) GetExtrasOk() (map[string]interface{}, bool) {
 }
 
 // HasExtras returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasExtras() bool {
+func (o *ObjectFunctionContextSlim) HasExtras() bool {
 	if o != nil && !isNil(o.Extras) {
 		return true
 	}
@@ -106,12 +141,12 @@ func (o *ExtractorFunction) HasExtras() bool {
 }
 
 // SetExtras gets a reference to the given map[string]interface{} and assigns it to the Extras field.
-func (o *ExtractorFunction) SetExtras(v map[string]interface{}) {
+func (o *ObjectFunctionContextSlim) SetExtras(v map[string]interface{}) {
 	o.Extras = v
 }
 
 // GetLang returns the Lang field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetLang() string {
+func (o *ObjectFunctionContextSlim) GetLang() string {
 	if o == nil || isNil(o.Lang) {
 		var ret string
 		return ret
@@ -121,7 +156,7 @@ func (o *ExtractorFunction) GetLang() string {
 
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetLangOk() (*string, bool) {
+func (o *ObjectFunctionContextSlim) GetLangOk() (*string, bool) {
 	if o == nil || isNil(o.Lang) {
 		return nil, false
 	}
@@ -129,7 +164,7 @@ func (o *ExtractorFunction) GetLangOk() (*string, bool) {
 }
 
 // HasLang returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasLang() bool {
+func (o *ObjectFunctionContextSlim) HasLang() bool {
 	if o != nil && !isNil(o.Lang) {
 		return true
 	}
@@ -138,12 +173,12 @@ func (o *ExtractorFunction) HasLang() bool {
 }
 
 // SetLang gets a reference to the given string and assigns it to the Lang field.
-func (o *ExtractorFunction) SetLang(v string) {
+func (o *ObjectFunctionContextSlim) SetLang(v string) {
 	o.Lang = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetName() string {
+func (o *ObjectFunctionContextSlim) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -153,7 +188,7 @@ func (o *ExtractorFunction) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetNameOk() (*string, bool) {
+func (o *ObjectFunctionContextSlim) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -161,7 +196,7 @@ func (o *ExtractorFunction) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasName() bool {
+func (o *ObjectFunctionContextSlim) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -170,12 +205,12 @@ func (o *ExtractorFunction) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ExtractorFunction) SetName(v string) {
+func (o *ObjectFunctionContextSlim) SetName(v string) {
 	o.Name = &v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetNamespace() string {
+func (o *ObjectFunctionContextSlim) GetNamespace() string {
 	if o == nil || isNil(o.Namespace) {
 		var ret string
 		return ret
@@ -185,7 +220,7 @@ func (o *ExtractorFunction) GetNamespace() string {
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetNamespaceOk() (*string, bool) {
+func (o *ObjectFunctionContextSlim) GetNamespaceOk() (*string, bool) {
 	if o == nil || isNil(o.Namespace) {
 		return nil, false
 	}
@@ -193,7 +228,7 @@ func (o *ExtractorFunction) GetNamespaceOk() (*string, bool) {
 }
 
 // HasNamespace returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasNamespace() bool {
+func (o *ObjectFunctionContextSlim) HasNamespace() bool {
 	if o != nil && !isNil(o.Namespace) {
 		return true
 	}
@@ -202,12 +237,12 @@ func (o *ExtractorFunction) HasNamespace() bool {
 }
 
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
-func (o *ExtractorFunction) SetNamespace(v string) {
+func (o *ObjectFunctionContextSlim) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetParameters() []ObjectValueUnit {
+func (o *ObjectFunctionContextSlim) GetParameters() []ObjectValueUnit {
 	if o == nil || isNil(o.Parameters) {
 		var ret []ObjectValueUnit
 		return ret
@@ -217,7 +252,7 @@ func (o *ExtractorFunction) GetParameters() []ObjectValueUnit {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetParametersOk() ([]ObjectValueUnit, bool) {
+func (o *ObjectFunctionContextSlim) GetParametersOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Parameters) {
 		return nil, false
 	}
@@ -225,7 +260,7 @@ func (o *ExtractorFunction) GetParametersOk() ([]ObjectValueUnit, bool) {
 }
 
 // HasParameters returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasParameters() bool {
+func (o *ObjectFunctionContextSlim) HasParameters() bool {
 	if o != nil && !isNil(o.Parameters) {
 		return true
 	}
@@ -234,12 +269,44 @@ func (o *ExtractorFunction) HasParameters() bool {
 }
 
 // SetParameters gets a reference to the given []ObjectValueUnit and assigns it to the Parameters field.
-func (o *ExtractorFunction) SetParameters(v []ObjectValueUnit) {
+func (o *ObjectFunctionContextSlim) SetParameters(v []ObjectValueUnit) {
 	o.Parameters = v
 }
 
+// GetPath returns the Path field value if set, zero value otherwise.
+func (o *ObjectFunctionContextSlim) GetPath() string {
+	if o == nil || isNil(o.Path) {
+		var ret string
+		return ret
+	}
+	return *o.Path
+}
+
+// GetPathOk returns a tuple with the Path field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectFunctionContextSlim) GetPathOk() (*string, bool) {
+	if o == nil || isNil(o.Path) {
+		return nil, false
+	}
+	return o.Path, true
+}
+
+// HasPath returns a boolean if a field has been set.
+func (o *ObjectFunctionContextSlim) HasPath() bool {
+	if o != nil && !isNil(o.Path) {
+		return true
+	}
+
+	return false
+}
+
+// SetPath gets a reference to the given string and assigns it to the Path field.
+func (o *ObjectFunctionContextSlim) SetPath(v string) {
+	o.Path = &v
+}
+
 // GetReceiver returns the Receiver field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetReceiver() string {
+func (o *ObjectFunctionContextSlim) GetReceiver() string {
 	if o == nil || isNil(o.Receiver) {
 		var ret string
 		return ret
@@ -249,7 +316,7 @@ func (o *ExtractorFunction) GetReceiver() string {
 
 // GetReceiverOk returns a tuple with the Receiver field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetReceiverOk() (*string, bool) {
+func (o *ObjectFunctionContextSlim) GetReceiverOk() (*string, bool) {
 	if o == nil || isNil(o.Receiver) {
 		return nil, false
 	}
@@ -257,7 +324,7 @@ func (o *ExtractorFunction) GetReceiverOk() (*string, bool) {
 }
 
 // HasReceiver returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasReceiver() bool {
+func (o *ObjectFunctionContextSlim) HasReceiver() bool {
 	if o != nil && !isNil(o.Receiver) {
 		return true
 	}
@@ -266,12 +333,12 @@ func (o *ExtractorFunction) HasReceiver() bool {
 }
 
 // SetReceiver gets a reference to the given string and assigns it to the Receiver field.
-func (o *ExtractorFunction) SetReceiver(v string) {
+func (o *ObjectFunctionContextSlim) SetReceiver(v string) {
 	o.Receiver = &v
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetReturns() []ObjectValueUnit {
+func (o *ObjectFunctionContextSlim) GetReturns() []ObjectValueUnit {
 	if o == nil || isNil(o.Returns) {
 		var ret []ObjectValueUnit
 		return ret
@@ -281,7 +348,7 @@ func (o *ExtractorFunction) GetReturns() []ObjectValueUnit {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetReturnsOk() ([]ObjectValueUnit, bool) {
+func (o *ObjectFunctionContextSlim) GetReturnsOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Returns) {
 		return nil, false
 	}
@@ -289,7 +356,7 @@ func (o *ExtractorFunction) GetReturnsOk() ([]ObjectValueUnit, bool) {
 }
 
 // HasReturns returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasReturns() bool {
+func (o *ObjectFunctionContextSlim) HasReturns() bool {
 	if o != nil && !isNil(o.Returns) {
 		return true
 	}
@@ -298,12 +365,44 @@ func (o *ExtractorFunction) HasReturns() bool {
 }
 
 // SetReturns gets a reference to the given []ObjectValueUnit and assigns it to the Returns field.
-func (o *ExtractorFunction) SetReturns(v []ObjectValueUnit) {
+func (o *ObjectFunctionContextSlim) SetReturns(v []ObjectValueUnit) {
 	o.Returns = v
 }
 
+// GetReverseCalls returns the ReverseCalls field value if set, zero value otherwise.
+func (o *ObjectFunctionContextSlim) GetReverseCalls() []string {
+	if o == nil || isNil(o.ReverseCalls) {
+		var ret []string
+		return ret
+	}
+	return o.ReverseCalls
+}
+
+// GetReverseCallsOk returns a tuple with the ReverseCalls field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectFunctionContextSlim) GetReverseCallsOk() ([]string, bool) {
+	if o == nil || isNil(o.ReverseCalls) {
+		return nil, false
+	}
+	return o.ReverseCalls, true
+}
+
+// HasReverseCalls returns a boolean if a field has been set.
+func (o *ObjectFunctionContextSlim) HasReverseCalls() bool {
+	if o != nil && !isNil(o.ReverseCalls) {
+		return true
+	}
+
+	return false
+}
+
+// SetReverseCalls gets a reference to the given []string and assigns it to the ReverseCalls field.
+func (o *ObjectFunctionContextSlim) SetReverseCalls(v []string) {
+	o.ReverseCalls = v
+}
+
 // GetSpan returns the Span field value if set, zero value otherwise.
-func (o *ExtractorFunction) GetSpan() CoreSpan {
+func (o *ObjectFunctionContextSlim) GetSpan() CoreSpan {
 	if o == nil || isNil(o.Span) {
 		var ret CoreSpan
 		return ret
@@ -313,7 +412,7 @@ func (o *ExtractorFunction) GetSpan() CoreSpan {
 
 // GetSpanOk returns a tuple with the Span field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ExtractorFunction) GetSpanOk() (*CoreSpan, bool) {
+func (o *ObjectFunctionContextSlim) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
 		return nil, false
 	}
@@ -321,7 +420,7 @@ func (o *ExtractorFunction) GetSpanOk() (*CoreSpan, bool) {
 }
 
 // HasSpan returns a boolean if a field has been set.
-func (o *ExtractorFunction) HasSpan() bool {
+func (o *ObjectFunctionContextSlim) HasSpan() bool {
 	if o != nil && !isNil(o.Span) {
 		return true
 	}
@@ -330,14 +429,17 @@ func (o *ExtractorFunction) HasSpan() bool {
 }
 
 // SetSpan gets a reference to the given CoreSpan and assigns it to the Span field.
-func (o *ExtractorFunction) SetSpan(v CoreSpan) {
+func (o *ObjectFunctionContextSlim) SetSpan(v CoreSpan) {
 	o.Span = &v
 }
 
-func (o ExtractorFunction) MarshalJSON() ([]byte, error) {
+func (o ObjectFunctionContextSlim) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.BodySpan) {
 		toSerialize["bodySpan"] = o.BodySpan
+	}
+	if !isNil(o.Calls) {
+		toSerialize["calls"] = o.Calls
 	}
 	if !isNil(o.Extras) {
 		toSerialize["extras"] = o.Extras
@@ -354,11 +456,17 @@ func (o ExtractorFunction) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Parameters) {
 		toSerialize["parameters"] = o.Parameters
 	}
+	if !isNil(o.Path) {
+		toSerialize["path"] = o.Path
+	}
 	if !isNil(o.Receiver) {
 		toSerialize["receiver"] = o.Receiver
 	}
 	if !isNil(o.Returns) {
 		toSerialize["returns"] = o.Returns
+	}
+	if !isNil(o.ReverseCalls) {
+		toSerialize["reverseCalls"] = o.ReverseCalls
 	}
 	if !isNil(o.Span) {
 		toSerialize["span"] = o.Span
@@ -366,38 +474,38 @@ func (o ExtractorFunction) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableExtractorFunction struct {
-	value *ExtractorFunction
+type NullableObjectFunctionContextSlim struct {
+	value *ObjectFunctionContextSlim
 	isSet bool
 }
 
-func (v NullableExtractorFunction) Get() *ExtractorFunction {
+func (v NullableObjectFunctionContextSlim) Get() *ObjectFunctionContextSlim {
 	return v.value
 }
 
-func (v *NullableExtractorFunction) Set(val *ExtractorFunction) {
+func (v *NullableObjectFunctionContextSlim) Set(val *ObjectFunctionContextSlim) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableExtractorFunction) IsSet() bool {
+func (v NullableObjectFunctionContextSlim) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableExtractorFunction) Unset() {
+func (v *NullableObjectFunctionContextSlim) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableExtractorFunction(val *ExtractorFunction) *NullableExtractorFunction {
-	return &NullableExtractorFunction{value: val, isSet: true}
+func NewNullableObjectFunctionContextSlim(val *ObjectFunctionContextSlim) *NullableObjectFunctionContextSlim {
+	return &NullableObjectFunctionContextSlim{value: val, isSet: true}
 }
 
-func (v NullableExtractorFunction) MarshalJSON() ([]byte, error) {
+func (v NullableObjectFunctionContextSlim) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableExtractorFunction) UnmarshalJSON(src []byte) error {
+func (v *NullableObjectFunctionContextSlim) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

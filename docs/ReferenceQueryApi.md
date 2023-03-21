@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## ApiV1ReferenceCountFuncctxGet
 
-> []Sibyl2FunctionContextSlim ApiV1ReferenceCountFuncctxGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+> []ObjectFunctionContextSlim ApiV1ReferenceCountFuncctxGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
 
 funcctx query by ref
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ReferenceQueryApi.ApiV1ReferenceCountFuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1ReferenceCountFuncctxGet`: []Sibyl2FunctionContextSlim
+    // response from `ApiV1ReferenceCountFuncctxGet`: []ObjectFunctionContextSlim
     fmt.Fprintf(os.Stdout, "Response from `ReferenceQueryApi.ApiV1ReferenceCountFuncctxGet`: %v\n", resp)
 }
 ```
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionContextSlim**](Sibyl2FunctionContextSlim.md)
+[**[]ObjectFunctionContextSlim**](ObjectFunctionContextSlim.md)
 
 ### Authorization
 
@@ -81,7 +81,7 @@ No authorization required
 
 ## ApiV1ReferenceCountFuncctxReverseGet
 
-> []Sibyl2FunctionContextSlim ApiV1ReferenceCountFuncctxReverseGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
+> []ObjectFunctionContextSlim ApiV1ReferenceCountFuncctxReverseGet(ctx).Repo(repo).Rev(rev).MoreThan(moreThan).LessThan(lessThan).Execute()
 
 funcctx query by referenced
 
@@ -110,7 +110,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ReferenceQueryApi.ApiV1ReferenceCountFuncctxReverseGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1ReferenceCountFuncctxReverseGet`: []Sibyl2FunctionContextSlim
+    // response from `ApiV1ReferenceCountFuncctxReverseGet`: []ObjectFunctionContextSlim
     fmt.Fprintf(os.Stdout, "Response from `ReferenceQueryApi.ApiV1ReferenceCountFuncctxReverseGet`: %v\n", resp)
 }
 ```
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionContextSlim**](Sibyl2FunctionContextSlim.md)
+[**[]ObjectFunctionContextSlim**](ObjectFunctionContextSlim.md)
 
 ### Authorization
 

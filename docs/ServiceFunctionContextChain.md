@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Extras** | Pointer to **map[string]interface{}** | which contains language-specific contents | [optional] 
 **Lang** | Pointer to **string** | language | [optional] 
 **Name** | Pointer to **string** |  | [optional] 
+**Namespace** | Pointer to **string** |  | [optional] 
 **Parameters** | Pointer to [**[]ObjectValueUnit**](ObjectValueUnit.md) |  | [optional] 
 **Path** | Pointer to **string** |  | [optional] 
 **Receiver** | Pointer to **string** |  | [optional] 
@@ -186,6 +187,31 @@ SetName sets Name field to given value.
 `func (o *ServiceFunctionContextChain) HasName() bool`
 
 HasName returns a boolean if a field has been set.
+
+### GetNamespace
+
+`func (o *ServiceFunctionContextChain) GetNamespace() string`
+
+GetNamespace returns the Namespace field if non-nil, zero value otherwise.
+
+### GetNamespaceOk
+
+`func (o *ServiceFunctionContextChain) GetNamespaceOk() (*string, bool)`
+
+GetNamespaceOk returns a tuple with the Namespace field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNamespace
+
+`func (o *ServiceFunctionContextChain) SetNamespace(v string)`
+
+SetNamespace sets Namespace field to given value.
+
+### HasNamespace
+
+`func (o *ServiceFunctionContextChain) HasNamespace() bool`
+
+HasNamespace returns a boolean if a field has been set.
 
 ### GetParameters
 

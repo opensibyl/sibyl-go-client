@@ -14,45 +14,44 @@ import (
 	"encoding/json"
 )
 
-// ServiceFunctionContextChain struct for ServiceFunctionContextChain
-type ServiceFunctionContextChain struct {
-	BodySpan   *CoreSpan           `json:"bodySpan,omitempty"`
-	CallChains *ServiceContextTree `json:"callChains,omitempty"`
-	Calls      []string            `json:"calls,omitempty"`
+// ObjectFuncCtxServiceDTO struct for ObjectFuncCtxServiceDTO
+type ObjectFuncCtxServiceDTO struct {
+	BodySpan *CoreSpan `json:"bodySpan,omitempty"`
+	Calls    []string  `json:"calls,omitempty"`
 	// which contains language-specific contents
 	Extras map[string]interface{} `json:"extras,omitempty"`
 	// language
-	Lang              *string             `json:"lang,omitempty"`
-	Name              *string             `json:"name,omitempty"`
-	Namespace         *string             `json:"namespace,omitempty"`
-	Parameters        []ObjectValueUnit   `json:"parameters,omitempty"`
-	Path              *string             `json:"path,omitempty"`
-	Receiver          *string             `json:"receiver,omitempty"`
-	Returns           []ObjectValueUnit   `json:"returns,omitempty"`
-	ReverseCallChains *ServiceContextTree `json:"reverseCallChains,omitempty"`
-	ReverseCalls      []string            `json:"reverseCalls,omitempty"`
-	Span              *CoreSpan           `json:"span,omitempty"`
+	Lang         *string           `json:"lang,omitempty"`
+	Name         *string           `json:"name,omitempty"`
+	Namespace    *string           `json:"namespace,omitempty"`
+	Parameters   []ObjectValueUnit `json:"parameters,omitempty"`
+	Path         *string           `json:"path,omitempty"`
+	Receiver     *string           `json:"receiver,omitempty"`
+	Returns      []ObjectValueUnit `json:"returns,omitempty"`
+	ReverseCalls []string          `json:"reverseCalls,omitempty"`
+	Signature    *string           `json:"signature,omitempty"`
+	Span         *CoreSpan         `json:"span,omitempty"`
 }
 
-// NewServiceFunctionContextChain instantiates a new ServiceFunctionContextChain object
+// NewObjectFuncCtxServiceDTO instantiates a new ObjectFuncCtxServiceDTO object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceFunctionContextChain() *ServiceFunctionContextChain {
-	this := ServiceFunctionContextChain{}
+func NewObjectFuncCtxServiceDTO() *ObjectFuncCtxServiceDTO {
+	this := ObjectFuncCtxServiceDTO{}
 	return &this
 }
 
-// NewServiceFunctionContextChainWithDefaults instantiates a new ServiceFunctionContextChain object
+// NewObjectFuncCtxServiceDTOWithDefaults instantiates a new ObjectFuncCtxServiceDTO object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewServiceFunctionContextChainWithDefaults() *ServiceFunctionContextChain {
-	this := ServiceFunctionContextChain{}
+func NewObjectFuncCtxServiceDTOWithDefaults() *ObjectFuncCtxServiceDTO {
+	this := ObjectFuncCtxServiceDTO{}
 	return &this
 }
 
 // GetBodySpan returns the BodySpan field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetBodySpan() CoreSpan {
+func (o *ObjectFuncCtxServiceDTO) GetBodySpan() CoreSpan {
 	if o == nil || isNil(o.BodySpan) {
 		var ret CoreSpan
 		return ret
@@ -62,7 +61,7 @@ func (o *ServiceFunctionContextChain) GetBodySpan() CoreSpan {
 
 // GetBodySpanOk returns a tuple with the BodySpan field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetBodySpanOk() (*CoreSpan, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetBodySpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.BodySpan) {
 		return nil, false
 	}
@@ -70,7 +69,7 @@ func (o *ServiceFunctionContextChain) GetBodySpanOk() (*CoreSpan, bool) {
 }
 
 // HasBodySpan returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasBodySpan() bool {
+func (o *ObjectFuncCtxServiceDTO) HasBodySpan() bool {
 	if o != nil && !isNil(o.BodySpan) {
 		return true
 	}
@@ -79,44 +78,12 @@ func (o *ServiceFunctionContextChain) HasBodySpan() bool {
 }
 
 // SetBodySpan gets a reference to the given CoreSpan and assigns it to the BodySpan field.
-func (o *ServiceFunctionContextChain) SetBodySpan(v CoreSpan) {
+func (o *ObjectFuncCtxServiceDTO) SetBodySpan(v CoreSpan) {
 	o.BodySpan = &v
 }
 
-// GetCallChains returns the CallChains field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetCallChains() ServiceContextTree {
-	if o == nil || isNil(o.CallChains) {
-		var ret ServiceContextTree
-		return ret
-	}
-	return *o.CallChains
-}
-
-// GetCallChainsOk returns a tuple with the CallChains field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetCallChainsOk() (*ServiceContextTree, bool) {
-	if o == nil || isNil(o.CallChains) {
-		return nil, false
-	}
-	return o.CallChains, true
-}
-
-// HasCallChains returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasCallChains() bool {
-	if o != nil && !isNil(o.CallChains) {
-		return true
-	}
-
-	return false
-}
-
-// SetCallChains gets a reference to the given ServiceContextTree and assigns it to the CallChains field.
-func (o *ServiceFunctionContextChain) SetCallChains(v ServiceContextTree) {
-	o.CallChains = &v
-}
-
 // GetCalls returns the Calls field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetCalls() []string {
+func (o *ObjectFuncCtxServiceDTO) GetCalls() []string {
 	if o == nil || isNil(o.Calls) {
 		var ret []string
 		return ret
@@ -126,7 +93,7 @@ func (o *ServiceFunctionContextChain) GetCalls() []string {
 
 // GetCallsOk returns a tuple with the Calls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetCallsOk() ([]string, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetCallsOk() ([]string, bool) {
 	if o == nil || isNil(o.Calls) {
 		return nil, false
 	}
@@ -134,7 +101,7 @@ func (o *ServiceFunctionContextChain) GetCallsOk() ([]string, bool) {
 }
 
 // HasCalls returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasCalls() bool {
+func (o *ObjectFuncCtxServiceDTO) HasCalls() bool {
 	if o != nil && !isNil(o.Calls) {
 		return true
 	}
@@ -143,12 +110,12 @@ func (o *ServiceFunctionContextChain) HasCalls() bool {
 }
 
 // SetCalls gets a reference to the given []string and assigns it to the Calls field.
-func (o *ServiceFunctionContextChain) SetCalls(v []string) {
+func (o *ObjectFuncCtxServiceDTO) SetCalls(v []string) {
 	o.Calls = v
 }
 
 // GetExtras returns the Extras field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetExtras() map[string]interface{} {
+func (o *ObjectFuncCtxServiceDTO) GetExtras() map[string]interface{} {
 	if o == nil || isNil(o.Extras) {
 		var ret map[string]interface{}
 		return ret
@@ -158,7 +125,7 @@ func (o *ServiceFunctionContextChain) GetExtras() map[string]interface{} {
 
 // GetExtrasOk returns a tuple with the Extras field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetExtrasOk() (map[string]interface{}, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetExtrasOk() (map[string]interface{}, bool) {
 	if o == nil || isNil(o.Extras) {
 		return map[string]interface{}{}, false
 	}
@@ -166,7 +133,7 @@ func (o *ServiceFunctionContextChain) GetExtrasOk() (map[string]interface{}, boo
 }
 
 // HasExtras returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasExtras() bool {
+func (o *ObjectFuncCtxServiceDTO) HasExtras() bool {
 	if o != nil && !isNil(o.Extras) {
 		return true
 	}
@@ -175,12 +142,12 @@ func (o *ServiceFunctionContextChain) HasExtras() bool {
 }
 
 // SetExtras gets a reference to the given map[string]interface{} and assigns it to the Extras field.
-func (o *ServiceFunctionContextChain) SetExtras(v map[string]interface{}) {
+func (o *ObjectFuncCtxServiceDTO) SetExtras(v map[string]interface{}) {
 	o.Extras = v
 }
 
 // GetLang returns the Lang field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetLang() string {
+func (o *ObjectFuncCtxServiceDTO) GetLang() string {
 	if o == nil || isNil(o.Lang) {
 		var ret string
 		return ret
@@ -190,7 +157,7 @@ func (o *ServiceFunctionContextChain) GetLang() string {
 
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetLangOk() (*string, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetLangOk() (*string, bool) {
 	if o == nil || isNil(o.Lang) {
 		return nil, false
 	}
@@ -198,7 +165,7 @@ func (o *ServiceFunctionContextChain) GetLangOk() (*string, bool) {
 }
 
 // HasLang returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasLang() bool {
+func (o *ObjectFuncCtxServiceDTO) HasLang() bool {
 	if o != nil && !isNil(o.Lang) {
 		return true
 	}
@@ -207,12 +174,12 @@ func (o *ServiceFunctionContextChain) HasLang() bool {
 }
 
 // SetLang gets a reference to the given string and assigns it to the Lang field.
-func (o *ServiceFunctionContextChain) SetLang(v string) {
+func (o *ObjectFuncCtxServiceDTO) SetLang(v string) {
 	o.Lang = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetName() string {
+func (o *ObjectFuncCtxServiceDTO) GetName() string {
 	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
@@ -222,7 +189,7 @@ func (o *ServiceFunctionContextChain) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetNameOk() (*string, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetNameOk() (*string, bool) {
 	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
@@ -230,7 +197,7 @@ func (o *ServiceFunctionContextChain) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasName() bool {
+func (o *ObjectFuncCtxServiceDTO) HasName() bool {
 	if o != nil && !isNil(o.Name) {
 		return true
 	}
@@ -239,12 +206,12 @@ func (o *ServiceFunctionContextChain) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ServiceFunctionContextChain) SetName(v string) {
+func (o *ObjectFuncCtxServiceDTO) SetName(v string) {
 	o.Name = &v
 }
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetNamespace() string {
+func (o *ObjectFuncCtxServiceDTO) GetNamespace() string {
 	if o == nil || isNil(o.Namespace) {
 		var ret string
 		return ret
@@ -254,7 +221,7 @@ func (o *ServiceFunctionContextChain) GetNamespace() string {
 
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetNamespaceOk() (*string, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetNamespaceOk() (*string, bool) {
 	if o == nil || isNil(o.Namespace) {
 		return nil, false
 	}
@@ -262,7 +229,7 @@ func (o *ServiceFunctionContextChain) GetNamespaceOk() (*string, bool) {
 }
 
 // HasNamespace returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasNamespace() bool {
+func (o *ObjectFuncCtxServiceDTO) HasNamespace() bool {
 	if o != nil && !isNil(o.Namespace) {
 		return true
 	}
@@ -271,12 +238,12 @@ func (o *ServiceFunctionContextChain) HasNamespace() bool {
 }
 
 // SetNamespace gets a reference to the given string and assigns it to the Namespace field.
-func (o *ServiceFunctionContextChain) SetNamespace(v string) {
+func (o *ObjectFuncCtxServiceDTO) SetNamespace(v string) {
 	o.Namespace = &v
 }
 
 // GetParameters returns the Parameters field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetParameters() []ObjectValueUnit {
+func (o *ObjectFuncCtxServiceDTO) GetParameters() []ObjectValueUnit {
 	if o == nil || isNil(o.Parameters) {
 		var ret []ObjectValueUnit
 		return ret
@@ -286,7 +253,7 @@ func (o *ServiceFunctionContextChain) GetParameters() []ObjectValueUnit {
 
 // GetParametersOk returns a tuple with the Parameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetParametersOk() ([]ObjectValueUnit, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetParametersOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Parameters) {
 		return nil, false
 	}
@@ -294,7 +261,7 @@ func (o *ServiceFunctionContextChain) GetParametersOk() ([]ObjectValueUnit, bool
 }
 
 // HasParameters returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasParameters() bool {
+func (o *ObjectFuncCtxServiceDTO) HasParameters() bool {
 	if o != nil && !isNil(o.Parameters) {
 		return true
 	}
@@ -303,12 +270,12 @@ func (o *ServiceFunctionContextChain) HasParameters() bool {
 }
 
 // SetParameters gets a reference to the given []ObjectValueUnit and assigns it to the Parameters field.
-func (o *ServiceFunctionContextChain) SetParameters(v []ObjectValueUnit) {
+func (o *ObjectFuncCtxServiceDTO) SetParameters(v []ObjectValueUnit) {
 	o.Parameters = v
 }
 
 // GetPath returns the Path field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetPath() string {
+func (o *ObjectFuncCtxServiceDTO) GetPath() string {
 	if o == nil || isNil(o.Path) {
 		var ret string
 		return ret
@@ -318,7 +285,7 @@ func (o *ServiceFunctionContextChain) GetPath() string {
 
 // GetPathOk returns a tuple with the Path field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetPathOk() (*string, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetPathOk() (*string, bool) {
 	if o == nil || isNil(o.Path) {
 		return nil, false
 	}
@@ -326,7 +293,7 @@ func (o *ServiceFunctionContextChain) GetPathOk() (*string, bool) {
 }
 
 // HasPath returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasPath() bool {
+func (o *ObjectFuncCtxServiceDTO) HasPath() bool {
 	if o != nil && !isNil(o.Path) {
 		return true
 	}
@@ -335,12 +302,12 @@ func (o *ServiceFunctionContextChain) HasPath() bool {
 }
 
 // SetPath gets a reference to the given string and assigns it to the Path field.
-func (o *ServiceFunctionContextChain) SetPath(v string) {
+func (o *ObjectFuncCtxServiceDTO) SetPath(v string) {
 	o.Path = &v
 }
 
 // GetReceiver returns the Receiver field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetReceiver() string {
+func (o *ObjectFuncCtxServiceDTO) GetReceiver() string {
 	if o == nil || isNil(o.Receiver) {
 		var ret string
 		return ret
@@ -350,7 +317,7 @@ func (o *ServiceFunctionContextChain) GetReceiver() string {
 
 // GetReceiverOk returns a tuple with the Receiver field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetReceiverOk() (*string, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetReceiverOk() (*string, bool) {
 	if o == nil || isNil(o.Receiver) {
 		return nil, false
 	}
@@ -358,7 +325,7 @@ func (o *ServiceFunctionContextChain) GetReceiverOk() (*string, bool) {
 }
 
 // HasReceiver returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasReceiver() bool {
+func (o *ObjectFuncCtxServiceDTO) HasReceiver() bool {
 	if o != nil && !isNil(o.Receiver) {
 		return true
 	}
@@ -367,12 +334,12 @@ func (o *ServiceFunctionContextChain) HasReceiver() bool {
 }
 
 // SetReceiver gets a reference to the given string and assigns it to the Receiver field.
-func (o *ServiceFunctionContextChain) SetReceiver(v string) {
+func (o *ObjectFuncCtxServiceDTO) SetReceiver(v string) {
 	o.Receiver = &v
 }
 
 // GetReturns returns the Returns field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetReturns() []ObjectValueUnit {
+func (o *ObjectFuncCtxServiceDTO) GetReturns() []ObjectValueUnit {
 	if o == nil || isNil(o.Returns) {
 		var ret []ObjectValueUnit
 		return ret
@@ -382,7 +349,7 @@ func (o *ServiceFunctionContextChain) GetReturns() []ObjectValueUnit {
 
 // GetReturnsOk returns a tuple with the Returns field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetReturnsOk() ([]ObjectValueUnit, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetReturnsOk() ([]ObjectValueUnit, bool) {
 	if o == nil || isNil(o.Returns) {
 		return nil, false
 	}
@@ -390,7 +357,7 @@ func (o *ServiceFunctionContextChain) GetReturnsOk() ([]ObjectValueUnit, bool) {
 }
 
 // HasReturns returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasReturns() bool {
+func (o *ObjectFuncCtxServiceDTO) HasReturns() bool {
 	if o != nil && !isNil(o.Returns) {
 		return true
 	}
@@ -399,44 +366,12 @@ func (o *ServiceFunctionContextChain) HasReturns() bool {
 }
 
 // SetReturns gets a reference to the given []ObjectValueUnit and assigns it to the Returns field.
-func (o *ServiceFunctionContextChain) SetReturns(v []ObjectValueUnit) {
+func (o *ObjectFuncCtxServiceDTO) SetReturns(v []ObjectValueUnit) {
 	o.Returns = v
 }
 
-// GetReverseCallChains returns the ReverseCallChains field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetReverseCallChains() ServiceContextTree {
-	if o == nil || isNil(o.ReverseCallChains) {
-		var ret ServiceContextTree
-		return ret
-	}
-	return *o.ReverseCallChains
-}
-
-// GetReverseCallChainsOk returns a tuple with the ReverseCallChains field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetReverseCallChainsOk() (*ServiceContextTree, bool) {
-	if o == nil || isNil(o.ReverseCallChains) {
-		return nil, false
-	}
-	return o.ReverseCallChains, true
-}
-
-// HasReverseCallChains returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasReverseCallChains() bool {
-	if o != nil && !isNil(o.ReverseCallChains) {
-		return true
-	}
-
-	return false
-}
-
-// SetReverseCallChains gets a reference to the given ServiceContextTree and assigns it to the ReverseCallChains field.
-func (o *ServiceFunctionContextChain) SetReverseCallChains(v ServiceContextTree) {
-	o.ReverseCallChains = &v
-}
-
 // GetReverseCalls returns the ReverseCalls field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetReverseCalls() []string {
+func (o *ObjectFuncCtxServiceDTO) GetReverseCalls() []string {
 	if o == nil || isNil(o.ReverseCalls) {
 		var ret []string
 		return ret
@@ -446,7 +381,7 @@ func (o *ServiceFunctionContextChain) GetReverseCalls() []string {
 
 // GetReverseCallsOk returns a tuple with the ReverseCalls field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetReverseCallsOk() ([]string, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetReverseCallsOk() ([]string, bool) {
 	if o == nil || isNil(o.ReverseCalls) {
 		return nil, false
 	}
@@ -454,7 +389,7 @@ func (o *ServiceFunctionContextChain) GetReverseCallsOk() ([]string, bool) {
 }
 
 // HasReverseCalls returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasReverseCalls() bool {
+func (o *ObjectFuncCtxServiceDTO) HasReverseCalls() bool {
 	if o != nil && !isNil(o.ReverseCalls) {
 		return true
 	}
@@ -463,12 +398,44 @@ func (o *ServiceFunctionContextChain) HasReverseCalls() bool {
 }
 
 // SetReverseCalls gets a reference to the given []string and assigns it to the ReverseCalls field.
-func (o *ServiceFunctionContextChain) SetReverseCalls(v []string) {
+func (o *ObjectFuncCtxServiceDTO) SetReverseCalls(v []string) {
 	o.ReverseCalls = v
 }
 
+// GetSignature returns the Signature field value if set, zero value otherwise.
+func (o *ObjectFuncCtxServiceDTO) GetSignature() string {
+	if o == nil || isNil(o.Signature) {
+		var ret string
+		return ret
+	}
+	return *o.Signature
+}
+
+// GetSignatureOk returns a tuple with the Signature field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ObjectFuncCtxServiceDTO) GetSignatureOk() (*string, bool) {
+	if o == nil || isNil(o.Signature) {
+		return nil, false
+	}
+	return o.Signature, true
+}
+
+// HasSignature returns a boolean if a field has been set.
+func (o *ObjectFuncCtxServiceDTO) HasSignature() bool {
+	if o != nil && !isNil(o.Signature) {
+		return true
+	}
+
+	return false
+}
+
+// SetSignature gets a reference to the given string and assigns it to the Signature field.
+func (o *ObjectFuncCtxServiceDTO) SetSignature(v string) {
+	o.Signature = &v
+}
+
 // GetSpan returns the Span field value if set, zero value otherwise.
-func (o *ServiceFunctionContextChain) GetSpan() CoreSpan {
+func (o *ObjectFuncCtxServiceDTO) GetSpan() CoreSpan {
 	if o == nil || isNil(o.Span) {
 		var ret CoreSpan
 		return ret
@@ -478,7 +445,7 @@ func (o *ServiceFunctionContextChain) GetSpan() CoreSpan {
 
 // GetSpanOk returns a tuple with the Span field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServiceFunctionContextChain) GetSpanOk() (*CoreSpan, bool) {
+func (o *ObjectFuncCtxServiceDTO) GetSpanOk() (*CoreSpan, bool) {
 	if o == nil || isNil(o.Span) {
 		return nil, false
 	}
@@ -486,7 +453,7 @@ func (o *ServiceFunctionContextChain) GetSpanOk() (*CoreSpan, bool) {
 }
 
 // HasSpan returns a boolean if a field has been set.
-func (o *ServiceFunctionContextChain) HasSpan() bool {
+func (o *ObjectFuncCtxServiceDTO) HasSpan() bool {
 	if o != nil && !isNil(o.Span) {
 		return true
 	}
@@ -495,17 +462,14 @@ func (o *ServiceFunctionContextChain) HasSpan() bool {
 }
 
 // SetSpan gets a reference to the given CoreSpan and assigns it to the Span field.
-func (o *ServiceFunctionContextChain) SetSpan(v CoreSpan) {
+func (o *ObjectFuncCtxServiceDTO) SetSpan(v CoreSpan) {
 	o.Span = &v
 }
 
-func (o ServiceFunctionContextChain) MarshalJSON() ([]byte, error) {
+func (o ObjectFuncCtxServiceDTO) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if !isNil(o.BodySpan) {
 		toSerialize["bodySpan"] = o.BodySpan
-	}
-	if !isNil(o.CallChains) {
-		toSerialize["callChains"] = o.CallChains
 	}
 	if !isNil(o.Calls) {
 		toSerialize["calls"] = o.Calls
@@ -534,11 +498,11 @@ func (o ServiceFunctionContextChain) MarshalJSON() ([]byte, error) {
 	if !isNil(o.Returns) {
 		toSerialize["returns"] = o.Returns
 	}
-	if !isNil(o.ReverseCallChains) {
-		toSerialize["reverseCallChains"] = o.ReverseCallChains
-	}
 	if !isNil(o.ReverseCalls) {
 		toSerialize["reverseCalls"] = o.ReverseCalls
+	}
+	if !isNil(o.Signature) {
+		toSerialize["signature"] = o.Signature
 	}
 	if !isNil(o.Span) {
 		toSerialize["span"] = o.Span
@@ -546,38 +510,38 @@ func (o ServiceFunctionContextChain) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableServiceFunctionContextChain struct {
-	value *ServiceFunctionContextChain
+type NullableObjectFuncCtxServiceDTO struct {
+	value *ObjectFuncCtxServiceDTO
 	isSet bool
 }
 
-func (v NullableServiceFunctionContextChain) Get() *ServiceFunctionContextChain {
+func (v NullableObjectFuncCtxServiceDTO) Get() *ObjectFuncCtxServiceDTO {
 	return v.value
 }
 
-func (v *NullableServiceFunctionContextChain) Set(val *ServiceFunctionContextChain) {
+func (v *NullableObjectFuncCtxServiceDTO) Set(val *ObjectFuncCtxServiceDTO) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableServiceFunctionContextChain) IsSet() bool {
+func (v NullableObjectFuncCtxServiceDTO) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableServiceFunctionContextChain) Unset() {
+func (v *NullableObjectFuncCtxServiceDTO) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableServiceFunctionContextChain(val *ServiceFunctionContextChain) *NullableServiceFunctionContextChain {
-	return &NullableServiceFunctionContextChain{value: val, isSet: true}
+func NewNullableObjectFuncCtxServiceDTO(val *ObjectFuncCtxServiceDTO) *NullableObjectFuncCtxServiceDTO {
+	return &NullableObjectFuncCtxServiceDTO{value: val, isSet: true}
 }
 
-func (v NullableServiceFunctionContextChain) MarshalJSON() ([]byte, error) {
+func (v NullableObjectFuncCtxServiceDTO) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableServiceFunctionContextChain) UnmarshalJSON(src []byte) error {
+func (v *NullableObjectFuncCtxServiceDTO) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

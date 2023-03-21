@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## ApiV1RegexClazzGet
 
-> []Sibyl2ClazzWithPath ApiV1RegexClazzGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
+> []ExtractorClazzWithPath ApiV1RegexClazzGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 clazz query
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegexQueryApi.ApiV1RegexClazzGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1RegexClazzGet`: []Sibyl2ClazzWithPath
+    // response from `ApiV1RegexClazzGet`: []ExtractorClazzWithPath
     fmt.Fprintf(os.Stdout, "Response from `RegexQueryApi.ApiV1RegexClazzGet`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2ClazzWithPath**](Sibyl2ClazzWithPath.md)
+[**[]ExtractorClazzWithPath**](ExtractorClazzWithPath.md)
 
 ### Authorization
 
@@ -82,7 +82,7 @@ No authorization required
 
 ## ApiV1RegexFuncGet
 
-> []ObjectFunctionWithSignature ApiV1RegexFuncGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
+> []ObjectFunctionServiceDTO ApiV1RegexFuncGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 func query
 
@@ -111,7 +111,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegexQueryApi.ApiV1RegexFuncGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1RegexFuncGet`: []ObjectFunctionWithSignature
+    // response from `ApiV1RegexFuncGet`: []ObjectFunctionServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `RegexQueryApi.ApiV1RegexFuncGet`: %v\n", resp)
 }
 ```
@@ -134,7 +134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ObjectFunctionWithSignature**](ObjectFunctionWithSignature.md)
+[**[]ObjectFunctionServiceDTO**](ObjectFunctionServiceDTO.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ No authorization required
 
 ## ApiV1RegexFuncctxGet
 
-> []Sibyl2FunctionContextSlim ApiV1RegexFuncctxGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
+> []ObjectFunctionContextSlim ApiV1RegexFuncctxGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 func ctx query
 
@@ -181,7 +181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegexQueryApi.ApiV1RegexFuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1RegexFuncctxGet`: []Sibyl2FunctionContextSlim
+    // response from `ApiV1RegexFuncctxGet`: []ObjectFunctionContextSlim
     fmt.Fprintf(os.Stdout, "Response from `RegexQueryApi.ApiV1RegexFuncctxGet`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2FunctionContextSlim**](Sibyl2FunctionContextSlim.md)
+[**[]ObjectFunctionContextSlim**](ObjectFunctionContextSlim.md)
 
 ### Authorization
 

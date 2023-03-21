@@ -47,7 +47,7 @@ func (r ApiApiV1SignatureFuncGetRequest) Signature(signature string) ApiApiV1Sig
 	return r
 }
 
-func (r ApiApiV1SignatureFuncGetRequest) Execute() (*ObjectFunctionWithSignature, *http.Response, error) {
+func (r ApiApiV1SignatureFuncGetRequest) Execute() (*ObjectFunctionServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1SignatureFuncGetExecute(r)
 }
 
@@ -66,13 +66,13 @@ func (a *SignatureQueryApiService) ApiV1SignatureFuncGet(ctx context.Context) Ap
 
 // Execute executes the request
 //
-//	@return ObjectFunctionWithSignature
-func (a *SignatureQueryApiService) ApiV1SignatureFuncGetExecute(r ApiApiV1SignatureFuncGetRequest) (*ObjectFunctionWithSignature, *http.Response, error) {
+//	@return ObjectFunctionServiceDTO
+func (a *SignatureQueryApiService) ApiV1SignatureFuncGetExecute(r ApiApiV1SignatureFuncGetRequest) (*ObjectFunctionServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ObjectFunctionWithSignature
+		localVarReturnValue *ObjectFunctionServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureFuncGet")
@@ -320,7 +320,7 @@ func (r ApiApiV1SignatureFuncctxGetRequest) Signature(signature string) ApiApiV1
 	return r
 }
 
-func (r ApiApiV1SignatureFuncctxGetRequest) Execute() (*Sibyl2FunctionContextSlim, *http.Response, error) {
+func (r ApiApiV1SignatureFuncctxGetRequest) Execute() (*ObjectFunctionContextSlim, *http.Response, error) {
 	return r.ApiService.ApiV1SignatureFuncctxGetExecute(r)
 }
 
@@ -339,13 +339,13 @@ func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGet(ctx context.Context)
 
 // Execute executes the request
 //
-//	@return Sibyl2FunctionContextSlim
-func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGetExecute(r ApiApiV1SignatureFuncctxGetRequest) (*Sibyl2FunctionContextSlim, *http.Response, error) {
+//	@return ObjectFunctionContextSlim
+func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGetExecute(r ApiApiV1SignatureFuncctxGetRequest) (*ObjectFunctionContextSlim, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Sibyl2FunctionContextSlim
+		localVarReturnValue *ObjectFunctionContextSlim
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureFuncctxGet")

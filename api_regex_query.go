@@ -54,7 +54,7 @@ func (r ApiApiV1RegexClazzGetRequest) Regex(regex string) ApiApiV1RegexClazzGetR
 	return r
 }
 
-func (r ApiApiV1RegexClazzGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
+func (r ApiApiV1RegexClazzGetRequest) Execute() ([]ExtractorClazzWithPath, *http.Response, error) {
 	return r.ApiService.ApiV1RegexClazzGetExecute(r)
 }
 
@@ -73,13 +73,13 @@ func (a *RegexQueryApiService) ApiV1RegexClazzGet(ctx context.Context) ApiApiV1R
 
 // Execute executes the request
 //
-//	@return []Sibyl2ClazzWithPath
-func (a *RegexQueryApiService) ApiV1RegexClazzGetExecute(r ApiApiV1RegexClazzGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
+//	@return []ExtractorClazzWithPath
+func (a *RegexQueryApiService) ApiV1RegexClazzGetExecute(r ApiApiV1RegexClazzGetRequest) ([]ExtractorClazzWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Sibyl2ClazzWithPath
+		localVarReturnValue []ExtractorClazzWithPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1RegexClazzGet")
@@ -196,7 +196,7 @@ func (r ApiApiV1RegexFuncGetRequest) Regex(regex string) ApiApiV1RegexFuncGetReq
 	return r
 }
 
-func (r ApiApiV1RegexFuncGetRequest) Execute() ([]ObjectFunctionWithSignature, *http.Response, error) {
+func (r ApiApiV1RegexFuncGetRequest) Execute() ([]ObjectFunctionServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1RegexFuncGetExecute(r)
 }
 
@@ -215,13 +215,13 @@ func (a *RegexQueryApiService) ApiV1RegexFuncGet(ctx context.Context) ApiApiV1Re
 
 // Execute executes the request
 //
-//	@return []ObjectFunctionWithSignature
-func (a *RegexQueryApiService) ApiV1RegexFuncGetExecute(r ApiApiV1RegexFuncGetRequest) ([]ObjectFunctionWithSignature, *http.Response, error) {
+//	@return []ObjectFunctionServiceDTO
+func (a *RegexQueryApiService) ApiV1RegexFuncGetExecute(r ApiApiV1RegexFuncGetRequest) ([]ObjectFunctionServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ObjectFunctionWithSignature
+		localVarReturnValue []ObjectFunctionServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1RegexFuncGet")
@@ -338,7 +338,7 @@ func (r ApiApiV1RegexFuncctxGetRequest) Regex(regex string) ApiApiV1RegexFuncctx
 	return r
 }
 
-func (r ApiApiV1RegexFuncctxGetRequest) Execute() ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+func (r ApiApiV1RegexFuncctxGetRequest) Execute() ([]ObjectFunctionContextSlim, *http.Response, error) {
 	return r.ApiService.ApiV1RegexFuncctxGetExecute(r)
 }
 
@@ -357,13 +357,13 @@ func (a *RegexQueryApiService) ApiV1RegexFuncctxGet(ctx context.Context) ApiApiV
 
 // Execute executes the request
 //
-//	@return []Sibyl2FunctionContextSlim
-func (a *RegexQueryApiService) ApiV1RegexFuncctxGetExecute(r ApiApiV1RegexFuncctxGetRequest) ([]Sibyl2FunctionContextSlim, *http.Response, error) {
+//	@return []ObjectFunctionContextSlim
+func (a *RegexQueryApiService) ApiV1RegexFuncctxGetExecute(r ApiApiV1RegexFuncctxGetRequest) ([]ObjectFunctionContextSlim, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Sibyl2FunctionContextSlim
+		localVarReturnValue []ObjectFunctionContextSlim
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "RegexQueryApiService.ApiV1RegexFuncctxGet")

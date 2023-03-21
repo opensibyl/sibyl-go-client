@@ -158,7 +158,7 @@ type ApiApiV1TagFuncPostRequest struct {
 	payload    *ServiceTagUpload
 }
 
-// Payload description
+// tag upload payload
 func (r ApiApiV1TagFuncPostRequest) Payload(payload ServiceTagUpload) ApiApiV1TagFuncPostRequest {
 	r.payload = &payload
 	return r

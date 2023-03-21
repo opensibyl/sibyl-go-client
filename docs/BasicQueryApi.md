@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## ApiV1ClazzGet
 
-> []Sibyl2ClazzWithPath ApiV1ClazzGet(ctx).Repo(repo).Rev(rev).File(file).Execute()
+> []ExtractorClazzWithPath ApiV1ClazzGet(ctx).Repo(repo).Rev(rev).File(file).Execute()
 
 class query
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BasicQueryApi.ApiV1ClazzGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1ClazzGet`: []Sibyl2ClazzWithPath
+    // response from `ApiV1ClazzGet`: []ExtractorClazzWithPath
     fmt.Fprintf(os.Stdout, "Response from `BasicQueryApi.ApiV1ClazzGet`: %v\n", resp)
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]Sibyl2ClazzWithPath**](Sibyl2ClazzWithPath.md)
+[**[]ExtractorClazzWithPath**](ExtractorClazzWithPath.md)
 
 ### Authorization
 
@@ -80,7 +80,7 @@ No authorization required
 
 ## ApiV1FuncGet
 
-> []ObjectFunctionWithSignature ApiV1FuncGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
+> []ObjectFunctionServiceDTO ApiV1FuncGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
 
 func query
 
@@ -109,7 +109,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BasicQueryApi.ApiV1FuncGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncGet`: []ObjectFunctionWithSignature
+    // response from `ApiV1FuncGet`: []ObjectFunctionServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `BasicQueryApi.ApiV1FuncGet`: %v\n", resp)
 }
 ```
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ObjectFunctionWithSignature**](ObjectFunctionWithSignature.md)
+[**[]ObjectFunctionServiceDTO**](ObjectFunctionServiceDTO.md)
 
 ### Authorization
 
@@ -150,7 +150,7 @@ No authorization required
 
 ## ApiV1FuncctxGet
 
-> []ObjectFunctionContextSlimWithSignature ApiV1FuncctxGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
+> []ObjectFuncCtxServiceDTO ApiV1FuncctxGet(ctx).Repo(repo).Rev(rev).File(file).Lines(lines).Execute()
 
 func ctx query
 
@@ -179,7 +179,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BasicQueryApi.ApiV1FuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1FuncctxGet`: []ObjectFunctionContextSlimWithSignature
+    // response from `ApiV1FuncctxGet`: []ObjectFuncCtxServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `BasicQueryApi.ApiV1FuncctxGet`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ObjectFunctionContextSlimWithSignature**](ObjectFunctionContextSlimWithSignature.md)
+[**[]ObjectFuncCtxServiceDTO**](ObjectFuncCtxServiceDTO.md)
 
 ### Authorization
 

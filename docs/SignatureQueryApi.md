@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## ApiV1SignatureFuncGet
 
-> ObjectFunctionWithSignature ApiV1SignatureFuncGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
+> ObjectFunctionServiceDTO ApiV1SignatureFuncGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
 
 func query
 
@@ -42,7 +42,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SignatureQueryApi.ApiV1SignatureFuncGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1SignatureFuncGet`: ObjectFunctionWithSignature
+    // response from `ApiV1SignatureFuncGet`: ObjectFunctionServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `SignatureQueryApi.ApiV1SignatureFuncGet`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectFunctionWithSignature**](ObjectFunctionWithSignature.md)
+[**ObjectFunctionServiceDTO**](ObjectFunctionServiceDTO.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ No authorization required
 
 ## ApiV1SignatureFuncctxGet
 
-> Sibyl2FunctionContextSlim ApiV1SignatureFuncctxGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
+> ObjectFunctionContextSlim ApiV1SignatureFuncctxGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
 
 funcctx query
 
@@ -180,7 +180,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SignatureQueryApi.ApiV1SignatureFuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1SignatureFuncctxGet`: Sibyl2FunctionContextSlim
+    // response from `ApiV1SignatureFuncctxGet`: ObjectFunctionContextSlim
     fmt.Fprintf(os.Stdout, "Response from `SignatureQueryApi.ApiV1SignatureFuncctxGet`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Sibyl2FunctionContextSlim**](Sibyl2FunctionContextSlim.md)
+[**ObjectFunctionContextSlim**](ObjectFunctionContextSlim.md)
 
 ### Authorization
 

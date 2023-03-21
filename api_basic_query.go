@@ -47,7 +47,7 @@ func (r ApiApiV1ClazzGetRequest) File(file string) ApiApiV1ClazzGetRequest {
 	return r
 }
 
-func (r ApiApiV1ClazzGetRequest) Execute() ([]Sibyl2ClazzWithPath, *http.Response, error) {
+func (r ApiApiV1ClazzGetRequest) Execute() ([]ExtractorClazzWithPath, *http.Response, error) {
 	return r.ApiService.ApiV1ClazzGetExecute(r)
 }
 
@@ -66,13 +66,13 @@ func (a *BasicQueryApiService) ApiV1ClazzGet(ctx context.Context) ApiApiV1ClazzG
 
 // Execute executes the request
 //
-//	@return []Sibyl2ClazzWithPath
-func (a *BasicQueryApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]Sibyl2ClazzWithPath, *http.Response, error) {
+//	@return []ExtractorClazzWithPath
+func (a *BasicQueryApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]ExtractorClazzWithPath, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []Sibyl2ClazzWithPath
+		localVarReturnValue []ExtractorClazzWithPath
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BasicQueryApiService.ApiV1ClazzGet")
@@ -185,7 +185,7 @@ func (r ApiApiV1FuncGetRequest) Lines(lines string) ApiApiV1FuncGetRequest {
 	return r
 }
 
-func (r ApiApiV1FuncGetRequest) Execute() ([]ObjectFunctionWithSignature, *http.Response, error) {
+func (r ApiApiV1FuncGetRequest) Execute() ([]ObjectFunctionServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1FuncGetExecute(r)
 }
 
@@ -204,13 +204,13 @@ func (a *BasicQueryApiService) ApiV1FuncGet(ctx context.Context) ApiApiV1FuncGet
 
 // Execute executes the request
 //
-//	@return []ObjectFunctionWithSignature
-func (a *BasicQueryApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]ObjectFunctionWithSignature, *http.Response, error) {
+//	@return []ObjectFunctionServiceDTO
+func (a *BasicQueryApiService) ApiV1FuncGetExecute(r ApiApiV1FuncGetRequest) ([]ObjectFunctionServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ObjectFunctionWithSignature
+		localVarReturnValue []ObjectFunctionServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BasicQueryApiService.ApiV1FuncGet")
@@ -326,7 +326,7 @@ func (r ApiApiV1FuncctxGetRequest) Lines(lines string) ApiApiV1FuncctxGetRequest
 	return r
 }
 
-func (r ApiApiV1FuncctxGetRequest) Execute() ([]ObjectFunctionContextSlimWithSignature, *http.Response, error) {
+func (r ApiApiV1FuncctxGetRequest) Execute() ([]ObjectFuncCtxServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1FuncctxGetExecute(r)
 }
 
@@ -345,13 +345,13 @@ func (a *BasicQueryApiService) ApiV1FuncctxGet(ctx context.Context) ApiApiV1Func
 
 // Execute executes the request
 //
-//	@return []ObjectFunctionContextSlimWithSignature
-func (a *BasicQueryApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]ObjectFunctionContextSlimWithSignature, *http.Response, error) {
+//	@return []ObjectFuncCtxServiceDTO
+func (a *BasicQueryApiService) ApiV1FuncctxGetExecute(r ApiApiV1FuncctxGetRequest) ([]ObjectFuncCtxServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ObjectFunctionContextSlimWithSignature
+		localVarReturnValue []ObjectFuncCtxServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BasicQueryApiService.ApiV1FuncctxGet")
