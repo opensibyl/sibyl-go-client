@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## ApiV1ClazzGet
 
-> []ExtractorClazzWithPath ApiV1ClazzGet(ctx).Repo(repo).Rev(rev).File(file).Execute()
+> []ObjectClazzServiceDTO ApiV1ClazzGet(ctx).Repo(repo).Rev(rev).File(file).Execute()
 
 class query
 
@@ -40,7 +40,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `BasicQueryApi.ApiV1ClazzGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1ClazzGet`: []ExtractorClazzWithPath
+    // response from `ApiV1ClazzGet`: []ObjectClazzServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `BasicQueryApi.ApiV1ClazzGet`: %v\n", resp)
 }
 ```
@@ -62,7 +62,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ExtractorClazzWithPath**](ExtractorClazzWithPath.md)
+[**[]ObjectClazzServiceDTO**](ObjectClazzServiceDTO.md)
 
 ### Authorization
 

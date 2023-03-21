@@ -47,7 +47,7 @@ func (r ApiApiV1ClazzGetRequest) File(file string) ApiApiV1ClazzGetRequest {
 	return r
 }
 
-func (r ApiApiV1ClazzGetRequest) Execute() ([]ExtractorClazzWithPath, *http.Response, error) {
+func (r ApiApiV1ClazzGetRequest) Execute() ([]ObjectClazzServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1ClazzGetExecute(r)
 }
 
@@ -66,13 +66,13 @@ func (a *BasicQueryApiService) ApiV1ClazzGet(ctx context.Context) ApiApiV1ClazzG
 
 // Execute executes the request
 //
-//	@return []ExtractorClazzWithPath
-func (a *BasicQueryApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]ExtractorClazzWithPath, *http.Response, error) {
+//	@return []ObjectClazzServiceDTO
+func (a *BasicQueryApiService) ApiV1ClazzGetExecute(r ApiApiV1ClazzGetRequest) ([]ObjectClazzServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ExtractorClazzWithPath
+		localVarReturnValue []ObjectClazzServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BasicQueryApiService.ApiV1ClazzGet")

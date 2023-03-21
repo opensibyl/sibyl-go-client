@@ -54,7 +54,7 @@ func (r ApiApiV1ReferenceCountFuncctxGetRequest) LessThan(lessThan int32) ApiApi
 	return r
 }
 
-func (r ApiApiV1ReferenceCountFuncctxGetRequest) Execute() ([]ObjectFunctionContextSlim, *http.Response, error) {
+func (r ApiApiV1ReferenceCountFuncctxGetRequest) Execute() ([]ObjectFuncCtxServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1ReferenceCountFuncctxGetExecute(r)
 }
 
@@ -73,13 +73,13 @@ func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxGet(ctx context.Con
 
 // Execute executes the request
 //
-//	@return []ObjectFunctionContextSlim
-func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxGetExecute(r ApiApiV1ReferenceCountFuncctxGetRequest) ([]ObjectFunctionContextSlim, *http.Response, error) {
+//	@return []ObjectFuncCtxServiceDTO
+func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxGetExecute(r ApiApiV1ReferenceCountFuncctxGetRequest) ([]ObjectFuncCtxServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ObjectFunctionContextSlim
+		localVarReturnValue []ObjectFuncCtxServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferenceQueryApiService.ApiV1ReferenceCountFuncctxGet")
@@ -196,7 +196,7 @@ func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) LessThan(lessThan int32)
 	return r
 }
 
-func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) Execute() ([]ObjectFunctionContextSlim, *http.Response, error) {
+func (r ApiApiV1ReferenceCountFuncctxReverseGetRequest) Execute() ([]ObjectFuncCtxServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1ReferenceCountFuncctxReverseGetExecute(r)
 }
 
@@ -215,13 +215,13 @@ func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxReverseGet(ctx cont
 
 // Execute executes the request
 //
-//	@return []ObjectFunctionContextSlim
-func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxReverseGetExecute(r ApiApiV1ReferenceCountFuncctxReverseGetRequest) ([]ObjectFunctionContextSlim, *http.Response, error) {
+//	@return []ObjectFuncCtxServiceDTO
+func (a *ReferenceQueryApiService) ApiV1ReferenceCountFuncctxReverseGetExecute(r ApiApiV1ReferenceCountFuncctxReverseGetRequest) ([]ObjectFuncCtxServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ObjectFunctionContextSlim
+		localVarReturnValue []ObjectFuncCtxServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ReferenceQueryApiService.ApiV1ReferenceCountFuncctxReverseGet")

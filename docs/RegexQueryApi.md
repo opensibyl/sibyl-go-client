@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## ApiV1RegexClazzGet
 
-> []ExtractorClazzWithPath ApiV1RegexClazzGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
+> []ObjectClazzServiceDTO ApiV1RegexClazzGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 clazz query
 
@@ -41,7 +41,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegexQueryApi.ApiV1RegexClazzGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1RegexClazzGet`: []ExtractorClazzWithPath
+    // response from `ApiV1RegexClazzGet`: []ObjectClazzServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `RegexQueryApi.ApiV1RegexClazzGet`: %v\n", resp)
 }
 ```
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ExtractorClazzWithPath**](ExtractorClazzWithPath.md)
+[**[]ObjectClazzServiceDTO**](ObjectClazzServiceDTO.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ No authorization required
 
 ## ApiV1RegexFuncctxGet
 
-> []ObjectFunctionContextSlim ApiV1RegexFuncctxGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
+> []ObjectFuncCtxServiceDTO ApiV1RegexFuncctxGet(ctx).Repo(repo).Rev(rev).Field(field).Regex(regex).Execute()
 
 func ctx query
 
@@ -181,7 +181,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `RegexQueryApi.ApiV1RegexFuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1RegexFuncctxGet`: []ObjectFunctionContextSlim
+    // response from `ApiV1RegexFuncctxGet`: []ObjectFuncCtxServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `RegexQueryApi.ApiV1RegexFuncctxGet`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ObjectFunctionContextSlim**](ObjectFunctionContextSlim.md)
+[**[]ObjectFuncCtxServiceDTO**](ObjectFuncCtxServiceDTO.md)
 
 ### Authorization
 

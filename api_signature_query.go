@@ -320,7 +320,7 @@ func (r ApiApiV1SignatureFuncctxGetRequest) Signature(signature string) ApiApiV1
 	return r
 }
 
-func (r ApiApiV1SignatureFuncctxGetRequest) Execute() (*ObjectFunctionContextSlim, *http.Response, error) {
+func (r ApiApiV1SignatureFuncctxGetRequest) Execute() (*ObjectFuncCtxServiceDTO, *http.Response, error) {
 	return r.ApiService.ApiV1SignatureFuncctxGetExecute(r)
 }
 
@@ -339,13 +339,13 @@ func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGet(ctx context.Context)
 
 // Execute executes the request
 //
-//	@return ObjectFunctionContextSlim
-func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGetExecute(r ApiApiV1SignatureFuncctxGetRequest) (*ObjectFunctionContextSlim, *http.Response, error) {
+//	@return ObjectFuncCtxServiceDTO
+func (a *SignatureQueryApiService) ApiV1SignatureFuncctxGetExecute(r ApiApiV1SignatureFuncctxGetRequest) (*ObjectFuncCtxServiceDTO, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ObjectFunctionContextSlim
+		localVarReturnValue *ObjectFuncCtxServiceDTO
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SignatureQueryApiService.ApiV1SignatureFuncctxGet")

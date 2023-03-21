@@ -152,7 +152,7 @@ No authorization required
 
 ## ApiV1SignatureFuncctxGet
 
-> ObjectFunctionContextSlim ApiV1SignatureFuncctxGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
+> ObjectFuncCtxServiceDTO ApiV1SignatureFuncctxGet(ctx).Repo(repo).Rev(rev).Signature(signature).Execute()
 
 funcctx query
 
@@ -180,7 +180,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `SignatureQueryApi.ApiV1SignatureFuncctxGet``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ApiV1SignatureFuncctxGet`: ObjectFunctionContextSlim
+    // response from `ApiV1SignatureFuncctxGet`: ObjectFuncCtxServiceDTO
     fmt.Fprintf(os.Stdout, "Response from `SignatureQueryApi.ApiV1SignatureFuncctxGet`: %v\n", resp)
 }
 ```
@@ -202,7 +202,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ObjectFunctionContextSlim**](ObjectFunctionContextSlim.md)
+[**ObjectFuncCtxServiceDTO**](ObjectFuncCtxServiceDTO.md)
 
 ### Authorization
 
